@@ -7,7 +7,7 @@ import StoreIcon from "@mui/icons-material/Store";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import SettingsIcon from "@mui/icons-material/Settings";
-
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const styles = {
@@ -30,27 +30,27 @@ function SideBar() {
     {
       text: "Inventory",
       icon: <InventoryIcon/>,
-      path: "/",
+      path: "/inventory",
     },
     {
       text: "Marketplace",
       icon: <StoreIcon/>,
-      path: "/",
+      path: "/marketplace",
     },
     {
       text: "Collections",
       icon: <CollectionsIcon/>,
-      path: "/",
+      path: "/collections",
     },
     {
       text: "Games",
       icon: <SportsEsportsIcon/>,
-      path: "/",
+      path: "/games",
     },
     {
       text: "Settings",
       icon: <SettingsIcon/>,
-      path: "/",
+      path: "/settings",
     },
   ];
 
@@ -59,10 +59,11 @@ function SideBar() {
       <Typography variant="h5">THE HUB</Typography>
       <List>
         {menuItems.map((item) => (
-          <ListItem key={item.text}>
+        <Link to={item.path}>  <ListItem key={item.text}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
           </ListItem>
+        </Link>
         ))}
       </List>
     </Drawer>
