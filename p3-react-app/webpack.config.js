@@ -1,7 +1,9 @@
 const path = require('path');
 const HTMLWebpackPlugin = require ('html-webpack-plugin');
         module.exports = {
-
+                devServer: {
+                  historyApiFallback: true,
+                },
                 entry: './src/index.js',
 
                 output : {
