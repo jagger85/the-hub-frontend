@@ -24,32 +24,32 @@ function SideBar() {
   const menuItems = [
     {
       text: "Dashboard",
-      icon: <DashboardIcon />,
+      icon: <DashboardIcon/>,
       path: "/",
     },
     {
       text: "Inventory",
-      icon: <InventoryIcon />,
+      icon: <InventoryIcon/>,
       path: "/",
     },
     {
       text: "Marketplace",
-      icon: <StoreIcon />,
+      icon: <StoreIcon/>,
       path: "/",
     },
     {
       text: "Collections",
-      icon: <CollectionsIcon />,
+      icon: <CollectionsIcon/>,
       path: "/",
     },
     {
       text: "Games",
-      icon: <SportsEsportsIcon />,
+      icon: <SportsEsportsIcon/>,
       path: "/",
     },
     {
       text: "Settings",
-      icon: <SettingsIcon />,
+      icon: <SettingsIcon/>,
       path: "/",
     },
   ];
