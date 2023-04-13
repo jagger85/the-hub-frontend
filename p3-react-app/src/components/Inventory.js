@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from './App'
 
 function Inventory() {
+
+  const {wallet,network,endpoint} = useContext(AppContext)
+
   return (
-    <div>Inventory</div>
+    
+    <div>
+    <h1></h1>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./App";
 import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
-import TransactionsTable from "./TransactionsTable";
+import TransactionsTable from "./Transactions/TransactionsTable";
 
 function Dashboard() {
   const { wallet, network, endpoint } = useContext(AppContext);
