@@ -36,7 +36,7 @@ const testnetEndpoints = [
 ];
 
 export const apiCalls = {
-    
+
   endpoints: mainnetEndpoints,
   endpoint: "http://ultra.api.eosnation.io",
   networks: ["mainnet", "testnet"],
@@ -131,8 +131,13 @@ export const apiCalls = {
     return fetch();
   },
 
-  getUniqsOnSale: function () {
-    return fetch();
+  getUniqsOnSale: async function () {
+    return fetch(
+      "https://api.mainnet.ultra.io/v0/search/transactions?q=action%3Aresell&start_block=0&sort=desc&block_count=5000000&limit=25&cursor=&with_reversible=true"
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
   },
 
   getUniqsSold: function () {

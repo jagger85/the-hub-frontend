@@ -2,31 +2,17 @@ import React from "react";
 import { useEffect, useState } from "react";
 import UniqOnSale from "./UniqOnSale";
 import { Typography } from "@mui/material";
+import { apiCalls } from "../../scripts/apicalls";
 function Marketplace() {
   const [uniqsOnSale, setUniqsOnSale] = useState(null);
 
   useEffect(() => {
+    const getUniqsOnSale = async () => {
+      const data = await apiCalls.getUniqsOnSale();
+      setUniqsOnSale(data);
+    };
     getUniqsOnSale();
   }, []);
-
-  function getUniqsOnSale() {
-    var raw = "";
-
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    fetch(
-      "https://api.mainnet.ultra.io/v0/search/transactions?q=action%3Aresell&start_block=0&sort=desc&block_count=5000000&limit=25&cursor=&with_reversible=true",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        setUniqsOnSale(result);
-      })
-      .catch((error) => console.log("error", error));
-  }
 
   return (
     <div>
