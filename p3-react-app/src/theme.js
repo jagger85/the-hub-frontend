@@ -63,6 +63,6 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['sans-serif'].join(' '),
+    fontFamily: ['sans-serif'].join(',')
   },
 });

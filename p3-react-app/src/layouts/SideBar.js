@@ -10,7 +10,6 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
 import { styles } from "./MainLayoutStyle";
 
-
 function SideBar() {
   const menuItems = [
     {
@@ -52,7 +51,7 @@ function SideBar() {
         {menuItems.map((item) => (
         <Link to={item.path} key={'link ' + item.text}>  <ListItem key={item.text}>
             <ListItemIcon key={'icon ' + item.text}>{item.icon}</ListItemIcon>
-            <ListItemText key={'text' + item.text} primary={item.text} />
+            <ListItemText key={'text' + item.text} primary={item.text}/>
           </ListItem>
         </Link>
         ))}

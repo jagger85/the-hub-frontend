@@ -10,6 +10,7 @@ import Marketplace from "./Marketplace/Marketplace";
 import Settings from "./Settings";
 import { theme }from "../theme";
 import { ThemeProvider } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 export const AppContext = createContext();
 // wallets  aa1aa2af3ql4 ,
 
@@ -18,8 +19,9 @@ const App = () => {
   return (
     <AppContext.Provider value={{ wallet }}>
       <ThemeProvider theme={theme}>
-        <MainLayout>
-          <Routes>
+      <CssBaseline/>
+      <MainLayout>
+      <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/marketplace" element={<Marketplace />} />
