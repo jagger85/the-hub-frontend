@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from "./App";
+import { AppContext } from "../App";
 import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
-import TransactionsTable from "./Transactions/TransactionsTable";
-import { apiCalls } from "../scripts/apicalls";
+import TransactionsTable from "../Transactions/TransactionsTable";
+import { apiCalls } from "../../scripts/apicalls";
 
 function Dashboard() {
   const { wallet } = useContext(AppContext);

@@ -59,9 +59,9 @@ function SideBar() {
       <Typography variant="h5">THE HUB</Typography>
       <List>
         {menuItems.map((item) => (
-        <Link to={item.path}>  <ListItem key={item.text}>
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.text} />
+        <Link to={item.path} key={'link ' + item.text}>  <ListItem key={item.text}>
+            <ListItemIcon key={'icon ' + item.text}>{item.icon}</ListItemIcon>
+            <ListItemText key={'text' + item.text} primary={item.text} />
           </ListItem>
         </Link>
         ))}
