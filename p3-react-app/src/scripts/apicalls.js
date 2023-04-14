@@ -152,8 +152,16 @@ export const apiCalls = {
     return fetch();
   },
 
-  getCollections: function () {
-    return fetch();
+  getCollections: async function () {
+   return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: '{"scope":"eosio.nft.ft", "code":"eosio.nft.ft", "table":"factory.a", "json": true}',
+      })
+        .then((res) => res.json())
+        .then((data) => data);
   },
 
   getAllWalletsHoldingUniqs: function () {
