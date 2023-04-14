@@ -8,17 +8,8 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
-const drawerWidth = 240;
+import { styles } from "./MainLayoutStyle";
 
-const styles = {
-  drawer: {
-    width: drawerWidth,
-    "& .MuiDrawer-paper": {
-      width: drawerWidth,
-      boxSizing: "border-box",
-    },
-  },
-};
 
 function SideBar() {
   const menuItems = [
