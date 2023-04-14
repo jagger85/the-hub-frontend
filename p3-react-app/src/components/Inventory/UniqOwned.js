@@ -3,7 +3,6 @@ import { Paper, Typography } from '@mui/material'
 function UniqOwned(props) {
   return (
     <Paper sx={{margin:1,padding:1}}>
-    {console.log(props.uniq)}
     <Typography>Token id: {props.uniq.id} </Typography>
     <Typography>Factory id: {props.uniq.token_factory_id}</Typography>
     <Typography>Mint date: {props.uniq.mint_date}</Typography>

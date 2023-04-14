@@ -36,6 +36,7 @@ const testnetEndpoints = [
 ];
 
 export const apiCalls = {
+    
   endpoints: mainnetEndpoints,
   endpoint: "http://ultra.api.eosnation.io",
   networks: ["mainnet", "testnet"],
@@ -98,8 +99,32 @@ export const apiCalls = {
       .catch((error) => console.log("error", error));
   },
 
-  getWalletUniqs: function () {
-    return fetch();
+  getWalletUniqs: async function (wallet) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      code: "eosio.nft.ft",
+      table: "token.a",
+      json: true,
+      scope: `${wallet}`,
+      limit: 10000,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    return fetch(
+      `${this.endpoint}/v1/chain/get_table_rows`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result )
+      .catch((error) => console.log("error", error));
   },
 
   getTransactions: function () {
