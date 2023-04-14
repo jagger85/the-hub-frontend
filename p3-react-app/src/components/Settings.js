@@ -1,57 +1,38 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { useState } from "react";
 import { Select, MenuItem, InputLabel, Box, FormControl,  FormLabel, RadioGroup, FormControlLabel, Radio} from "@mui/material";
+import { apiCalls } from "../scripts/apicalls";
+import { useReducer } from "react";
 
-const mainnetEndpoints = [
-  {
-    name: "EOSNATION",
-    url: "http://ultra.api.eosnation.io",
-  },
-  {
-    name: "EOSRIO",
-    url: "https://ultra.eosrio.io",
-  },
-  {
-    name: "CRYPTOLIONS",
-    url: "https://api.ultra.cryptolions.io/",
-  },
-  {
-    name: "EOSUSA",
-    url: "https://uos.eosusa.news",
+const initialValue = {
+    'endpoint': apiCalls.getEndpoint,
+    'network' : apiCalls.getNetwork
+}
+
+const reducer = (settings, action) => {
+  switch(action.type){
+    case 'network':
+          apiCalls.setNetwork(action.payload)          
+          return {...settings,network: action.payload }
+      
+    case 'endpoint':
+          apiCalls.setEndpoint(action.payload)
+          return{...settings, endpoint: action.payload}
+
+    default:
+       console.log(action + ' This action is not supported')
   }
-]
+}
 
-const testnetEndpoints = [
-  {
-    name : 'EOSEOUL',
-    url: 'https://ultratest-api.eoseoul.io/'
-  },
-  {
-    name : 'EOSNATION',
-    url: 'http://ultratest.api.eosnation.io'
-  },
-  {
-    name : 'EOSRIO',
-    url: 'https://testnet.ultra.eosrio.io'
-  },
-  {
-    name : 'CRYPTOLIONS',
-    url: 'https://api.ultra-testnet.cryptolions.io'
-  }
-]
-
-function Settings(props) {
-
-  const [network, setNetwork] = useState(mainnetEndpoints)
+function Settings() {
  
+ const [settings, dispatch] = useReducer(reducer, initialValue)
+
   const handleSelectChange = (event) => {
-    props.setEndpoint(event.target.value);
+    dispatch({type:'endpoint', payload: event.target.value});
   };
   const handleNetworkChange = (event) => {
-    setNetwork((event.target.value == 'mainnet') ? mainnetEndpoints : testnetEndpoints)
-    props.setNetwork((event.target.value == 'mainnet') ? 'mainnet' : 'testnet')
-    props.setEndpoint((event.target.value == 'mainnet') ? mainnetEndpoints[0] : testnetEndpoints[0])
+    (event.target.value == 'mainnet') ? dispatch({type:'network',payload:'mainnet'}) : dispatch({type:'network',payload:'testnet'})
   }
 
   return (
@@ -64,12 +45,15 @@ function Settings(props) {
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="mainnet"
             name="radio-buttons-group"
-            value={props.network}
+            value={apiCalls.getNetwork}
             onChange= {handleNetworkChange}
           >
-            <FormControlLabel value= 'mainnet' control={<Radio />} label="Mainnet"/>
-            <FormControlLabel value= 'testnet' control={<Radio />} label="Testnet"/>
-
+          {
+            apiCalls.getNetworks.map(e =>{
+              return <FormControlLabel value= {e} control={<Radio />} label={e} key={e}/>
+            })
+          }
+            
           </RadioGroup>
           </FormControl>
           <FormControl fullWidth>
@@ -77,11 +61,11 @@ function Settings(props) {
           <Select
             labelId="endpoints-label"
             id="enpoint-select"
-            value={props.endpoint}
+            value={apiCalls.getEndpoint}
             label="Endpoint"
             onChange={handleSelectChange}
           >
-             { network.map((element) => (
+             { apiCalls.getEndpoints.map((element) => (
               <MenuItem key={element.name} value={element.url}>
                 {element.name}
               </MenuItem>
