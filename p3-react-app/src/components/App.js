@@ -8,7 +8,8 @@ import Inventory from "./Inventory/Inventory";
 import Collections from "./Collections/Collections";
 import Marketplace from "./Marketplace/Marketplace";
 import Settings from "./Settings";
-
+import { theme }from "../theme";
+import { ThemeProvider } from "@mui/material";
 export const AppContext = createContext();
 // wallets  aa1aa2af3ql4 ,
 
@@ -16,16 +17,18 @@ const App = () => {
   const [wallet, setWallet] = useState("aa1aa2af3cs4");
   return (
     <AppContext.Provider value={{ wallet }}>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="/settings" element={<Settings/>}/>
-        </Routes>
-      </MainLayout>
+      <ThemeProvider theme={theme}>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/collections" element={<Collections />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </MainLayout>
+      </ThemeProvider>
     </AppContext.Provider>
   );
 };
