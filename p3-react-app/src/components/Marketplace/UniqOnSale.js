@@ -11,7 +11,7 @@ function UniqOnSale(props) {
             <Box
               component="img"
               sx={styles.uniqImage}
-              alt="The house from the offer."
+              alt="Uniq on sale"
               src={img}
             />
             <Typography>Token id:{e.act.data.resell.token_id}</Typography>

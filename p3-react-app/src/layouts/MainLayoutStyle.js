@@ -15,7 +15,6 @@ export const styles = {
     flexDirection: "row",
     left: drawerWidth,
   },
-
   drawer: {
     margin: 0,
     width: drawerWidth,
@@ -27,4 +26,18 @@ export const styles = {
       border: 0
     },
   },
+  gridSection : {
+    margin: 1,
+  },
+  gridAvatar:{
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  avatar: {
+    width: 200,
+  },
+  gridLogo: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
 };

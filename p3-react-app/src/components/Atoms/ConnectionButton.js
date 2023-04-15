@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useState } from "react";
-import ConnectionDialog from "../Molecules/ConnectionDialog";
+import ConnectionDialog from '../Molecules/ConnectionDialog'
 
 function ConnectionButton() {
   

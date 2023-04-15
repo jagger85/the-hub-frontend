@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer, Typography } from "@mui/material";
+import { Drawer, Typography, Box, Divider, Grid, Chip } from "@mui/material";
 import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
@@ -9,53 +9,87 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
 import { styles } from "./MainLayoutStyle";
+import img from "../assets/uniqtest.png";
 
 function SideBar() {
   const menuItems = [
     {
       text: "Dashboard",
-      icon: <DashboardIcon/>,
+      icon: <DashboardIcon />,
       path: "/",
     },
     {
       text: "Inventory",
-      icon: <InventoryIcon/>,
+      icon: <InventoryIcon />,
       path: "/inventory",
     },
     {
       text: "Marketplace",
-      icon: <StoreIcon/>,
+      icon: <StoreIcon />,
       path: "/marketplace",
     },
     {
       text: "Collections",
-      icon: <CollectionsIcon/>,
+      icon: <CollectionsIcon />,
       path: "/collections",
     },
     {
       text: "Games",
-      icon: <SportsEsportsIcon/>,
+      icon: <SportsEsportsIcon />,
       path: "/games",
     },
     {
       text: "Settings",
-      icon: <SettingsIcon/>,
+      icon: <SettingsIcon />,
       path: "/settings",
     },
   ];
 
   return (
     <Drawer sx={styles.drawer} variant="permanent" anchor="left">
-      <Typography variant="h5">THE HUB</Typography>
-      <List>
-        {menuItems.map((item) => (
-        <Link to={item.path} key={'link ' + item.text}>  <ListItem key={item.text}>
-            <ListItemIcon key={'icon ' + item.text}>{item.icon}</ListItemIcon>
-            <ListItemText key={'text' + item.text} primary={item.text}/>
-          </ListItem>
-        </Link>
-        ))}
-      </List>
+      <Grid container>
+        <Grid item sx={[styles.gridSection, styles.gridLogo]} xs={12}>
+          <Typography variant="h5">THE HUB</Typography>
+        </Grid>
+        <Grid item sx={styles.gridSection} xs={12}>
+          <Divider />
+        </Grid>
+        <Grid item sx={[styles.gridSection, styles.gridAvatar]} xs={12}>
+          <Box
+            component="img"
+            sx={styles.avatar}
+            alt="Uniq on sale"
+            src={img}
+          />
+        </Grid>
+        <Grid item sx={styles.gridSection} xs={12}>
+          <Divider>
+            <Chip label="USER" />
+          </Divider>
+        </Grid>
+        <Grid item sx={styles.gridSection} xs={12}>
+          <List>
+            {menuItems.map((item) => (
+              <Link
+                style={{ textDecoration: "none" }}
+                to={item.path}
+                key={"link " + item.text}
+                sx={styles.sidebarLink}
+              >
+                <ListItem key={item.text}>
+                  <ListItemIcon key={"icon " + item.text}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText key={"text" + item.text}>
+                    {" "}
+                    {item.text}
+                  </ListItemText>
+                </ListItem>
+              </Link>
+            ))}
+          </List>
+        </Grid>
+      </Grid>
     </Drawer>
   );
 }
