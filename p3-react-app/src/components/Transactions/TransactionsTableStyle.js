@@ -1,4 +1,7 @@
 export const styles = {
+    divider:{
+        color: 'black',
+    },
     galleryButtonContainer: {
         display: 'flex',
         justifyContent: 'center'

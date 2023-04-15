@@ -40,17 +40,22 @@ export const colors = {
     900: '#070a0e',
   },
   background: {
-    100: '#d2d2d5',
-    200: '#a5a5ab',
-    300: '#797780',
-    400: '#4c4a56',
-    500: '#1f1d2c',
-    600: '#191723',
-    700: '#13111a',
-    800: '#0c0c12',
-    900: '#060609',
+    100: '#f4f4f4',
+    200: '#ececec',
+    300: '#dedede',
+    400: '#bbbbbb',
+    500: '#9b9b9b',
+    600: '#727272',
+    700: '#5f5f5f',
+    800: '#404040',
+    900: '#1f1f1f',
+    1000: '#282828'
   },
 };
+
+export const boxShadow = {
+  boxShadow: '0 2px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.08),0 8px 16px rgba(0,0,0,.08),0 16px 24px rgba(0,0,0,.08),inset 0 1px 1px hsla(0,0%,100%,.08)'
+}
 
 export const theme = createTheme({
   palette: {
@@ -59,10 +64,28 @@ export const theme = createTheme({
       main: colors.purple[500],
     },
     background: {
-      default: '#1f1d2c',
+      default: '#1f1f1f',
     },
   },
   typography: {
-    fontFamily: ['sans-serif'].join(',')
+    fontFamily: ['sans-serif'].join(','),
+    h1:{
+      color :'white'
+    } ,
+    h2:{
+      color: 'white',
+    } ,
+    h3:{
+      color: 'white',
+    } ,
+    h4:{
+      color: 'white',
+    } ,
+    h5:{
+      color: 'white',
+    } ,
+    h6:{
+      color: 'white'
+    }
   },
 });

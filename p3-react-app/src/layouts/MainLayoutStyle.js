@@ -8,19 +8,23 @@ export const styles = {
   },
   content: {
     width: "100%",
-    background: colors.background[300],
+    background: colors.background[900],
   },
   header: {
-    display: "flex",
-    flexDirection: "row",
-    left: drawerWidth,
+    width: '100%',
+    background: colors.background[900],
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    flexWrap:'wrap',
   },
   drawer: {
     margin: 0,
     width: drawerWidth,
     boxSizing: "border-box",
     "& .MuiDrawer-paper": {
-      background: colors.background[300],
+      background: colors.background[900],
       width: drawerWidth,
       boxSizing: "border-box",
       border: 0

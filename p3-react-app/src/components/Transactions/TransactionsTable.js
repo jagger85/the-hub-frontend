@@ -3,7 +3,7 @@ import Transaction from "./Transaction";
 import Button from "@mui/material/Button";
 import { useReducer, useEffect } from "react";
 import { apiCalls } from "../../scripts/apicalls";
-import { Typography,Grid } from "@mui/material";
+import { Typography, Grid, Divider } from "@mui/material";
 import { styles } from './TransactionsTableStyle'
 
 const pages = []

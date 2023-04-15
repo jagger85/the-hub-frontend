@@ -9,9 +9,8 @@ function MainLayout({ children }) {
     <div style={styles.root}>
       <SideBar style={styles.sidebar} />
       <div>
-        <AppBar elevation={0} style={styles.header}>
-          <Toolbar position='fixed'>
-            <Typography>THE HUB</Typography>
+        <AppBar elevation={0} sx={styles.header}>
+          <Toolbar position='fixed' sx={styles.toolbar}>
             <ConnectionButton/>
           </Toolbar>
         </AppBar>
