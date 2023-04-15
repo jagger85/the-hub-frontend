@@ -123,7 +123,7 @@ export const apiCalls = {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => result )
+      .then((result) => result.rows)
       .catch((error) => console.log("error", error));
   },
   
