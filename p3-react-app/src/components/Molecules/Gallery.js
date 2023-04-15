@@ -2,6 +2,7 @@ import React from 'react'
 import { useReducer, useEffect, useState } from "react";
 import { Grid,Typography, Button } from '@mui/material';
 import  UniqOnSale  from '../Marketplace/UniqOnSale'
+import Transaction from '../Transactions/Transaction';
 import { styles } from './GalleryStyle'
 const pages = []
 

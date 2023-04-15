@@ -82,7 +82,7 @@ export const apiCalls = {
       `https://api.mainnet.ultra.io/v0/search/transactions?q=(auth:${wallet} OR receiver:${wallet})&sort=desc&limit=100&block_count=5000000&start_block=0&limit=5&cursor&with_reversible=true`
     )
       .then((res) => res.json())
-      .then((data) => data)
+      .then((data) => data.transactions)
       .catch((error) => console.log("error", error));
   },
 
