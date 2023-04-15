@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, createContext } from "react";
 import MainLayout from "../layouts/MainLayout";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
@@ -11,7 +10,6 @@ import Marketplace from "./Marketplace/Marketplace";
 import Settings from "./Settings";
 import { theme }from "../theme";
 import { ThemeProvider } from "@mui/material";
-import { CssBaseline } from "@mui/material";
 
 // wallets  aa1aa2af3ql4 ,
 
@@ -20,7 +18,6 @@ const App = () => {
   return (
     
       <ThemeProvider theme={theme}>
-      <CssBaseline/>
       <MainLayout>
       <Routes>
             <Route path="/" element={<Dashboard />} />

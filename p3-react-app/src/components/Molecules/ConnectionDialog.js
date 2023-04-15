@@ -1,7 +1,7 @@
 import React from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import { Typography, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import CustomInput from "../Atoms/CustomInput";
 import { useState } from "react";
 import { rules } from "../../scripts/validationRules";

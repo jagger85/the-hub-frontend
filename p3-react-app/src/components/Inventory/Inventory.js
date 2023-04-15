@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { AppContext } from "../App";
 import UniqOwned from "./UniqOwned";
 import { apiCalls } from "../../scripts/apicalls";
 function Inventory() {
