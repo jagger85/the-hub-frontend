@@ -4,9 +4,10 @@ import { useState } from "react";
 import Collection from "./Collection";
 import { Typography } from "@mui/material";
 import { apiCalls } from "../../scripts/apicalls";
-
+import Gallery from "../Molecules/Gallery";
 function Collections() {
   const [collections, setCollections] = useState(null);
+
 
   useEffect(() => {
     const getCollections = async () => {
@@ -17,14 +18,18 @@ function Collections() {
   }, []);
 
   return (
-    <div>
-
+   collections != null && (
+      <div>
       <Typography variant="h3">Collections</Typography>
-      {collections != null &&
-        collections.rows.map((e) => <Collection collection={e} />)}
-
-    </div>
-  );
+      <Gallery
+      title='fas'
+      amount={5}
+      array={collections}
+      type='collections'
+      />
+      </div>
+      )
+      );
 }
 
 export default Collections;

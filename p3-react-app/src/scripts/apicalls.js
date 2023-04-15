@@ -157,7 +157,7 @@ export const apiCalls = {
       body: '{"scope":"eosio.nft.ft", "code":"eosio.nft.ft", "table":"factory.a", "json": true}',
     })
     .then((res) => res.json())
-    .then((data) => data);
+    .then((data) => data.rows);
   },
 
   getUniqsOnSale: async function () {

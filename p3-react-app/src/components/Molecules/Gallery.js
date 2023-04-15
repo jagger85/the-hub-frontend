@@ -4,6 +4,7 @@ import { Grid,Typography, Button } from '@mui/material';
 import  UniqOnSale  from '../Marketplace/UniqOnSale'
 import Transaction from '../Transactions/Transaction';
 import UniqOwned from '../Inventory/UniqOwned';
+import Collection from '../Collections/Collection';
 import { styles } from './GalleryStyle'
 const pages = []
 
@@ -33,7 +34,6 @@ function Gallery(props) {
 
 
     useEffect(()=>{
-   
       for(let i=0; i < props.array.length / props.amount; i++){
         pages[i] = props.array.slice(i * props.amount, i * props.amount + props.amount )
         
