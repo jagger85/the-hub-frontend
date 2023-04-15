@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography, AppBar, Toolbar } from "@mui/material";
+import { Typography, AppBar, Toolbar, Button } from "@mui/material";
 import SideBar from "./SideBar";
-import { Box } from "@mui/material";
 import { styles } from "./MainLayoutStyle";
+import ConnectionButton from "../components/Atoms/ConnectionButton";
 
 function MainLayout({ children }) {
   return (
@@ -12,6 +12,7 @@ function MainLayout({ children }) {
         <AppBar elevation={0} style={styles.header}>
           <Toolbar position='fixed'>
             <Typography>THE HUB</Typography>
+            <ConnectionButton/>
           </Toolbar>
         </AppBar>
         </div>

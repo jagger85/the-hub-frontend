@@ -31,7 +31,6 @@ function TransactionsTable() {
       for(let i=0; i < data.transactions.length /5; i++){
         pages[i] = data.transactions.slice(i * 5, i * 5 + 5 )
       }
-      console.log(pages[0])
       setLoading(false)
     }
     getTransactions()

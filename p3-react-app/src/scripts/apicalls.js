@@ -145,8 +145,25 @@ export const apiCalls = {
     return fetch();
   },
 
-  getCollectionById: function () {
-    return fetch();
+  getCollectionById: async function (id) {
+    console.log(id)
+    return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: ` {
+        "scope": "eosio.nft.ft",
+        "code": "eosio.nft.ft",
+        "table": "factory.a",
+        "lower_bound": ${id},  
+        "limit": 1,             
+        "json": true
+    }`,
+    })
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((error) => console.log("error", error));
   },
 
   getCollections: async function () {

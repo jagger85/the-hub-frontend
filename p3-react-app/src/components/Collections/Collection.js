@@ -1,6 +1,6 @@
 import React from "react";
 import { Paper, Typography, Box } from "@mui/material";
-import { useEffect, useState,useCallback } from "react";
+import { useEffect, useState } from "react";
 import { unzip } from "../../scripts/unzipper";
 import { styles } from './CollectionStyle'
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ useEffect(()=>{
 
   return (
     <Paper sx={styles.paper} >
-    <Link to={}>
+    <Link to={`/collection/${props.collection.id}`}>
     <Typography>Id: {props.collection.id} </Typography>
     </Link>
     <Typography>

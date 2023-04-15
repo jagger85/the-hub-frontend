@@ -11,7 +11,6 @@ function Collections() {
   useEffect(() => {
     const getCollections = async () => {
       const data = await apiCalls.getCollections();
-      console.log(data)
       setCollections(data);
     };
     getCollections();
@@ -19,10 +18,11 @@ function Collections() {
 
   return (
     <div>
-      <Typography>Collections</Typography>
 
+      <Typography>Collections</Typography>
       {collections != null &&
         collections.rows.map((e) => <Collection collection={e} />)}
+
     </div>
   );
 }
