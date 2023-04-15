@@ -1,6 +1,6 @@
 export const styles = {
     paper: { 
-        margin: 10 ,
-        padding: 10
+        margin: 1,
+        padding: 1
     },
 }

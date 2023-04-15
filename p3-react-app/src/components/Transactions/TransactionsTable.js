@@ -3,6 +3,7 @@ import Transaction from "./Transaction";
 import Button from "@mui/material/Button";
 import { useReducer, useEffect } from "react";
 import { apiCalls } from "../../scripts/apicalls";
+import { Typography } from "@mui/material";
 
 
 const pages = []
@@ -40,6 +41,7 @@ function TransactionsTable() {
     
     !loading && (
       <div>
+      <Typography variant="h5">Transactions</Typography>
         {pages[page.count].map((e, i) => {
           return <Transaction transaction={e} />;
         })}

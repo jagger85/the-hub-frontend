@@ -19,7 +19,7 @@ function Collections() {
   return (
     <div>
 
-      <Typography>Collections</Typography>
+      <Typography variant="h3">Collections</Typography>
       {collections != null &&
         collections.rows.map((e) => <Collection collection={e} />)}
 

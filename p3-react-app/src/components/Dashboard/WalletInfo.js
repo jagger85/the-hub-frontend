@@ -20,12 +20,15 @@ function WalletInfo() {
 
     return (
      info != null && (
-      <Paper style={styles.paper}>
+      <div>
+      <Typography variant='h5'>Info</Typography>
+      <Paper sx={styles.paper}>
       <Typography>Wallet : {info.account_name}</Typography>
       <Typography>Balance : {info.core_liquid_balance}</Typography>
       <Typography>Joined : {info.created}</Typography>
       </Paper>  
-     )
+      </div>
+      )
   )
 }
 

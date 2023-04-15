@@ -126,25 +126,7 @@ export const apiCalls = {
       .then((result) => result )
       .catch((error) => console.log("error", error));
   },
-
-
-  getUniqsOnSale: async function () {
-    return fetch(
-      "https://api.mainnet.ultra.io/v0/search/transactions?q=action%3Aresell&start_block=0&sort=desc&block_count=5000000&limit=25&cursor=&with_reversible=true"
-    )
-      .then((response) => response.json())
-      .then((result) => result)
-      .catch((error) => console.log("error", error));
-  },
-
-  getUniqsSold: function () {
-    return fetch();
-  },
-
-  getUniqsMinted: function () {
-    return fetch();
-  },
-
+  
   getCollectionById: async function (id) {
     console.log(id)
     return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
@@ -159,26 +141,43 @@ export const apiCalls = {
         "lower_bound": ${id},  
         "limit": 1,             
         "json": true
-    }`,
+      }`,
     })
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((error) => console.log("error", error));
+    .then((res) => res.json())
+    .then((data) => data)
+    .catch((error) => console.log("error", error));
   },
-
+  
   getCollections: async function () {
-   return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: '{"scope":"eosio.nft.ft", "code":"eosio.nft.ft", "table":"factory.a", "json": true}',
-      })
-        .then((res) => res.json())
-        .then((data) => data);
+    return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: '{"scope":"eosio.nft.ft", "code":"eosio.nft.ft", "table":"factory.a", "json": true}',
+    })
+    .then((res) => res.json())
+    .then((data) => data);
   },
 
-  getAllWalletsHoldingUniqs: function () {
-    return fetch();
-  },
-};
+  getUniqsOnSale: async function () {
+    return fetch(
+      "https://api.mainnet.ultra.io/v0/search/transactions?q=action%3Aresell&start_block=0&sort=desc&block_count=5000000&limit=25&cursor=&with_reversible=true"
+      )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+    },
+    
+    getUniqsSold: function () {
+      return fetch();
+    },
+    
+    getAllWalletsHoldingUniqs: function () {
+      return fetch();
+    },
+    getUniqsMinted: function () {
+      return fetch();
+    },
+  };
+  

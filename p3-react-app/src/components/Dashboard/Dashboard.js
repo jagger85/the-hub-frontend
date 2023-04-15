@@ -7,9 +7,8 @@ function Dashboard() {
   return (
     
       <div>
-        <h1>Dashboard</h1>
+        <Typography variant="h3">Dashboard</Typography>
         <WalletInfo/>
-        <Typography>TRANSACTIONS:</Typography>
         <TransactionsTable/>
       </div>
     
