@@ -3,7 +3,7 @@ import { Paper, Typography } from "@mui/material";
 
 function Transaction(props) {
   return (
-    <Paper sx={{ margin: 1, padding: 1 }}>
+    <Paper sx={{ margin: 1, padding: 1, minHeight: 120 }}>
       {props.transaction.lifecycle.execution_trace.action_traces.map((e) => {
         switch (e.act.name) {
           case "resell":
@@ -33,13 +33,17 @@ function Transaction(props) {
               <div>
                 <Typography>Type : {e.act.name}</Typography>
                 <Typography>Token id : {e.act.data.buy.token_id}</Typography>
-                <Typography>Buyer : {e.act.data.buy.buyer}</Typography>
+
+                {/** 
+              <Typography>Buyer : {e.act.data.buy.buyer}</Typography>
+               */}
+
                 <Typography>Receiver : {e.act.data.buy.receiver}</Typography>
                 <Typography>Price : {e.act.data.buy.max_price}</Typography>
-                <Typography>
-                  {" "}
-                  Promoter id : {e.act.data.buy.promoter_id}
-                </Typography>
+                {/** 
+               <Typography> Promoter id : {e.act.data.buy.promoter_id}
+               </Typography>
+              */}
               </div>
             );
 
