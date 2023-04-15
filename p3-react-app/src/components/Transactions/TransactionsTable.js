@@ -3,7 +3,7 @@ import Transaction from "./Transaction";
 import Button from "@mui/material/Button";
 import { useReducer, useEffect } from "react";
 import { apiCalls } from "../../scripts/apicalls";
-import { AppContext } from "../App";
+
 
 const pages = []
 
@@ -21,7 +21,7 @@ const reducer = (page, action) => {
 
 function TransactionsTable() {
 
-  const { wallet } = useContext(AppContext);
+  const wallet = localStorage.getItem('wallet');
   const [page, dispatch] = useReducer(reducer, { count : 0 });
   const [loading , setLoading] = useState(true)
   

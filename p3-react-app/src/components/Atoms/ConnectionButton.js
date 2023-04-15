@@ -1,17 +1,17 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import ConnectionDialog from "../Molecules/ConnectionDialog";
 
 function ConnectionButton() {
   
   const [open, setOpen] = useState(false);
-  const [, updateState] = useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
+
+
 
   const disconnect = () => {
     localStorage.removeItem('wallet')
-    forceUpdate()
+    window.location.reload(false);
   };
 
   const connect = () => {

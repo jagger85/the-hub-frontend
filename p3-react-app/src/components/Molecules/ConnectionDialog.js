@@ -23,6 +23,7 @@ function ConnectionDialog(props) {
 
   const setAddress= () => {
     localStorage.setItem('wallet', wallet)
+    window.location.reload(false);
   };
 
   return (

@@ -2,12 +2,12 @@ import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { apiCalls } from "../../scripts/apicalls";
 import { Paper, Typography } from '@mui/material';
-import { AppContext } from "../App";
+
 import { styles } from './WalletInfoStyle'
 
 function WalletInfo() {
     
-    const { wallet } = useContext(AppContext);
+    const  wallet  = localStorage.getItem('wallet');
     const [info, setInfo] =  useState(null)
 
     useEffect(() => {
