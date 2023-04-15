@@ -81,8 +81,8 @@ export const apiCalls = {
     return fetch(
       `https://api.mainnet.ultra.io/v0/search/transactions?q=(auth:${wallet} OR receiver:${wallet})&sort=desc&limit=100&block_count=5000000&start_block=0&limit=5&cursor&with_reversible=true`
     )
-      .then((response) => response.json())
-      .then((result) => result)
+      .then((res) => res.json())
+      .then((data) => data)
       .catch((error) => console.log("error", error));
   },
 
@@ -127,9 +127,6 @@ export const apiCalls = {
       .catch((error) => console.log("error", error));
   },
 
-  getTransactions: function () {
-    return fetch();
-  },
 
   getUniqsOnSale: async function () {
     return fetch(

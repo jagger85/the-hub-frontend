@@ -11,6 +11,7 @@ function Collections() {
   useEffect(() => {
     const getCollections = async () => {
       const data = await apiCalls.getCollections();
+      console.log(data)
       setCollections(data);
     };
     getCollections();
