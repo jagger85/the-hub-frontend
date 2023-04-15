@@ -10,10 +10,9 @@ function ConnectionDialog(props) {
   const [wallet, setWallet] = useState("");
 
   /**
-   * @function isValid - Checks if user inputs applies a set of rules, also checks that user field is not blank @see rules
+   * @function isValid - Checks if user inputs applies a set of rules @see rules
    * @returns {boolean}
    */
-
   function isValid() {
     return rules.every((element) => element.rule.test(wallet));
   }
@@ -22,8 +21,8 @@ function ConnectionDialog(props) {
     setWallet(e.target.value);
   };
 
-  const validate = () => {
-    console.log(wallet);
+  const setAddress= () => {
+    localStorage.setItem('wallet', wallet)
   };
 
   return (
@@ -34,7 +33,7 @@ function ConnectionDialog(props) {
         placeholder="Enter a wallet address"
         getValue={walletChanged}
       />
-      <Button onClick={validate} disabled={!isValid()}>
+      <Button onClick={setAddress} disabled={!isValid()}>
         Connect
       </Button>
     </Dialog>
