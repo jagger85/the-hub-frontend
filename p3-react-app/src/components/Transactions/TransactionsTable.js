@@ -3,8 +3,8 @@ import Transaction from "./Transaction";
 import Button from "@mui/material/Button";
 import { useReducer, useEffect } from "react";
 import { apiCalls } from "../../scripts/apicalls";
-import { Typography } from "@mui/material";
-
+import { Typography,Grid } from "@mui/material";
+import { styles } from './TransactionsTableStyle'
 
 const pages = []
 
@@ -40,25 +40,33 @@ function TransactionsTable() {
 
     
     !loading && (
-      <div>
+      <Grid container spacing={2}>
+      <Grid item xs={12} >
       <Typography variant="h5">Transactions</Typography>
-        {pages[page.count].map((e, i) => {
-          return <Transaction transaction={e} />;
-        })}
-        <Button 
-        variant="outlined" 
-        onClick={() =>{dispatch({ type: "decrement"})}}
-        disabled={page.count == 0}
-        >
-          back
-        </Button>
-        <Button 
-        variant="outlined" 
-        onClick={() => {dispatch({ type: "increment" })}}
-        disabled={page.count == pages.length -1}>
-          forward
-        </Button>
-      </div>
+      </Grid>
+      <Grid item xs={12}>
+      {pages[page.count].map((e, i) => {
+        return <Transaction transaction={e} />;
+      })}
+      </Grid>
+      <Grid item xs={12} sx={styles.galleryButtonContainer}>
+      <Button 
+      sx={styles.galleryButton}
+      variant="outlined" 
+      onClick={() =>{dispatch({ type: "decrement"})}}
+      disabled={page.count == 0}
+      >
+      back
+      </Button>
+      <Button 
+      sx={styles.galleryButton}
+      variant="outlined" 
+      onClick={() => {dispatch({ type: "increment" })}}
+      disabled={page.count == pages.length -1}>
+      forward
+      </Button>
+      </Grid>
+      </Grid>
     )
   );
 }
