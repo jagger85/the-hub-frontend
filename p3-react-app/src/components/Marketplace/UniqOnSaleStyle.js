@@ -1,13 +1,14 @@
+import {colors, boxShadow} from '../../theme'
+
 export const styles = {
-    uniq:{
+    uniqContainer:{
         width: 250,
         height:300,
         margin: 1,
         padding: 1,
-        ":hover":{
-            boxShadow: 20,
-            border: 2,
-        }
+        backgroundColor: colors.background[900],
+        boxShadow: boxShadow
+
     },
     uniqImage: {
         height: 200,

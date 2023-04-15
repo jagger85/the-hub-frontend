@@ -5,10 +5,12 @@ export const styles = {
   root: {
     display: "flex",
     flexDirection: "row",
+    heigth: "100vh"
   },
   content: {
     width: "100%",
     background: colors.background[900],
+
   },
   header: {
     width: '100%',
@@ -43,5 +45,11 @@ export const styles = {
   gridLogo: {
     display: 'flex',
     justifyContent: 'center'
+  },
+  listItemText:{
+    color: colors.background[400]
+  },
+  listItemIcon:{
+    color : colors.background[400]
   }
 };

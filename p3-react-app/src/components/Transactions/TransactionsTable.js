@@ -10,7 +10,6 @@ const pages = []
 
 const reducer = (page, action) => {
   switch (action.type) {
-
     case 'increment':
       return {count: page.count +1}
     case "decrement":
@@ -29,7 +28,7 @@ function TransactionsTable() {
   useEffect(()=>{
     const getTransactions = async() =>{
       const data = await apiCalls.getWalletTransactions(wallet)
-      for(let i=0; i < data.transactions.length /5; i++){
+      for(let i=0; i < data.transactions.length / 5; i++){
         pages[i] = data.transactions.slice(i * 5, i * 5 + 5 )
       }
       setLoading(false)

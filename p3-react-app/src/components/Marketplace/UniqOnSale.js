@@ -4,7 +4,7 @@ import { styles } from "./UniqOnSaleStyle";
 import img from '../../assets/uniqtest.png'
 function UniqOnSale(props) {
   return (
-    <Paper sx={styles.uniq}>
+    <Paper sx={styles.uniqContainer}>
       {props.uniq.lifecycle.execution_trace.action_traces.map((e) => {
         return (
           <div>

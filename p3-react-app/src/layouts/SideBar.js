@@ -77,11 +77,11 @@ function SideBar() {
                 sx={styles.sidebarLink}
               >
                 <ListItem key={item.text}>
-                  <ListItemIcon key={"icon " + item.text}>
+                  <ListItemIcon key={"icon " + item.text} sx={styles.listItemIcon}>
                     {item.icon}
                   </ListItemIcon>
-                  <ListItemText key={"text" + item.text}>
-                    {" "}
+                  <ListItemText key={"text" + item.text} sx={styles.listItemText} >
+                
                     {item.text}
                   </ListItemText>
                 </ListItem>
