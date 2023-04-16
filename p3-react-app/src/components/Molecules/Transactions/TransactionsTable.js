@@ -2,9 +2,17 @@ import React, { useState } from "react";
 import Gallery from "../Gallery/Gallery";
 import { useEffect } from "react";
 import { apiCalls } from "../../../scripts/apicalls";
-import FilterSelect from "../../Atoms/FilterSelect";
+import CustomSelect from "../../Atoms/CustomSelect";
 import { Box, Grid, Typography } from "@mui/material";
 import { styles as stl } from "./TransactionsTableStyle";
+
+const filterValues = [
+  {'all' : 'All'},
+  {'buy' : 'Buy'},
+  {'transfer' : 'Transfers'},
+  {'resell' : 'Resell'},
+  {'cancelresell' : 'Cancel Resell'},
+]
 
 function TransactionsTable() {
   const wallet = localStorage.getItem("wallet");
@@ -33,7 +41,7 @@ function TransactionsTable() {
           <Grid item xs={12}>
             <Box sx={stl.header}>
               <Typography variant="h5">Transactions</Typography>
-              <FilterSelect onChange={filter} />
+              <CustomSelect menuItems={filterValues} onChange={filter} />
             </Box>
           </Grid>
           <Grid item xs={12}>

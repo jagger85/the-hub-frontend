@@ -4,9 +4,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
-import { styles as stl } from './FilterSelectStyle'
+import { styles as stl } from './CustomSelectStyle'
 
-function FilterSelect(props) {
+/**
+ * 
+ * @param {*} props 
+ * @returns
+ * props.onchange
+ * values
+ */
+function CustomSelect(props) {
     const [type, setType] = useState('');
 
     const handleChange = (event) => {
@@ -25,14 +32,12 @@ function FilterSelect(props) {
       onChange={handleChange}
       sx={stl.select}
     >
-      <MenuItem value='all'>All</MenuItem>
-      <MenuItem value='buy'>Buys</MenuItem>
-      <MenuItem value='transfer'>Transfers</MenuItem>
-      <MenuItem value='resell'>Resell</MenuItem>
-      <MenuItem value='cancelresell'>cancelresell</MenuItem>
+    {props.menuItems.map((e)=>{
+      return <MenuItem values={Object.keys(e)}>{Object.values(e)}</MenuItem>
+    })}
     </Select>
   </FormControl>
   )
 }
 
-export default FilterSelect
+export default CustomSelect

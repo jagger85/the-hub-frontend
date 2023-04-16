@@ -13,6 +13,9 @@ import {
 import { apiCalls } from "../../scripts/apicalls";
 import { useReducer } from "react";
 import { styles as stl } from "./PagesStyle";
+import CustomSelect from "../Atoms/CustomSelect";
+
+
 
 const initialValue = {
   endpoint: apiCalls.getEndpoint,
