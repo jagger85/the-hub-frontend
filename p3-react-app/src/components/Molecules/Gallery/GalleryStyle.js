@@ -1,4 +1,4 @@
-import { colors, boxShadowIn } from "../../../theme";
+import { colors, boxShadowIn, boxShadow } from "../../../theme";
 
 export const styles = {
   uniqContainer: {
@@ -14,10 +14,17 @@ export const styles = {
     width: 100,
   },
   galleryContainer: { 
-    padding: 2,
-    margin: 2,
+    margin: 0.5
   },
-  galleryTitle: {
-    margin: 2,
+
+  pagesDisplay: {
+    display: 'flex',
+    color: colors.background[400]
   },
+  navigationContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+  
 };

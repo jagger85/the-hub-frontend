@@ -26,12 +26,11 @@ function Marketplace() {
         </Grid>
         <Grid item xs={12}>
         {uniqsOnSale != null &&(
-          <Box>
-          <GalleryDrop title='On sale'>
-          <Gallery array={uniqsOnSale} amount={10} type='uniqsOnSale'/>
-          </GalleryDrop>
-          </Box>
+          <Gallery title='On sale' array={uniqsOnSale} amount={10} type='uniqsOnSale'/>
           )}
+
+
+
         </Grid>
       </Grid>
     </Box>

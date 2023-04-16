@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, Box } from "@mui/material";
 import { styles } from "./TransactionStyle";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -15,7 +15,7 @@ function Transaction(props) {
   };
 
   return (
-    <div >
+    <Box sx={styles.container}>
       {props.transaction.lifecycle.execution_trace.action_traces.map((e) => {
         switch (e.act.name) {
           case "resell":
@@ -175,7 +175,7 @@ function Transaction(props) {
             );
         }
       })}
-    </div>
+    </Box>
   );
 }
 export default Transaction;

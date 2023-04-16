@@ -1,6 +1,6 @@
 import React from "react";
 import { useReducer, useEffect, useState } from "react";
-import { Grid, Typography, Button, Paper } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import UniqOnSale from "../../Marketplace/UniqOnSale";
 import Transaction from "../Transactions/Transaction";
 import UniqOwned from "../../Inventory/UniqOwned";
@@ -43,7 +43,7 @@ function Gallery(props) {
   return (
     !loading && (
    
-        <Grid container spacing={2} sx={styles.uniqContainer}>
+        <Grid container spacing={2} sx={styles.galleryContainer}>
           <Grid item xs={12}>
             <Typography variant="h5" sx={styles.galleryTitle}>
               {props.title}
@@ -79,29 +79,37 @@ function Gallery(props) {
                 console.log(`${props.type} not supported by gallery component`);
             }
           })}
-          <Grid item xs={12} sx={styles.galleryButtonContainer}>
-            <Button
-              sx={styles.galleryButton}
-              variant="outlined"
-              onClick={() => {
-                dispatch({ type: "decrement" });
-              }}
-              disabled={page.count == 0}
-            >
-              back
-            </Button>
-            <Button
-              sx={styles.galleryButton}
-              variant="outlined"
-              onClick={() => {
-                dispatch({ type: "increment" });
-              }}
-              disabled={page.count == pages.length - 1}
-            >
-              forward
-            </Button>
+          <Grid item xs={12}>
+          <Box sx={styles.navigationContainer}>
+          <Button
+          sx={styles.galleryButton}
+          variant="outlined"
+          onClick={() => {
+            dispatch({ type: "decrement" });
+          }}
+          disabled={page.count == 0}
+          >
+          back
+          </Button>
+          <Box sx={styles.pagesDisplay} >
+          <Typography >{page.count + 1}</Typography>
+          <Typography >&nbsp;&nbsp; / &nbsp;&nbsp;</Typography>
+          <Typography >{pages.length}</Typography>
+          
+          </Box>
+          <Button
+          sx={styles.galleryButton}
+          variant="outlined"
+          onClick={() => {
+            dispatch({ type: "increment" });
+          }}
+          disabled={page.count == pages.length - 1}
+          >
+          forward
+          </Button>
+          </Box>
           </Grid>
-        </Grid>
+          </Grid>
     )
   );
 }
