@@ -1,9 +1,9 @@
 import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
-import SideBar from "./SideBar";
+import SideBar from "../components/Molecules/SideBar";
 import { styles } from "./MainLayoutStyle";
 import ConnectionButton from "../components/Atoms/ConnectionButton";
-import { CheckBox } from "@mui/icons-material";
+
 
 function MainLayout({ children }) {
   return (

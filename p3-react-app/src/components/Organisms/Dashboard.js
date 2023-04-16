@@ -1,24 +1,24 @@
 import React from "react";
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import TransactionsTable from "../Molecules/Transactions/TransactionsTable";
-import WalletInfo from "../Dashboard/WalletInfo";
-import { sectionStyle as stl } from "./SectionStyle";
+import WalletInfo from "../Molecules/WalletInfo/WalletInfo";
+import { styles as stl } from "./PagesStyle";
+
 function Dashboard() {
   return (
-    <Box>
-      <Grid container xs={12}>
-        <Grid item xs={12}>
-          <Typography variant="h3" sx={stl.sectionTitle}>Dashboard</Typography>
+      <Grid container xs={12} sx={stl.container}>
+        <Grid item xs={12} sx={stl.titleContainer}>
+          <Typography variant="h3">
+            Dashboard
+          </Typography>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={5} sx={stl.section}>
           <WalletInfo />
         </Grid>
-        <Grid item xs={6}></Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={stl.section}>
           <TransactionsTable />
         </Grid>
       </Grid>
-    </Box>
   );
 }
 

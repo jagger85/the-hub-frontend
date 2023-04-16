@@ -8,8 +8,8 @@ import CollectionsIcon from "@mui/icons-material/Collections";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
-import { styles } from "./MainLayoutStyle";
-import img from "../assets/uniqtest.png";
+import { styles } from "../../layouts/MainLayoutStyle";
+import img from "../../assets/uniqtest.png";
 
 function SideBar() {
   const menuItems = [

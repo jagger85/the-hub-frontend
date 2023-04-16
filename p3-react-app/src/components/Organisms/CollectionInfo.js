@@ -1,10 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Collection from "../Organisms/Collection";
+import CollectionUniq from "../Molecules/CollectionUniq";
 import { apiCalls } from "../../scripts/apicalls";
+import { Grid, Typography } from "@mui/material";
+import { styles as stl } from "./PagesStyle";
 
-function CollectionInfo(props) {
+function CollectionInfo() {
   const { id } = useParams();
   const [collection, setCollection] = useState(null);
 
@@ -17,10 +19,14 @@ function CollectionInfo(props) {
   }, []);
 
   return (
-    <div>
-      CollectionPage
-      {collection != null && <Collection collection={collection} />}
-    </div>
+    <Grid container xs={12} sx={stl.container}>
+      <Grid item xs={12} sx={stl.titleContainer}>
+        <Typography>Collection</Typography>
+      </Grid>
+      <Grid item xs={12} sx={stl.section}>
+        {collection != null && <CollectionUniq collection={collection} />}
+      </Grid>
+    </Grid>
   );
 }
 

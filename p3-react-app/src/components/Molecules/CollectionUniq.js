@@ -2,10 +2,10 @@ import React from "react";
 import { Paper, Typography, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { unzip } from "../../scripts/unzipper";
-import { styles } from "../Collections/CollectionStyle";
+import { styles } from "./CollectionStyle";
 import { Link } from "react-router-dom";
 
-function Collection(props) {
+function CollectionUniq(props) {
   const [metadata, setMetadata] = useState(null);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ function Collection(props) {
   );
 }
 
-export default Collection;
+export default CollectionUniq;

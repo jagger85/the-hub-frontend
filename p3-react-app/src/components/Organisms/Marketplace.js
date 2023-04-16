@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Typography, Box, Grid } from "@mui/material";
-import { sectionStyle as stl } from "./SectionStyle";
+import { Typography, Grid } from "@mui/material";
+import { styles as stl } from "./PagesStyle";
 import { apiCalls } from "../../scripts/apicalls";
 import Gallery from "../Molecules/Gallery/Gallery";
-import GalleryDrop from "../Molecules/Gallery/GalleryDrop";
+
 function Marketplace() {
   const [uniqsOnSale, setUniqsOnSale] = useState(null);
 
@@ -17,23 +17,21 @@ function Marketplace() {
   }, []);
 
   return (
-    <Box>
-      <Grid container xs={12}>
-        <Grid item>
-          <Typography variant="h3" sx={stl.sectionTitle}>
-            Marketplace
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-        {uniqsOnSale != null &&(
-          <Gallery title='On sale' array={uniqsOnSale} amount={10} type='uniqsOnSale'/>
-          )}
-
-
-
-        </Grid>
+    <Grid container xs={12} sx={stl.container}>
+      <Grid item xs={12} sx={stl.titleContainer}>
+        <Typography variant="h3">Marketplace</Typography>
       </Grid>
-    </Box>
+      <Grid item xs={12} sx={stl.section}>
+        {uniqsOnSale != null && (
+          <Gallery
+            title="On sale"
+            array={uniqsOnSale}
+            amount={10}
+            type="uniqsOnSale"
+          />
+        )}
+      </Grid>
+    </Grid>
   );
 }
 

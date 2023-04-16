@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react';
 import { useEffect, useState } from 'react'
-import { apiCalls } from "../../scripts/apicalls";
+import { apiCalls } from "../../../scripts/apicalls";
 import { Paper, Typography, Grid, Divider } from '@mui/material';
-
 import { styles } from './WalletInfoStyle'
 
 function WalletInfo() {

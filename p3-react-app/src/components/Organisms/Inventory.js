@@ -3,7 +3,7 @@ import UniqOwned from "../Inventory/UniqOwned";
 import { apiCalls } from "../../scripts/apicalls";
 import { Typography, Box, Grid } from "@mui/material";
 import Gallery from "../Molecules/Gallery/Gallery";
-import { sectionStyle as stl } from "./SectionStyle";
+import { styles as stl } from "./PagesStyle";
 
 function Inventory() {
   const wallet = localStorage.getItem("wallet");
@@ -18,14 +18,13 @@ function Inventory() {
   }, []);
 
   return (
-    <Box>
-      <Grid container xs={12}>
-        <Grid item xs={12}>
-          <Typography variant="h3" sx={stl.sectionTitle}>
+      <Grid container xs={12} sx={stl.container}>
+        <Grid item xs={12} sx={stl.titleContainer}>
+          <Typography variant="h3">
             Inventory
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={stl.section}>
           {inventory != null && (
             <Gallery
               title="Your uniqs"
@@ -36,7 +35,6 @@ function Inventory() {
           )}
         </Grid>
       </Grid>
-    </Box>
   );
 }
 
