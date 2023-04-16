@@ -2,7 +2,7 @@ import React from "react";
 import { useReducer, useEffect, useState } from "react";
 import { Grid, Typography, Button, Paper } from "@mui/material";
 import UniqOnSale from "../../Marketplace/UniqOnSale";
-import Transaction from "../../Transactions/Transaction";
+import Transaction from "../Transactions/Transaction";
 import UniqOwned from "../../Inventory/UniqOwned";
 import Collection from "../../Organisms/Collection";
 import { styles } from "./GalleryStyle";
@@ -42,7 +42,7 @@ function Gallery(props) {
   }, []);
   return (
     !loading && (
-      <Paper sx={styles.galleryContainer}>
+   
         <Grid container spacing={2} sx={styles.uniqContainer}>
           <Grid item xs={12}>
             <Typography variant="h5" sx={styles.galleryTitle}>
@@ -59,7 +59,7 @@ function Gallery(props) {
                 );
               case "uniqsOnSale":
                 return (
-                  <Grid item xs={12} sm={8}  md={6} lg={4} xl={2}>
+                  <Grid item xs={12} sm={8}  md={5} lg={4} xl={3}>
                     <UniqOnSale uniq={e} />
                   </Grid>
                 );
@@ -102,7 +102,6 @@ function Gallery(props) {
             </Button>
           </Grid>
         </Grid>
-      </Paper>
     )
   );
 }

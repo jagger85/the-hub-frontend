@@ -13,8 +13,7 @@ export const styles = {
     margin: 2,
     width: 100,
   },
-  galleryContainer: {
-    boxShadow: boxShadowIn,
+  galleryContainer: { 
     padding: 2,
     margin: 2,
   },

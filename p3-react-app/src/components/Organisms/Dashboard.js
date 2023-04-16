@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Box, Grid } from "@mui/material";
-import TransactionsTable from "../Transactions/TransactionsTable";
+import TransactionsTable from "../Molecules/Transactions/TransactionsTable";
 import WalletInfo from "../Dashboard/WalletInfo";
 import { sectionStyle as stl } from "./SectionStyle";
 function Dashboard() {

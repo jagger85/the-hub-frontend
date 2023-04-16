@@ -4,6 +4,7 @@ import { Typography, Box, Grid } from "@mui/material";
 import { sectionStyle as stl } from "./SectionStyle";
 import { apiCalls } from "../../scripts/apicalls";
 import Gallery from "../Molecules/Gallery/Gallery";
+import GalleryDrop from "../Molecules/Gallery/GalleryDrop";
 function Marketplace() {
   const [uniqsOnSale, setUniqsOnSale] = useState(null);
 
@@ -24,13 +25,12 @@ function Marketplace() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          {uniqsOnSale != null && (
-            <Gallery
-              title="On sale"
-              amount={12}
-              array={uniqsOnSale}
-              type={"uniqsOnSale"}
-            />
+        {uniqsOnSale != null &&(
+          <Box>
+          <GalleryDrop title='On sale'>
+          <Gallery array={uniqsOnSale} amount={10} type='uniqsOnSale'/>
+          </GalleryDrop>
+          </Box>
           )}
         </Grid>
       </Grid>

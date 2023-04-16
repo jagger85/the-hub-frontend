@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Transaction from "./Transaction";
-import Gallery from "../Molecules/Gallery/Gallery";
-import { useReducer, useEffect } from "react";
-import { apiCalls } from "../../scripts/apicalls";
+import Gallery from "../Gallery/Gallery";
+import { useEffect } from "react";
+import { apiCalls } from "../../../scripts/apicalls";
 
 function TransactionsTable() {
   const wallet = localStorage.getItem("wallet");

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Paper, Typography } from "@mui/material";
 import { styles } from "./TransactionStyle";
 import Accordion from "@mui/material/Accordion";
@@ -7,7 +8,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function Transaction(props) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);

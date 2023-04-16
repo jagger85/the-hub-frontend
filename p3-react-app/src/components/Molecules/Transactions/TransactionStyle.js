@@ -1,4 +1,4 @@
-import { colors, boxShadow } from "../../theme"
+import { colors, boxShadow } from "../../../theme"
 
 export const styles = {
     transactionContainer:{
