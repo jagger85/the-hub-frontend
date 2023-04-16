@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Transaction from "./Transaction";
-import Gallery from "../Molecules/Gallery";
+import Gallery from "../Molecules/Gallery/Gallery";
 import { useReducer, useEffect } from "react";
 import { apiCalls } from "../../scripts/apicalls";
 

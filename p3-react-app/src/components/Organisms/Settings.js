@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { Select, MenuItem, InputLabel, Box, FormControl,  FormLabel, RadioGroup, FormControlLabel, Radio} from "@mui/material";
-import { apiCalls } from "../scripts/apicalls";
+import { apiCalls } from "../../scripts/apicalls";
 import { useReducer } from "react";
 
 const initialValue = {

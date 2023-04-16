@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { apiCalls } from "../../scripts/apicalls";
-import { Paper, Typography, Grid } from '@mui/material';
+import { Paper, Typography, Grid, Divider } from '@mui/material';
 
 import { styles } from './WalletInfoStyle'
 
@@ -20,18 +20,21 @@ function WalletInfo() {
 
     return (
      info != null && (
-      <div>
-      <Typography variant='h5'>Info</Typography>
-      <Grid container xs={12}>
-      <Grid item xs={5}>
+      
       <Paper sx={styles.paper}>
+      <Grid container xs={12}>
+      <Grid item xs={12}>
+      <Typography variant='h5'>Balance</Typography>
+      <Divider/>
+      </Grid>
+      <Grid item xs={5}>
       <Typography>Wallet : {info.account_name}</Typography>
       <Typography>Balance : {info.core_liquid_balance}</Typography>
       <Typography>Joined : {info.created}</Typography>
+      </Grid>
+      </Grid>
       </Paper>  
-      </Grid>
-      </Grid>
-      </div>
+      
       )
   )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Collection from "./Collection";
+import Collection from "../Organisms/Collection";
 import { apiCalls } from "../../scripts/apicalls";
 
 function CollectionInfo(props) {

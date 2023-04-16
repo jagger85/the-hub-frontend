@@ -57,6 +57,10 @@ export const boxShadow = {
   boxShadow: '0 2px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.08),0 8px 16px rgba(0,0,0,.08),0 16px 24px rgba(0,0,0,.08),inset 0 1px 1px hsla(0,0%,100%,.08)'
 }
 
+export const boxShadowIn ={
+ boxShadow: 'inset 2px 2px 4px rgba(0,0,0,.08),inset -1px -1px 1px hsla(0,0%,100%,.06)'
+}
+
 export const theme = createTheme({
   palette: {
     mode: 'dark',
