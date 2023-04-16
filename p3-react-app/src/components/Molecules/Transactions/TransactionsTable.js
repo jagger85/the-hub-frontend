@@ -44,7 +44,7 @@ function TransactionsTable() {
         <Grid item xs={12}>
           <Box sx={stl.header}>
             <Typography variant="h5">Transactions</Typography>
-            <CustomSelect menuItems={filterValues} onChange={filter} />
+            <CustomSelect menuItems={filterValues} onChange={filter} label='Filter' />
           </Box>
         </Grid>
         <Grid item xs={12}>

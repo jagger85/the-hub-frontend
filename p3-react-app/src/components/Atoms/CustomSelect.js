@@ -2,7 +2,7 @@ import React from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import {Select, Box} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
 
@@ -15,22 +15,22 @@ function CustomSelect(props) {
     };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
-    <InputLabel id="demo-select-small" sx={stl.inputLabel}>Filter</InputLabel>
+    <Box>
+    <InputLabel id="demo-select-small" sx={stl.inputLabel}>{props.label}</InputLabel>
     <Select
-      labelId="demo-select-small"
-      id="demo-select-small"
-      value={type}
-      label="Filter"
-      onChange={handleChange}
-      sx={stl.select}
+    labelId="demo-select-small"
+    id="demo-select-small"
+    value={type}
+    label={props.label}
+    onChange={handleChange}
+    sx={[stl.select,props.width ?? {'width':300}]}
     >
-    {props.menuItems.map((e)=>{
-      console.log(e.value)
+    {props.menuItems.map((e)=>{ 
       return <MenuItem value={e.value}>{e.text}</MenuItem>
     })}
     </Select>
-  </FormControl>
+    </Box>
+
   )
 }
 

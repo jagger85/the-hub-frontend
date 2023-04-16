@@ -1,37 +1,37 @@
 const mainnetEndpoints = [
   {
-    name: "EOSNATION",
-    url: "http://ultra.api.eosnation.io",
+    text: "EOSNATION",
+    value: "http://ultra.api.eosnation.io",
   },
   {
-    name: "EOSRIO",
-    url: "https://ultra.eosrio.io",
+    text: "EOSRIO",
+    value: "https://ultra.eosrio.io",
   },
   {
-    name: "CRYPTOLIONS",
-    url: "https://api.ultra.cryptolions.io/",
+    text: "CRYPTOLIONS",
+    value: "https://api.ultra.cryptolions.io",
   },
   {
-    name: "EOSUSA",
-    url: "https://uos.eosusa.news",
+    text: "EOSUSA",
+    value: "https://uos.eosusa.news",
   },
 ];
 const testnetEndpoints = [
   {
-    name: "EOSEOUL",
-    url: "https://ultratest-api.eoseoul.io/",
+    text: "EOSEOUL",
+    value: "https://ultratest-api.eoseoul.io",
   },
   {
-    name: "EOSNATION",
-    url: "http://ultratest.api.eosnation.io",
+    text: "EOSNATION",
+    value: "http://ultratest.api.eosnation.io",
   },
   {
-    name: "EOSRIO",
-    url: "https://testnet.ultra.eosrio.io",
+    text: "EOSRIO",
+    value: "https://testnet.ultra.eosrio.io",
   },
   {
-    name: "CRYPTOLIONS",
-    url: "https://api.ultra-testnet.cryptolions.io",
+    text: "CRYPTOLIONS",
+    value: "https://api.ultra-testnet.cryptolions.io",
   },
 ];
 
