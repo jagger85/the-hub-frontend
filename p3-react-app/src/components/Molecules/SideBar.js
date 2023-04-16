@@ -36,7 +36,7 @@ function SideBar() {
     {
       text: "Games",
       icon: <SportsEsportsIcon />,
-      path: "/games",
+      path: "/test",
     },
     {
       text: "Settings",

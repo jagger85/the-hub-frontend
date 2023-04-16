@@ -45,8 +45,17 @@ const HTMLWebpackPlugin = require ('html-webpack-plugin');
                     },
                     {
                       test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                      type: 'asset/resource',
+                      use: [
+                        {
+                          loader: 'file-loader',
+                          options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                          }
+                        }
+                      ]
                     }
+
                   ]
-                },
+                },watch: true
         }

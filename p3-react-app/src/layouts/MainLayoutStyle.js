@@ -5,22 +5,13 @@ export const styles = {
   root: {
     display: "flex",
     flexDirection: "row",
-    heigth: "100vh"
-  },
-  content: {
-    width: "100%",
-    background: colors.background[900],
+    heigth: "100vh",
 
   },
-  header: {
-    width: '100%',
+  content: {
     background: colors.background[900],
   },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    flexWrap:'wrap',
-  },
+
   drawer: {
     margin: 0,
     width: drawerWidth,
@@ -47,7 +38,8 @@ export const styles = {
     justifyContent: 'center'
   },
   listItemText:{
-    color: colors.background[400]
+    color: colors.background[400],
+    fontFamily: 'Industry'
   },
   listItemIcon:{
     color : colors.background[400]

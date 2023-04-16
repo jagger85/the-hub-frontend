@@ -29,7 +29,6 @@ function TransactionsTable() {
 
   return (
     transactions != null && (
-      <Box sx={stl.container}>
         <Grid container>
           <Grid item xs={12}>
             <Box sx={stl.header}>
@@ -41,7 +40,6 @@ function TransactionsTable() {
             <Gallery amount={5} array={filteredResults ?? transactions} type="transactions"/>
           </Grid>
         </Grid>
-      </Box>
     )
   );
 }

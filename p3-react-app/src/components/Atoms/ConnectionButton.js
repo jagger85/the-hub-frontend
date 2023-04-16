@@ -3,12 +3,16 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import ConnectionDialog from '../Molecules/ConnectionDialog'
 
+const style = {
+    position: 'absolute',
+    right: 40,
+    top: 20
+}
+
+
 function ConnectionButton() {
   
   const [open, setOpen] = useState(false);
-
-
-
   const disconnect = () => {
     localStorage.removeItem('wallet')
     window.location.reload(false);
@@ -24,10 +28,10 @@ function ConnectionButton() {
   };
 
   return localStorage.getItem('wallet') ? (
-    <Button onClick={disconnect}>Disconnect</Button>
+    <Button sx={style} onClick={disconnect}>Disconnect</Button>
   ) : (
     <div>
-      <Button onClick={connect}>Connect</Button>
+      <Button sx={style} onClick={connect}>Connect</Button>
       <ConnectionDialog open={open} close={handleClose} />
     </div>
   );

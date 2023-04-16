@@ -1,7 +1,7 @@
 import { colors, boxShadowIn, boxShadow } from "../../../theme";
 
 export const styles = {
-  uniqContainer: {
+  container: {
     display: "flex",
     flexWrap: "wrap",
   },
@@ -9,14 +9,10 @@ export const styles = {
     display: "flex",
     justifyContent: "center",
   },
-  galleryButton: {
+  navigationButton: {
     margin: 2,
     width: 100,
   },
-  galleryContainer: { 
-
-  },
-
   pagesDisplay: {
     display: 'flex',
     color: colors.background[400]

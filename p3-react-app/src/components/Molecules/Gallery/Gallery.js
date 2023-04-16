@@ -42,9 +42,9 @@ function Gallery(props) {
   }, [props.array]);
   return (
     !loading && (
-      <Grid container spacing={2} sx={styles.galleryContainer}>
+      <Grid container spacing={2} sx={styles.container}>
         <Grid item xs={12}>
-          <Typography variant="h5" sx={styles.galleryTitle}>
+          <Typography variant="h5" sx={styles.title}>
             {props.title}
           </Typography>
         </Grid>
@@ -81,7 +81,7 @@ function Gallery(props) {
         <Grid item xs={12}>
           <Box sx={styles.navigationContainer}>
             <Button
-              sx={styles.galleryButton}
+              sx={styles.navigationButton}
               variant="outlined"
               onClick={() => {
                 dispatch({ type: "decrement" });
@@ -96,7 +96,7 @@ function Gallery(props) {
               <Typography>{pages.length}</Typography>
             </Box>
             <Button
-              sx={styles.galleryButton}
+              sx={styles.navigationButton}
               variant="outlined"
               onClick={() => {
                 dispatch({ type: "increment" });
