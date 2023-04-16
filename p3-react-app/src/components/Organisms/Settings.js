@@ -13,6 +13,7 @@ import {
 import { apiCalls } from "../../scripts/apicalls";
 import { useReducer } from "react";
 import { styles as stl } from "./PagesStyle";
+import CustomSelect from "../Atoms/CustomSelect";
 
 const initialValue = {
   endpoint: apiCalls.getEndpoint,
@@ -47,54 +48,52 @@ function Settings() {
   };
 
   return (
-
-      <Grid container xs={12} sx={stl.container}>
-        <Grid item xs={12} sx={stl.titleContainer}>
-          <Typography variant="h3">Settings</Typography>
-        </Grid>
-        <Grid item sx={stl.section}>
-          <FormControl fullWidth>
-            <FormLabel id="demo-radio-buttons-group-label">Network</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="mainnet"
-              name="radio-buttons-group"
-              value={apiCalls.getNetwork}
-              onChange={handleNetworkChange}
-            >
-              {apiCalls.getNetworks.map((e) => {
-                return (
-                  <FormControlLabel
-                    value={e}
-                    control={<Radio />}
-                    label={e}
-                    key={e}
-                  />
-                );
-              })}
-            </RadioGroup>
-          </FormControl>
-        </Grid>
-        <Grid item sx={stl.section}>
-          <FormControl fullWidth>
-            <InputLabel id="endpoints-label">Endpoint</InputLabel>
-            <Select
-              labelId="endpoints-label"
-              id="enpoint-select"
-              value={apiCalls.getEndpoint}
-              label="Endpoint"
-              onChange={handleSelectChange}
-            >
-              {apiCalls.getEndpoints.map((element) => (
-                <MenuItem key={element.name} value={element.url}>
-                  {element.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
+    <Grid container xs={12} sx={stl.container}>
+      <Grid item xs={12} sx={stl.titleContainer}>
+        <Typography variant="h3">Settings</Typography>
       </Grid>
-
+      <Grid item sx={stl.section}>
+        <FormControl fullWidth>
+          <FormLabel id="demo-radio-buttons-group-label">Network</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="mainnet"
+            name="radio-buttons-group"
+            value={apiCalls.getNetwork}
+            onChange={handleNetworkChange}
+          >
+            {apiCalls.getNetworks.map((e) => {
+              return (
+                <FormControlLabel
+                  value={e}
+                  control={<Radio />}
+                  label={e}
+                  key={e}
+                />
+              );
+            })}
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item sx={stl.section}>
+        <FormControl fullWidth>
+          <InputLabel id="endpoints-label">Endpoint</InputLabel>
+          <Select
+            labelId="endpoints-label"
+            id="enpoint-select"
+            value={apiCalls.getEndpoint}
+            label="Endpoint"
+            onChange={handleSelectChange}
+          >
+            {apiCalls.getEndpoints.map((element) => (
+              <MenuItem key={element.name} value={element.url}>
+                {element.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+    </Grid>
   );
 }
 
