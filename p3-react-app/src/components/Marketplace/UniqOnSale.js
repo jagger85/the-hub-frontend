@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Typography, Box, Button } from "@mui/material";
+import { Paper, Typography, Box, Button, Grid, Divider,Chip } from "@mui/material";
 import { styles } from "./UniqOnSaleStyle";
 import img from '../../assets/uniqtest.png'
 function UniqOnSale(props) {
@@ -7,21 +7,26 @@ function UniqOnSale(props) {
     <Paper sx={styles.uniqContainer}>
       {props.uniq.lifecycle.execution_trace.action_traces.map((e) => {
         return (
-          <div>
-            <Box
-              component="img"
-              sx={styles.uniqImage}
-              alt="Uniq on sale"
-              src={img}
-            />
-            <Typography>Token id:{e.act.data.resell.token_id}</Typography>
-            <Typography>Seller: {e.act.data.resell.seller} </Typography>
-            <Typography>Price: {e.act.data.resell.price}</Typography>
-            <Typography>
-              Promoter basis point: {e.act.data.resell.promoter_basis_point}
-            </Typography>
-            <Button variant="outlined">Buy</Button>
-          </div>
+          <Grid container sx={styles.uniqContainerIn}>
+          <Grid item xs={12} sx={styles.imgContainer}>
+          <Box
+          component="img"
+          sx={styles.uniqImage}
+          alt="Uniq on sale"
+          src={img}
+          />
+          </Grid>
+          
+          <Grid item sx={styles.infoContainer} xs={12}>
+          <Typography>Collection</Typography>
+          <Typography>Name {e.act.data.resell.token_id}</Typography>
+          <Typography>Unit</Typography>
+          <Typography>Price {e.act.data.resell.price}</Typography>
+          </Grid>
+          <Grid item sx={styles.buttonContainer} xs={12}>
+          <Button variant="outlined">Buy</Button>
+          </Grid>
+          </Grid>
         );
       })}
     </Paper>
@@ -29,3 +34,9 @@ function UniqOnSale(props) {
 }
 
 export default UniqOnSale;
+// <Typography>Token id:{e.act.data.resell.token_id}</Typography>
+// <Typography>Seller: {e.act.data.resell.seller} </Typography>
+// <Typography>Price: {e.act.data.resell.price}</Typography>
+// <Typography>
+// Promoter basis point: {e.act.data.resell.promoter_basis_point}
+// </Typography>
