@@ -14,7 +14,7 @@ export const styles = {
     width: 100,
   },
   galleryContainer: { 
-    margin: 0.5
+
   },
 
   pagesDisplay: {

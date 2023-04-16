@@ -39,7 +39,7 @@ function Gallery(props) {
       );
     }
     setLoading(false);
-  }, []);
+  }, [props.array]);
   return (
     !loading && (
    

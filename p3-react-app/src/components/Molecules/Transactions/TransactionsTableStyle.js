@@ -1,13 +1,11 @@
 export const styles = {
-    divider:{
-        color: 'black',
+
+    container: {
+        margin: 2
     },
-    galleryButtonContainer: {
+    header: {
         display: 'flex',
-        justifyContent: 'center'
-    },
-    galleryButton: {
-        margin: 2,
-        width : 100,
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 }

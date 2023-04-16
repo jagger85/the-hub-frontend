@@ -2,7 +2,6 @@ import { colors, boxShadow } from "../../../theme"
 
 export const styles = {
     container: {
-        margin: 2,
     },
 
     transactionContainer:{
