@@ -4,6 +4,7 @@ import { apiCalls } from "../../scripts/apicalls";
 import { Typography, Box, Grid } from "@mui/material";
 import Gallery from "../Molecules/Gallery/Gallery";
 import { styles as stl } from "./PagesStyle";
+import NoData from "../Atoms/NoData";
 
 function Inventory() {
   const wallet = localStorage.getItem("wallet");
@@ -18,21 +19,22 @@ function Inventory() {
   }, []);
 
   return (
-      <Grid container xs={12} sx={stl.container}>
+      <Grid container sx={stl.container}>
         <Grid item xs={12} sx={stl.titleContainer}>
           <Typography variant="h3">
             Inventory
           </Typography>
         </Grid>
         <Grid item xs={12} sx={stl.section}>
-          {inventory != null && (
+          {inventory != null ? (
             <Gallery
               title="Your uniqs"
               amount={10}
               array={inventory}
               type={"uniqsOwned"}
             />
-          )}
+          ): <NoData/>
+        }
         </Grid>
       </Grid>
   );

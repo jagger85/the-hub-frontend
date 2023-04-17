@@ -87,17 +87,19 @@ export const apiCalls = {
   },
 
   getWalletInfo: async function (wallet) {
-    return fetch(`${this.endpoint}/v1/chain/get_account`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `{ "account_name": "${wallet}" }`,
-    })
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((error) => console.log("error", error));
-  },
+
+      return fetch(`${this.endpoint}/v1/chain/get_account`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `{ "account_name": "${wallet}" }`,
+      })
+      .then((res) =>  res.json())
+      .then((data) => {if(data.code != '500') return  data})
+      .catch((error) => console.log(error))
+    },
+
 
   getWalletUniqs: async function (wallet) {
     var myHeaders = new Headers();
@@ -123,7 +125,10 @@ export const apiCalls = {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => result.rows)
+      .then((result) => {
+        console.log(result)
+        if(result.rows.length != 0 ) return result.rows}
+        )
       .catch((error) => console.log("error", error));
   },
   

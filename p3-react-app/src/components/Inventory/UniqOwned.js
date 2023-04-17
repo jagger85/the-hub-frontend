@@ -1,6 +1,10 @@
 import React from 'react'
 import { styles } from './UniqOwnedStyle'
 import { Paper, Typography } from '@mui/material'
+/**
+ * @param {*} props - The data to be displayed
+ * @returns A Paper MUI component that displays the uniq data
+ */
 function UniqOwned(props) {
   return (
     <Paper sx={styles.uniqContainer}>

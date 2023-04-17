@@ -6,6 +6,12 @@ import CustomSelect from "../../Atoms/CustomSelect";
 import { Box, Grid, Typography } from "@mui/material";
 import { styles as stl } from "./TransactionsTableStyle";
 import NoData from "../../Atoms/NoData";
+
+/**
+ * Suported transactions
+ * This object is intended for sending it to @see CustomSelect for
+ * showing the correspondig values 
+ */
 const filterValues = [
   { text: "All", value: "all" },
   { text: "Buys", value: "buy" },
@@ -13,7 +19,9 @@ const filterValues = [
   { text: "Resell", value: "resell" },
   { text: "Cancel Resell", value: "cancelresell" },
 ];
-
+/**
+ * @returns - A MUI Grid that contains the requested transactions with a select component to filter them
+ */
 function TransactionsTable() {
   const wallet = localStorage.getItem("wallet");
   const [transactions, setTransactions] = useState(null);
@@ -27,6 +35,12 @@ function TransactionsTable() {
     getTransactions();
   }, [filteredResults]);
 
+  /**
+   * @function - Filters an array to set up the corresponding transactions
+   * Supports 4 types of transaction, "buy", "transfer", "resell", "cancellresell"
+   * @param {string} value - A string to filter accross transactions 
+   * @returns - An array with the corresponding transactions
+   */
   function filter(value) {
     value != "all"
       ? setFilteredResults(transactions.filter((t, i) => t.lifecycle.transaction.actions[0].name == value))

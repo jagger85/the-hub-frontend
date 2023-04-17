@@ -10,6 +10,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
 import { styles } from "../../layouts/MainLayoutStyle";
 import img from "../../assets/uniqtest.png";
+import { v4 as uuid } from 'uuid';
 
 function SideBar() {
   const menuItems = [
@@ -73,7 +74,7 @@ function SideBar() {
               <Link
                 style={{ textDecoration: "none" }}
                 to={item.path}
-                key={"link " + item.text}
+                key={uuid()}
                 sx={styles.sidebarLink}
               >
                 <ListItem key={item.text}>

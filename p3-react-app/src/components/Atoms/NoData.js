@@ -7,26 +7,34 @@ const style = {
     container:{
         width:'100%',
         backgroundColor : colors.background[1000],
-        boxShadow: boxShadow
-    },
+        boxShadow: boxShadow,
+        padding: 14,
+        marginTop: 2
+      },
+
   section:{
     display: "flex",
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   icon: {
     fontSize: 100
   }
 };
 
+/**
+ * @param {String} props.text - A text to display under the icon 
+ * @returns A paper component with an empty cart icon and a text under
+ */
+
 function NoData(props) {
   return (
     <Paper sx={style.container}>
-    <Grid container  xs={12}>
+    <Grid container>
     <Grid item sx={style.section} xs={12}>
-    <InboxIcon sx={style.icon}/>
+    <InboxIcon sx={style.icon} xs={12} />
     </Grid>
     <Grid item sx={style.section} xs={12}>
-    <Typography variant="h5">{props.text}</Typography>
+    <Typography variant="h6" xs={12}>{props.text}</Typography>
     </Grid>
     </Grid>
     </Paper>

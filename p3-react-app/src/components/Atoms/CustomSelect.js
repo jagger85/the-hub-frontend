@@ -6,6 +6,13 @@ import {Select} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
 
+
+/**
+ * @property {string} props.label - A text to show by default
+ * @property {Object} props.width - The desired width in this format {'width': number}
+ * @property {Array} props.menuItems - An Array of objects with this format { text: "sometext", value: "someValue" }
+ * @returns - A custom Select MUI component with 300 width by default
+ */
 function CustomSelect(props) {
     const [type, setType] = useState('');
 
@@ -27,7 +34,7 @@ function CustomSelect(props) {
     sx={[stl.select,props.width ?? {'width':300}]}
     >
     {props.menuItems.map((e)=>{ 
-      return <MenuItem value={e.value}>{e.text}</MenuItem>
+      return <MenuItem key={new Date().getTime()} value={e.value}>{e.text}</MenuItem>
     })}
     </Select>
     </FormControl>

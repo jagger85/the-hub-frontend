@@ -17,7 +17,7 @@ function Marketplace() {
   }, []);
 
   return (
-    <Grid container xs={12} sx={stl.container}>
+    <Grid container sx={stl.container}>
       <Grid item xs={12} sx={stl.titleContainer}>
         <Typography variant="h3">Marketplace</Typography>
       </Grid>

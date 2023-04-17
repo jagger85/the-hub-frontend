@@ -1,20 +1,19 @@
 import React from "react";
-import {
-  Paper,
-  Typography,
-  Box,
-  Button,
-  Grid,
-} from "@mui/material";
-
+import { Paper, Typography, Box, Button, Grid } from "@mui/material";
+import { v4 as uuid } from 'uuid';
 import { styles } from "./UniqOnSaleStyle";
 import img from "../../../assets/uniqtest.png";
+
+/**
+ * @param {Object.json} props.uniq - The uniq to display 
+ * @returns A MUI Grid that displays the corresponding data 
+ */
 function UniqOnSale(props) {
   return (
     <Paper sx={styles.uniqContainer}>
       {props.uniq.lifecycle.execution_trace.action_traces.map((e) => {
         return (
-          <Grid container sx={styles.uniqContainerIn}>
+          <Grid container sx={styles.uniqContainerIn} key={uuid()}>
             <Grid item xs={12} sx={styles.imgContainer}>
               <Box
                 component="img"

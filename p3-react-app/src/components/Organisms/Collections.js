@@ -19,7 +19,7 @@ function Collections() {
 
   return (
     collections != null && (
-        <Grid container xs={12} sx={stl.container}>
+        <Grid container sx={stl.container}>
           <Grid item xs={12} sx={stl.titleContainer}>
             <Typography variant="h3">
               Collections
@@ -27,7 +27,6 @@ function Collections() {
           </Grid>
           <Grid item xs={12} sx={stl.section}>
             <Gallery
-              title="fas"
               amount={5}
               array={collections}
               type="collections"

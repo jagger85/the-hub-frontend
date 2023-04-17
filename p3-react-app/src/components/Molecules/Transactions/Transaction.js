@@ -6,7 +6,13 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { v4 as uuid } from 'uuid';
 
+/**
+ * @component - Supports 4 diferent types of transactions, "resell", "cancellresell", "buy", "transfer"
+ * @param {*} props.transaction - The transaction to display
+ * @returns An accordion with the appropiate transaction
+ */
 function Transaction(props) {
   const [expanded, setExpanded] = useState(false);
 
@@ -21,15 +27,12 @@ function Transaction(props) {
           case "resell":
             return (
               <Accordion
+              key={uuid()}
               sx={styles.transactionContainer}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
               >
-                <AccordionSummary
-                  expandIcon={
-                    
-                    <ExpandMoreIcon />
-                }
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
@@ -53,12 +56,10 @@ function Transaction(props) {
                 </AccordionDetails>
               </Accordion>
             );
-            {
-              /**  */
-            }
           case "cancelresell":
             return (
               <Accordion
+              key={uuid()}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
                 sx={styles.transactionContainer}
@@ -88,6 +89,7 @@ function Transaction(props) {
           case "buy":
             return (
               <Accordion
+              key={uuid()}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
                 sx={styles.transactionContainer}
@@ -126,6 +128,7 @@ function Transaction(props) {
           case "transfer":
             return (
               <Accordion
+              key={uuid()}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
                 sx={styles.transactionContainer}
@@ -155,6 +158,7 @@ function Transaction(props) {
           default:
             return (
               <Accordion
+              key={uuid()}
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
                 sx={styles.transactionContainer}

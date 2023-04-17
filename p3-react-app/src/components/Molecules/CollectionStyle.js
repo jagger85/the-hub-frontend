@@ -8,7 +8,5 @@ export const styles = {
         ":hover":{
             border: 1,
         }
-    },
-
-        
+    },     
 }

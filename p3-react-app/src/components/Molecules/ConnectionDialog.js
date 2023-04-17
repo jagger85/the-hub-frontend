@@ -6,12 +6,18 @@ import CustomInput from "../Atoms/CustomInput";
 import { useState } from "react";
 import { rules } from "../../scripts/validationRules";
 
+/**
+ * @component - A dialog for setting the wallet to track
+ * @param {boolean} props.close - To close the dialog
+ * @param {boolean} props.open - To open the dialog 
+ * @returns 
+ */
 function ConnectionDialog(props) {
   const [wallet, setWallet] = useState("");
 
   /**
    * @function isValid - Checks if user inputs applies a set of rules @see rules
-   * @returns {boolean}
+   * @returns {boolean} - if the address is correct
    */
   function isValid() {
     return rules.every((element) => element.rule.test(wallet));

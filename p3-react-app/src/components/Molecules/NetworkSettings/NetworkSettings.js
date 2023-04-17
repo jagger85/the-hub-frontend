@@ -5,6 +5,7 @@ import { apiCalls } from "../../../scripts/apicalls";
 import { useReducer } from "react";
 import CustomSelect from "../../Atoms/CustomSelect";
 import { styles } from "./NetworkSettingsStyle";
+import { v4 as uuid } from 'uuid';
 
 const initialValue = {
   endpoint: apiCalls.getEndpoint,
@@ -25,9 +26,11 @@ const reducer = (settings, action) => {
       console.log(action + " This action is not supported");
   }
 };
-
+/**
+ * @returns A MUI Grid that contains a formulary to set up the connection configuration
+ */
 function NetworkSettings() {
-  const [settings, dispatch] = useReducer(reducer, initialValue);
+  const [settings, dispatch] = useReducer(reducer, initialValue); //Sets the selected network and endpoint to the object apicalls
 
   const handleSelectChange = (value) => {
     dispatch({ type: "endpoint", payload: value });
@@ -39,8 +42,7 @@ function NetworkSettings() {
   };
 
   return (
-    <Grid container xs={12}>
-
+    <Grid container>
     <Grid item xs={12} sx={styles.section}>
     <FormLabel id="demo-radio-buttons-group-label">Network</FormLabel>
     <RadioGroup
@@ -56,13 +58,13 @@ function NetworkSettings() {
         value={e}
         control={<Radio />}
         label={<Typography color="white">{e}</Typography>}
-        key={e}
+        key={uuid()}
         />
         );
       })}
       </RadioGroup>
       </Grid>
-      <Grid item xs={12} sx={styles.section}>
+      <Grid item sx={styles.section}>
       <CustomSelect
       onChange={handleSelectChange}
       menuItems={apiCalls.getEndpoints}

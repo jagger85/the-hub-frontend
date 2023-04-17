@@ -42,7 +42,7 @@ function CustomInput(props) {
             type={props.text ?? showPassword ? 'text' : 'password'}
             fullWidth
             placeholder={props.placeholder}
-            sx={{ p: 1, bgcolor: colors.input[500], borderRadius: '5px' }}
+            sx={{ p: 1, bgcolor: colors.background[900], borderRadius: '5px' }}
             endAdornment={
               props.isIconActive && (
                 <InputAdornment

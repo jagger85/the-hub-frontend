@@ -7,6 +7,11 @@ import { Box, Typography } from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './GalleryDropStyle';
 
+/**
+ * @property {string} props.label - A text to show on the accorddion
+ * @property {object} props.children
+ * @returns - An accorddion that accepts children
+ */
 function GalleryDrop(props) {
   
   const [expanded, setExpanded] = useState(false);
@@ -14,7 +19,6 @@ function GalleryDrop(props) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
 
   return (
     <Box sx={stl.container}>

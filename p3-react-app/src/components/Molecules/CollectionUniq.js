@@ -5,6 +5,11 @@ import { unzip } from "../../scripts/unzipper";
 import { styles } from "./CollectionStyle";
 import { Link } from "react-router-dom";
 
+/**
+ * @param {Object.json} props.collection - The collection to display 
+ * @returns A MUI Grid that displays the corresponding data,
+ * it also implements dinamic routing for sending to the corresponding collection page
+ */
 function CollectionUniq(props) {
   const [metadata, setMetadata] = useState(null);
 
@@ -13,7 +18,7 @@ function CollectionUniq(props) {
       const data = await unzip(props.collection.meta_uris);
       setMetadata(data);
     };
-    getMetadata().catch(console.error);
+    getMetadata()
   }, []);
 
   return (
