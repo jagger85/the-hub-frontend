@@ -40,21 +40,17 @@ function TransactionsTable() {
 
   return (
     transactions != null && (
-      <Grid container>
-        <Grid item xs={12}>
-          <Box sx={stl.header}>
-            <Typography variant="h5">Transactions</Typography>
-            <CustomSelect menuItems={filterValues} onChange={filter} label='Filter' />
-          </Box>
+        <Grid container>
+          <Grid item xs={12}>
+            <Box sx={stl.header}>
+              <Typography variant="h5">Transactions</Typography>
+              <FilterSelect onChange={filter} />
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Gallery amount={5} array={filteredResults ?? transactions} type="transactions"/>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Gallery
-            amount={5}
-            array={filteredResults ?? transactions}
-            type="transactions"
-          />
-        </Grid>
-      </Grid>
     )
   );
 }
