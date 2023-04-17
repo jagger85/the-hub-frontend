@@ -6,7 +6,8 @@ export const styles = {
     marginBottom: 3,
     },
     section: {
-    marginRight : 5
+    marginRight : 5,
+    marginTop: 2
 
     }
 }

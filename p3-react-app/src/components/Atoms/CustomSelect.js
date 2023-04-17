@@ -2,7 +2,7 @@ import React from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import {Select, Box} from '@mui/material';
+import {Select} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
 
@@ -15,7 +15,8 @@ function CustomSelect(props) {
     };
 
   return (
-    <Box>
+    
+    <FormControl size="small">
     <InputLabel id="demo-select-small" sx={stl.inputLabel}>{props.label}</InputLabel>
     <Select
     labelId="demo-select-small"
@@ -29,7 +30,8 @@ function CustomSelect(props) {
       return <MenuItem value={e.value}>{e.text}</MenuItem>
     })}
     </Select>
-    </Box>
+    </FormControl>
+    
 
   )
 }

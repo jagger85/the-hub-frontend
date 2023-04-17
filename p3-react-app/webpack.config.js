@@ -30,10 +30,11 @@ const HTMLWebpackPlugin = require ('html-webpack-plugin');
                       }
                     },
                     {
-                      test: /.css$/,
-                      use: [
-                        'style-loader', 'css-loader'
-                      ]
+                      test: /\.css$/i,
+                      loader: "css-loader",
+                      options: {
+                        url: true,
+                      },
                     },
                     {
                       test: /\.(png|jpe?g|gif)$/i,
@@ -44,18 +45,10 @@ const HTMLWebpackPlugin = require ('html-webpack-plugin');
                       ]
                     },
                     {
-                      test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                      use: [
-                        {
-                          loader: 'file-loader',
-                          options: {
-                            name: '[name].[ext]',
-                            outputPath: 'fonts/'
-                          }
-                        }
-                      ]
-                    }
+                      test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                      type: 'asset/resource',
+                    },
 
                   ]
-                },watch: true
+                }
         }

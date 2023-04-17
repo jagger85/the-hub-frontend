@@ -6,14 +6,17 @@ import Transaction from "../Transactions/Transaction";
 import UniqOwned from "../../Inventory/UniqOwned";
 import Collection from "../CollectionUniq";
 import { styles } from "./GalleryStyle";
-const pages = [];
 
-const reducer = (page, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "increment":
-      return { count: page.count + 1 };
+      return {...state, count: state.count + 1 };
     case "decrement":
-      return { count: page.count - 1 };
+      return {...state, count: state.count - 1 };
+    case 'reset':
+     console.log(state)
+      return {count:0, pages: []}
+
     default:
       console.log(action.type + " this action is not supported");
   }
@@ -28,16 +31,18 @@ const reducer = (page, action) => {
  * @returns
  */
 function Gallery(props) {
-  const [page, dispatch] = useReducer(reducer, { count: 0 });
+  const [state, dispatch] = useReducer(reducer, { count: 0, pages : [] });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const data = []
     for (let i = 0; i < props.array.length / props.amount; i++) {
-      pages[i] = props.array.slice(
+      data[i] = props.array.slice(
         i * props.amount,
         i * props.amount + props.amount
       );
     }
+    state.pages = data
     setLoading(false);
   }, [props.array]);
   return (
@@ -48,7 +53,7 @@ function Gallery(props) {
             {props.title}
           </Typography>
         </Grid>
-        {pages[page.count].map((e, i) => {
+        {state.pages[state.count].map((e, i) => {
           switch (props.type) {
             case "transactions":
               return (
@@ -86,14 +91,14 @@ function Gallery(props) {
               onClick={() => {
                 dispatch({ type: "decrement" });
               }}
-              disabled={page.count == 0}
+              disabled={state.count == 0}
             >
               back
             </Button>
             <Box sx={styles.pagesDisplay}>
-              <Typography>{page.count + 1}</Typography>
+              <Typography>{state.count + 1}</Typography>
               <Typography>&nbsp;&nbsp; / &nbsp;&nbsp;</Typography>
-              <Typography>{pages.length}</Typography>
+              <Typography>{state.pages.length}</Typography>
             </Box>
             <Button
               sx={styles.navigationButton}
@@ -101,7 +106,7 @@ function Gallery(props) {
               onClick={() => {
                 dispatch({ type: "increment" });
               }}
-              disabled={page.count == pages.length - 1}
+              disabled={state.count == state.pages.length - 1}
             >
               forward
             </Button>

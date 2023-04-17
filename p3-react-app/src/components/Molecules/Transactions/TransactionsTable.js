@@ -5,7 +5,7 @@ import { apiCalls } from "../../../scripts/apicalls";
 import CustomSelect from "../../Atoms/CustomSelect";
 import { Box, Grid, Typography } from "@mui/material";
 import { styles as stl } from "./TransactionsTableStyle";
-
+import NoData from "../../Atoms/NoData";
 const filterValues = [
   { text: "All", value: "all" },
   { text: "Buys", value: "buy" },
@@ -25,33 +25,28 @@ function TransactionsTable() {
       setTransactions(data);
     };
     getTransactions();
-    console.log(filteredResults);
   }, [filteredResults]);
 
   function filter(value) {
     value != "all"
-      ? setFilteredResults(
-          transactions.filter((t, i) => {
-            return t.lifecycle.transaction.actions[0].name == value;
-          })
-        )
+      ? setFilteredResults(transactions.filter((t, i) => t.lifecycle.transaction.actions[0].name == value))
       : setFilteredResults(transactions);
   }
 
   return (
-    transactions != null && (
-        <Grid container>
-          <Grid item xs={12}>
-            <Box sx={stl.header}>
-              <Typography variant="h5">Transactions</Typography>
-              <FilterSelect onChange={filter} />
-            </Box>
-          </Grid>
+    <Grid container>
+    <Grid item xs={12}>
+    <Box sx={stl.header}>
+    <Typography variant="h5">Transactions</Typography>
+    <CustomSelect onChange={filter} menuItems={filterValues} label='filter' width={{'width':200}}/>
+    </Box>
+    </Grid>
+    {transactions != null ? (
           <Grid item xs={12}>
             <Gallery amount={5} array={filteredResults ?? transactions} type="transactions"/>
-          </Grid>
+            </Grid>
+            ) : <NoData text='No data'/>}
         </Grid>
-    )
   );
 }
 

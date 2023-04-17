@@ -7,11 +7,6 @@ export const styles = {
             border: 'none',
             boxShadow: boxShadow,
         },
-
-        'div + & .MuiFormControl-root' : {
-            margin: 0
-        }
-
     },
     menuItem : {
         '& .MuiInputBase-input': {
@@ -20,5 +15,6 @@ export const styles = {
         '&:focus': {
       //maybe I need it in the future
           },
-    }
+    },
+
 }

@@ -26,7 +26,10 @@ function Transaction(props) {
                 onChange={handleChange("panel1")}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+                  expandIcon={
+                    
+                    <ExpandMoreIcon />
+                }
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >

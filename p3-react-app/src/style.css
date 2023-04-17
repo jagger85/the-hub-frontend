@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Industry';
+    src: url('./fonts/Industry-Black.ttf') format('ttf'),
+      url('./fonts/Industry-Black.eot') format('eot');
+    font-weight: 600;
+    font-style: normal;
+  }
+  #root{
+    margin: 100px;
+  }
+  #lolo{
+    margin: 100px;
+  }
