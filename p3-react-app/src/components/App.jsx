@@ -8,11 +8,8 @@ import Collections from "./Organisms/Collections";
 import CollectionInfo from './Organisms/CollectionInfo';
 import Marketplace from "./Organisms/Marketplace";
 import Settings from "./Organisms/Settings";
-import { CssBaseline } from "@mui/material";
 import { theme } from "../theme";
 import { ThemeProvider } from "@mui/material";
-import { CssVarsProvider } from '@mui/joy/styles';
-import GlobalStyles from '@mui/joy/GlobalStyles';
 import { colors } from "../theme";
 
 
@@ -21,17 +18,6 @@ import { colors } from "../theme";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-    <CssVarsProvider>
-    <CssBaseline/>
-    <GlobalStyles styles={{
-      html: {
-        // ...
-      },
-      body: {
-        backgroundColor: colors.background[900],
-      },
-    }}/>
-    </CssVarsProvider>
       <MainLayout>
         <Routes>
           <Route path="/" element={<Dashboard />} />
