@@ -12,8 +12,21 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "increment":
       return {...state, count: state.count + 1 };
+
     case "decrement":
       return {...state, count: state.count - 1 };
+
+    case 'setPages':
+      state.pages = []
+      state.count = 0
+      for (let i = 0; i < action.data.length / action.amount; i++) {
+        state.pages[i] = action.data.slice( // Slice the data to create a new array with the sum of the desired object per page
+          i * action.amount,
+          i * action.amount + action.amount
+        );
+      }
+      return {...state}
+
     default:
       console.log(action.type + " this action is not supported");
   }
@@ -26,21 +39,14 @@ const reducer = (state, action) => {
  * @returns A MUI Grid container with a gallery and the corresponding buttons to move accross
  */
 function Gallery(props) {
-  const [state, dispatch] = useReducer(reducer, { count: 0, pages : [] });
+  const [state, dispatch] = useReducer(reducer, { count: 0, pages : [], data : [], amount : 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    const data = [] 
-    for (let i = 0; i < props.array.length / props.amount; i++) {
-      data[i] = props.array.slice( // Slice the data to create a new array with the sum of the desired object per page
-        i * props.amount,
-        i * props.amount + props.amount
-      );
-    }
-    state.pages = data
+    dispatch({type : 'setPages',data : props.array, amount : props.amount})
     setLoading(false);
   }, [props.array]);
+
   return (
     !loading && (
       <Grid container spacing={2} sx={styles.container}>
