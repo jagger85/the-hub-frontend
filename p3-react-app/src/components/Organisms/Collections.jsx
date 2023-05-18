@@ -6,6 +6,7 @@ import { Grid, Typography } from "@mui/material";
 import { apiCalls } from "../../scripts/apicalls";
 import Gallery from "../Molecules/Gallery/Gallery";
 
+
 function Collections() {
   const [collections, setCollections] = useState(null);
 

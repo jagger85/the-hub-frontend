@@ -2,9 +2,9 @@ import React from "react";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { Button } from "@mui/material";
-import CustomInput from "../Atoms/CustomInput";
+import CustomInput from "../../Atoms/CustomInput";
 import { useState } from "react";
-import { rules } from "../../scripts/validationRules";
+import { rules } from "../../../scripts/validationRules";
 
 /**
  * @component - A dialog for setting the wallet to track

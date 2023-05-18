@@ -5,6 +5,18 @@
 import Industry from './fonts/Industry-Black.eot'
 import { createTheme } from '@mui/material';
 
+const light = {
+    1: 'rgba(210, 234, 251,',
+    2: 'rgba(166, 213, 248,',
+    3: 'rgba(121, 192, 244,',
+    4: 'rgba(77, 171, 241,',
+    5: 'rgba(32, 150, 237,',
+    6: 'rgba(26, 120, 190,',
+    7: 'rgba(19, 90, 142,',
+    8: 'rgba(13, 60, 95,',
+    9: 'rgba(6, 30, 47,',
+}
+
 export const colors = {
   purple: {
     100: '#dac3f4',
@@ -49,18 +61,32 @@ export const colors = {
     700: '#5f5f5f',
     800: '#404040',
     900: '#1f1f1f',
-    1000: '#282828'
+    1000: '#3d3d3d'
   },
 };
-
+export const borderRadius = {
+  borderRadius: 0.5
+}
 export const boxShadow = {
   boxShadow: '0 2px 4px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.08),0 8px 16px rgba(0,0,0,.08),0 16px 24px rgba(0,0,0,.08),inset 0 1px 1px hsla(0,0%,100%,.08)'
 }
-
 export const boxShadowIn ={
  boxShadow: 'inset 2px 2px 4px rgba(0,0,0,.08),inset -1px -1px 1px hsla(0,0%,100%,.06)'
 }
+export const boxShadowDown ={
+  boxShadow: '0 0px 4px rgba(0,0,0,.08),0 0px 8px rgba(0,0,0,.08),0 8px 0px rgba(0,0,0,.08),0 0px 24px rgba(0,0,0,.08),inset 0 1px 1px hsla(0,0%,100%,.08)'
+}
+export const boxShadowUp = {
+  boxShadow: '0 0px 0px rgba(0,0,0,.08),0 0px 0px rgba(0,0,0,.08),0 0px 0px rgba(0,0,0,.08),0 0px 0px rgba(0,0,0,.08),inset 0 1px 1px hsla(0,0%,100%,.08)'
+}
+export const doubleBorder = {
+  boxShadow:`0 0 0 2px #1b1825,0 0 0 3px ${colors.background[600]}`
+}
+export function getLight(color, intensity){
 
+  return light[color]+ intensity +")"
+
+}
 export const theme = createTheme({
   palette: {
     mode: 'dark',
@@ -68,7 +94,7 @@ export const theme = createTheme({
       main: colors.purple[500],
     },
     background: {
-      default: '#1f1f1f',
+      default: colors.background[700],
     },
   },
   typography: {
@@ -90,6 +116,14 @@ export const theme = createTheme({
     } ,
     h6:{
       color: 'white'
+    },
+    white:{
+      fontFamily: 'Industry,sans-serif',
+      color: 'white'
+    },
+    grey: {
+      fontFamily: 'Industry,sans-serif',
+     color: colors.background[400]
     }
   },
   components: {

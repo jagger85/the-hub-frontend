@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useState } from "react";
-import ConnectionDialog from "../Molecules/ConnectionDialog";
+import ConnectionDialog from "../Molecules/Dialogs/ConnectionDialog";
 
 const style = {
   position: "absolute",
   right: 40,
   top: 20,
-};
+}
 
 /**
  * @component - A custom button with a hard coded position 

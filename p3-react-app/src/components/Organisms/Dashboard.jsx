@@ -3,7 +3,8 @@ import { Typography, Grid } from "@mui/material";
 import TransactionsTable from "../Molecules/Transactions/TransactionsTable";
 import WalletInfo from "../Molecules/WalletInfo/WalletInfo";
 import { styles as stl } from "./PagesStyle";
-
+import { dataService } from "../../scripts/dataService";
+import NoData from "../Atoms/NoData";
 function Dashboard() {
   return (
       <Grid container sx={stl.container}>
@@ -16,7 +17,13 @@ function Dashboard() {
           <WalletInfo />
         </Grid>
         <Grid item xs={12} sx={stl.section}>
-          <TransactionsTable />
+
+        {dataService.portfolios[0].wallets ?
+          dataService.portfolios[0].wallets.map( x => {
+            return <TransactionsTable wallet={x.address} alias={x.alias} />
+          }):
+          <NoData/>
+        }
         </Grid>
       </Grid>
   );

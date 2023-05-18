@@ -1,15 +1,18 @@
 import React from 'react';
-import {
-  Box,
-  IconButton,
-  InputAdornment,
-  InputBase,
-  Paper,
-  Typography,
-} from '@mui/material';
+import { Box, IconButton, InputAdornment, InputBase, Paper, Typography,} from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { colors } from '../../theme';
+import { colors, boxShadowIn,boxShadow } from '../../theme';
 import { useState } from 'react';
+
+const styles = {
+  input: {
+    p: 0.5, 
+    bgcolor: colors.background[900], 
+    borderRadius: '5px', 
+    
+    height: '2rem'
+  }
+}
 
 /**
  * @component - A custom inputText wich is a password by default
@@ -28,12 +31,12 @@ function CustomInput(props) {
       display="flex"
       flexDirection="column"
       alignContent="center"
-      justifyContent="flex-start"
-      p="10px">
+      justifyContent="flex-start">
       <Box
         display="flex"
         flexDirection="column"
-        justifyContent="flex-start">
+        justifyContent="flex-start"
+        >
         <Typography color="white">{props.label}</Typography>
 
         <Paper>
@@ -42,7 +45,7 @@ function CustomInput(props) {
             type={props.text ?? showPassword ? 'text' : 'password'}
             fullWidth
             placeholder={props.placeholder}
-            sx={{ p: 1, bgcolor: colors.background[900], borderRadius: '5px' }}
+            sx={styles.input}
             endAdornment={
               props.isIconActive && (
                 <InputAdornment

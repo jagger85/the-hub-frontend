@@ -13,7 +13,6 @@ export const styles = {
   },
 
   drawer: {
-    margin: 0,
     width: drawerWidth,
     boxSizing: "border-box",
     "& .MuiDrawer-paper": {
@@ -39,7 +38,6 @@ export const styles = {
   },
   listItemText:{
     color: colors.background[400],
-    fontFamily: 'Industry'
   },
   listItemIcon:{
     color : colors.background[400]

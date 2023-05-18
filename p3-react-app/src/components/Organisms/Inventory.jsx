@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import UniqOwned from "../Inventory/UniqOwned";
 import { apiCalls } from "../../scripts/apicalls";
-import { Typography, Box, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import Gallery from "../Molecules/Gallery/Gallery";
 import { styles as stl } from "./PagesStyle";
 import NoData from "../Atoms/NoData";
+
 
 function Inventory() {
   const wallet = localStorage.getItem("wallet");
@@ -25,18 +25,24 @@ function Inventory() {
             Inventory
           </Typography>
         </Grid>
-        <Grid item xs={12} sx={stl.section}>
-          {inventory != null ? (
+        
+        { inventory != null & inventory?.length ?  (
+          
+          <Grid item xs={12} sx={stl.section}>
             <Gallery
               title="Your uniqs"
               amount={10}
               array={inventory}
               type={"uniqsOwned"}
             />
-          ): <NoData/>
+            </Grid>
+          ): 
+          <Grid item xs={12} sx={stl.section}>
+          <NoData text={inventory == null ? 'No wallet connected' : 'No Uniqs holded' }/>
+          </Grid>
+          
         }
         </Grid>
-      </Grid>
   );
 }
 

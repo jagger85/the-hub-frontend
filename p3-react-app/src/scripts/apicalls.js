@@ -1,3 +1,6 @@
+const explorer = new URL('https://api.mainnet.ultra.io/v0/')
+import axios from 'axios';
+
 const mainnetEndpoints = [
   {
     text: "EOSNATION",
@@ -38,7 +41,7 @@ const testnetEndpoints = [
 export const apiCalls = {
 
   endpoints: mainnetEndpoints,
-  endpoint: "http://ultra.api.eosnation.io",
+  endpoint: new URL("http://ultra.api.eosnation.io"),
   networks: ["mainnet", "testnet"],
   network: "mainnet",
 
@@ -76,102 +79,111 @@ export const apiCalls = {
   get getEndpoints() {
     return this.endpoints;
   },
+  
+/**
+ * Retrieves transactions associated with a specific wallet.
+ * @async
+ * @function
+ * @param {Object} params - The parameters for the search query.
+ * @param {string} params.wallet - The wallet address to search for.
+ * @param {string} [params.startBlock='0'] - The starting block height for the search.
+ * @param {string} [params.sorting='desc'] - The sort order for the search results.
+ * @param {string} [params.blockCount='5000000'] - The number of blocks to search.
+ * @param {string} [params.limit='100'] - The maximum number of search results to return.
+ * @param {string} [params.cursor=''] - The cursor for the search results.
+ * @param {boolean} [params.reversible=true] - Whether to include reversible transactions.
+ * @returns {Promise<Object[]>} A Promise that resolves with an array of transaction objects.
+ */
+  getWalletTransactions: async function (params) {
 
-  getWalletTransactions: async function (wallet) {
-    return fetch(
-      `https://api.mainnet.ultra.io/v0/search/transactions?q=(auth:${wallet} OR receiver:${wallet})&sort=desc&limit=100&block_count=5000000&start_block=0&limit=5&cursor&with_reversible=true`
-    )
-      .then((res) => res.json())
-      .then((data) => data.transactions)
-      .catch((error) => console.log("error", error));
+    let query = new URL('search/transactions',explorer) 
+    query.searchParams.set('q', `auth:${params.wallet} OR receiver:${params.wallet}`)
+    query.searchParams.set('start_block', params?.startBlock ?? '0' )
+    query.searchParams.set('sort', params?.sorting ?? 'desc')
+    query.searchParams.set('block_count', params?.blockCount ?? '5000000' )
+    query.searchParams.set('limit', params?.limit ?? '100')
+    query.searchParams.set('cursor', params?.cursor ?? '')
+    query.searchParams.set('with_reversible', params?.reversible ?? 'true' )
+    return axios.get(query)
+    .then(res => res.data.transactions)
+
   },
 
   getWalletInfo: async function (wallet) {
-
-      return fetch(`${this.endpoint}/v1/chain/get_account`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `{ "account_name": "${wallet}" }`,
+    return wallet ?  axios.post(`${this.endpoint}/v1/chain/get_account`,
+      { 
+        account_name: wallet 
       })
-      .then((res) =>  res.json())
-      .then((data) => {if(data.code != '500') return  data})
-      .catch((error) => console.log(error))
+      .then(res => res.data)
+      .catch(e => console.log(e.response.data.error.what))
+      : console.log('No wallet conected')
     },
 
 
   getWalletUniqs: async function (wallet) {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      code: "eosio.nft.ft",
-      table: "token.a",
-      json: true,
-      scope: `${wallet}`,
-      limit: 10000,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    return fetch(
-      `${this.endpoint}/v1/chain/get_table_rows`,
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        if(result.rows.length != 0 ) return result.rows}
-        )
-      .catch((error) => console.log("error", error));
-  },
+      return wallet ? axios.post(`${this.endpoint}/v1/chain/get_table_rows`,
+        {
+          code: "eosio.nft.ft",
+          table: "token.a",
+          json: true,
+          scope: `${wallet}`,
+          limit: 10000,
+        })
+        .then(res => res.data.rows)
+        : console.log('No wallet connected')
+   },
   
   getCollectionById: async function (id) {
-    console.log(id)
-    return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: ` {
-        "scope": "eosio.nft.ft",
-        "code": "eosio.nft.ft",
-        "table": "factory.a",
-        "lower_bound": ${id},  
-        "limit": 1,             
-        "json": true
-      }`,
-    })
-    .then((res) => res.json())
-    .then((data) => data)
-    .catch((error) => console.log("error", error));
+    return axios.post(`${this.endpoint}/v1/chain/get_table_rows`,
+      {
+        scope: "eosio.nft.ft",
+        code: "eosio.nft.ft",
+        table: "factory.a",
+        lower_bound: id,  
+        limit: 1,             
+        json: true
+      })
+      .then(res => res.data)
   },
   
   getCollections: async function () {
-    return fetch(`${this.endpoint}/v1/chain/get_table_rows`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: '{"scope":"eosio.nft.ft", "code":"eosio.nft.ft", "table":"factory.a", "json": true}',
-    })
-    .then((res) => res.json())
-    .then((data) => data.rows);
+    return axios.post(`${this.endpoint}/v1/chain/get_table_rows`,
+      {
+        scope:"eosio.nft.ft", 
+        code:"eosio.nft.ft",
+        table:"factory.a", 
+        json: true
+      })  
+      .then( res => res.data.rows);
   },
 
-  getUniqsOnSale: async function () {
-    return fetch(
-      "https://api.mainnet.ultra.io/v0/search/transactions?q=action%3Aresell&start_block=0&sort=desc&block_count=5000000&limit=25&cursor=&with_reversible=true"
-      )
-      .then((response) => response.json())
-      .then((result) => result.transactions)
-      .catch((error) => console.log("error", error));
+
+/**
+*Get unique items that are currently on sale from the blockchain
+*@async
+*@function getUniqsOnSale
+*@param {Object} params - Parameters for the search query
+*@param {string} [params.startBlock='0'] - Start block number to search from
+*@param {string} [params.sorting='desc'] - Sorting order for search results
+*@param {string} [params.blockCount='5000000'] - Number of blocks to search within
+*@param {string} [params.limit='25'] - Maximum number of transactions to return
+*@param {string} [params.cursor=''] - Cursor to start search from
+*@param {string} [params.reversible='true'] - Whether to include reversible transactions
+*@returns {Promise<Array>} - Array of unique items currently on sale
+*/
+
+  getUniqsOnSale: async function (params) {
+
+    let query = new URL('search/transactions',explorer) 
+    query.searchParams.set('q', 'action:resell')
+    query.searchParams.set('start_block', params?.startBlock ?? '0' )
+    query.searchParams.set('sort', params?.sorting ?? 'desc')
+    query.searchParams.set('block_count', params?.blockCount ?? '5000000' )
+    query.searchParams.set('limit', params?.limit ?? '25')
+    query.searchParams.set('cursor', params?.cursor ?? '')
+    query.searchParams.set('with_reversible', params?.reversible ?? 'true' )
+    return axios.get(query)
+    .then(res => res.data.transactions)
     },
     
     getUniqsSold: function () {

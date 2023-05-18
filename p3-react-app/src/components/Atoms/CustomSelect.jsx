@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import {Select} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
-
+import { v4 as uuid } from 'uuid';
 
 /**
  * @property {string} props.label - A text to show by default
@@ -34,7 +34,7 @@ function CustomSelect(props) {
     sx={[stl.select,props.width ?? {'width':300}]}
     >
     {props.menuItems.map((e)=>{ 
-      return <MenuItem key={new Date().getTime()} value={e.value}>{e.text}</MenuItem>
+      return <MenuItem key={uuid()} value={e.value}>{e.text}</MenuItem>
     })}
     </Select>
     </FormControl>

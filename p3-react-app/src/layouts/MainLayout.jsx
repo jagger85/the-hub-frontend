@@ -11,6 +11,7 @@ function MainLayout({ children }) {
     <ConnectionButton/>
     <SideBar style={styles.sidebar}/>
     <Grid container sx={styles.content}>
+    <Grid item></Grid>
     {children}
     </Grid>
     </Box>

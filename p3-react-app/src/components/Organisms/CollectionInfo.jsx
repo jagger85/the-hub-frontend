@@ -19,7 +19,7 @@ function CollectionInfo() {
   }, []);
 
   return (
-    <Grid container xs={12} sx={stl.container}>
+    <Grid container sx={stl.container}>
       <Grid item xs={12} sx={stl.titleContainer}>
         <Typography>Collection</Typography>
       </Grid>

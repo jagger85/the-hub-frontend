@@ -8,8 +8,9 @@ const style = {
         width:'100%',
         backgroundColor : colors.background[1000],
         boxShadow: boxShadow,
-        padding: 14,
-        marginTop: 2
+        marginTop: 2,
+        paddingTop:5,
+        paddingBottom:5
       },
 
   section:{

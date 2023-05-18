@@ -1,5 +1,6 @@
+import JSZip from "jszip";
+
 export async function unzip(url) {
-    const JSZip = require("jszip");
   
  return fetch(url)
       .then(function (response) {
