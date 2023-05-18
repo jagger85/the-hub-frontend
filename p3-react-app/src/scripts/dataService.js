@@ -1,67 +1,72 @@
+import axios from 'axios';
+const bcrypt = require('bcrypt');
+
+const a = axios.create({
+  baseURL: 'http://localhost:8000/',
+});
+
 export const dataService = {
-    
-    currency : '',
+  currency: '',
+  user: 'Jagger85',
 
-    get currency(){
-        return this.currency
-    },
+  getCurrency: function () {
+    return this.currency;
+  },
 
-    get portfolios() {
-        return JSON.parse(localStorage.getItem('portfolios'))
-    },
+  setCurrency: function (currency) {
+    this.currency = currency;
+  },
 
-    getPortfolioWallets: function(name){
-      return JSON.parse(localStorage.getItem('portfolios')).find( x => x.name == name ).wallets
-    },
+  setUser: function (username) {
+    this.user = username;
+  },
 
-    addPortfolio: function(portfolio) {
-        const portfolios = JSON.parse(localStorage.getItem('portfolios')) || [];
-        localStorage.setItem('portfolios',
-          JSON.stringify(
-                portfolios.some(e => e.name === portfolio) // Check if the portfolio exists
-              ? portfolios
-              : [...portfolios, { name: portfolio, wallets: [] }]
-          ));
-      },
+  getPortfolios: async function () {
+    return await a.get(`user/portfolios/${this.user}`).then((res) => res.data.portfolios);
+  },
 
-    removePortfolios: function(portfolio){
-        let portfolios = JSON.parse(localStorage.getItem('portfolios'))
-        
-        localStorage.setItem('portfolios',JSON.stringify(portfolios.filter( e =>{
-            return e.name != portfolio
-        })))
-    },
+  getPortfolio: async function (portfolioAlias) {
+    return await a.get(`user/${this.user}/${portfolioAlias}/`).then((res) => res.data.portfolio);
+  },
 
-    removePortfolio: function(portfolio){
-        const portfolios = JSON.parse(localStorage.getItem('portfolios') || '[]');
-        
-        const filteredPortfolios = portfolios.filter(e => e.name !== portfolio);
-      
-        if (filteredPortfolios.length == portfolios.length) { //Check if the portfolio existed
-          console.log(`Could not find portfolio "${portfolio}"`);
-        }
-      
-        localStorage.setItem('portfolios', JSON.stringify(filteredPortfolios));
-      },
+  getWallet: async function (portfolioAlias, walletAlias) {
+    return await a.get(`user/${this.user}/${portfolioAlias}/${walletAlias}`).then((res) => res.data.wallets);
+  },
 
-      addWallet: function(portfolioName,alias,wallet){
-        let portfolios = JSON.parse(localStorage.getItem('portfolios'))
-        // Check first if there is the same alias already
-        if(portfolios.find(x => x.name = portfolioName).wallets.every(x => x.alias != alias)){
-          portfolios.find(x => x.name = portfolioName).wallets.push({alias:alias,address:wallet})
-        }
-          localStorage.setItem('portfolios',JSON.stringify(portfolios))
-      },
-      removeWallet: function(portfolioName, alias){
-        let portfolios = JSON.parse(localStorage.getItem('portfolios'))
-        portfolios.find( x => x.name == portfolioName ).wallets = portfolios.find( x => x.name == portfolioName ).wallets.filter( x => x.alias != alias)
-        localStorage.setItem('portfolios',JSON.stringify(portfolios))
-      },
-      
+  createUser: async function (username, email, password) {
+    let hashedPassword = await bcrypt.hash(password, 10)
+    return await a.post(`user`, { username: username, email: email, password: hashedPassword  }).then((res) => res.data);
+  },
 
-    setCurrency : function(currency){
-        this.currency = currency
-    },
+  logInUser: async function (username, password) {
 
-}
+  },
 
+  getPortfolioWallets: async function (portfolioAlias) {
+    return await a.get(`/user/${this.user}/${portfolioAlias}/wallets`).then((res) => res.data.wallets);
+  },
+
+  addPortfolio: async function (portfolioAlias) {
+    return await a.post(`user/portfolios/${this.user}`, { alias: portfolioAlias }).then((res) => res.data);
+  },
+
+  removePortfolio: async function (portfolioAlias) {
+    return await a.delete(`user/portfolios/${this.user}`, { data: { alias: portfolioAlias } }).then((res) => res.data);
+  },
+
+  addWallet: async function (portfolioAlias, walletAlias, walletAddress) {
+    return await a
+      .post(`user/portfolios/wallets/${this.user}`, {
+        alias: portfolioAlias,
+        walletAlias: walletAlias,
+        walletAddress: walletAddress,
+      })
+      .then((res) => res.data);
+  },
+
+  removeWallet: async function (portfolioAlias, walletAlias) {
+    return await a
+      .delete(`user/portfolios/wallets/${this.user}`, { data: { alias: portfolioAlias, walletAlias: walletAlias } })
+      .then((res) => res.data);
+  },
+};
