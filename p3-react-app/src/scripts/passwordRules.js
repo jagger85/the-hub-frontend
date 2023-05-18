@@ -44,7 +44,7 @@ const special = {
  * @param {String} special.warning - A message indicating the rule the password must pass.
  */
 export const emailRule = {
-  rule: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+  rule: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   warning: 'Must be a valid email'
 }
 

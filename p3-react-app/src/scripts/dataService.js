@@ -1,8 +1,8 @@
 import axios from 'axios';
-const bcrypt = require('bcrypt');
+import bcrypt from "bcryptjs";
 
 const a = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'https://the-hub-dt35.onrender.com/',
 });
 
 export const dataService = {
@@ -35,7 +35,7 @@ export const dataService = {
 
   createUser: async function (username, email, password) {
     let hashedPassword = await bcrypt.hash(password, 10)
-    return await a.post(`user`, { username: username, email: email, password: hashedPassword  }).then((res) => res.data);
+    return await a.post(`user`, { username: username, email: email, password: hashedPassword  }).then((res) => console.log(res.data));
   },
 
   logInUser: async function (username, password) {
