@@ -1,6 +1,6 @@
 import React from 'react'
 import MyBox from '../Atoms/MyBox'
-import { dataService } from '../../scripts/newdataService'
+import { dataService } from '../../scripts/dataService'
 import { Box, Button } from '@mui/material'
 
 function Games() {
