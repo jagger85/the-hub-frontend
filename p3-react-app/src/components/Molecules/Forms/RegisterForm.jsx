@@ -31,7 +31,7 @@ function RegisterForm(props) {
   };
 
   const handleRegister = () => {
-    dataService.createUser(user, pwd, email);
+    dataService.createUser(user, email, pwd);
   };
   return ({
     /** Main container */
@@ -102,7 +102,7 @@ function RegisterForm(props) {
             <Box display='flex' flexDirection='row' width='100%' justifyContent='center' p='5px'>
               <Button
                 variant='contained'
-                disabled={!isValid(pwd, pwd2, user) | !isEmailValid(email)}
+                disabled={!isValid(pwd, pwd2, user) || !isEmailValid(email)}
                 onClick={()=> handleRegister()}>
                 Register
               </Button>

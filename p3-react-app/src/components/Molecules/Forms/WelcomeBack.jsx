@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-export function WelcomeBack() {
+export function WelcomeBack(props) {
   return (
     <Box
       sx={{
@@ -16,6 +16,7 @@ export function WelcomeBack() {
         p={3}>
         Welcome back
       </Typography>
+      <Typography color='white'>{props.message}</Typography>
     </Box>
   );
 }

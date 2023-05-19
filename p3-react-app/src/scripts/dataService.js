@@ -7,7 +7,7 @@ const a = axios.create({
 
 export const dataService = {
   currency: '',
-  user: 'Jagger85',
+  user: '',
 
   getCurrency: function () {
     return this.currency;
@@ -34,12 +34,11 @@ export const dataService = {
   },
 
   createUser: async function (username, email, password) {
-    let hashedPassword = await bcrypt.hash(password, 10)
-    return await a.post(`user`, { username: username, email: email, password: hashedPassword  }).then((res) => console.log(res.data));
+    return await a.post(`user`, { username: username, email: email, password: password  }).then((res) => console.log(res.data));
   },
 
   logInUser: async function (username, password) {
-
+    
   },
 
   getPortfolioWallets: async function (portfolioAlias) {

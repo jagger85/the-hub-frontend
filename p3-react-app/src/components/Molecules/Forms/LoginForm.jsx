@@ -1,18 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
-import { Validator,isEmailValid } from './Validator';
-import LoginButton from '../../Atoms/LoginButton';
 import WelcomeBack from './WelcomeBack'
 import CustomInput from '../../Atoms/CustomInput';
 import { Box, Typography,Button } from '@mui/material';
-
+import { dataService } from '../../../scripts/dataService';
 /**
  * @component JSX functional component for a login panel
  */
 function RegisterForm(props) {
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
-
+  const [message, setMessage] = useState('')
 
   const nameChanged = e => {
     setUser(e.target.value);
@@ -21,6 +19,11 @@ function RegisterForm(props) {
   const pwdChanged = e => {
     setPwd(e.target.value);
   };
+
+  const handleLogin = async () => {
+  setMessage(await dataService.logInUser(user,pwd))
+
+  }
 
   return ({
     /** Main container */
@@ -99,9 +102,12 @@ function RegisterForm(props) {
               width="100%"
               justifyContent="center"
               p="5px">
-              <LoginButton
-                type="submit"
-              />
+              <Button
+              variant="contained"
+              disabled={user=='' || pwd ==''}
+              onClick={()=> handleLogin()}>
+              Login
+            </Button>
             </Box>
           </Box>
           <Button onClick={props.switch}>Don't have an account? Sing up here</Button>
@@ -126,7 +132,7 @@ function RegisterForm(props) {
               xl: '0px 30px 30px 0px',
             },
           }}>
-          <WelcomeBack/>
+          <WelcomeBack message={message}/>
         </Box>
       </Box>
     </Box>
