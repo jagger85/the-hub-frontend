@@ -1,5 +1,4 @@
 import axios from 'axios';
-import bcrypt from "bcryptjs";
 
 const a = axios.create({
   baseURL: 'https://the-hub-dt35.onrender.com/',
@@ -38,7 +37,16 @@ export const dataService = {
   },
 
   logInUser: async function (username, password) {
-    
+    a.post(`login`,{username: username, password: password}).then(response => {
+      console.log(response)
+      console.log(response.headers)
+      if(response.status === 200){
+        localStorage.setItem('token', response.data.token)
+
+      }else{
+        console.log('failed to log in')
+      }
+    })
   },
 
   getPortfolioWallets: async function (portfolioAlias) {
