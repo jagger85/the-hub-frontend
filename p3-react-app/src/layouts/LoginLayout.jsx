@@ -6,7 +6,7 @@ import React from 'react';
 import { useState } from 'react';
 import background from '../assets/background.jpeg';
 
-function LoginLayout() {
+function LoginLayout(props) {
   
   const[login, setLogin] = useState(true)
   
@@ -25,7 +25,7 @@ function LoginLayout() {
           width: '100vw',
         }}>
         {login ?
-          <LoginForm switch={() => switchForm()}/>:
+          <LoginForm login={props.login} switch={() => switchForm()}/>:
           <RegisterForm switch={() => switchForm()}/>
         }
 

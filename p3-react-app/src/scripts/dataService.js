@@ -33,19 +33,21 @@ export const dataService = {
   },
 
   createUser: async function (username, email, password) {
-    return await a.post(`user`, { username: username, email: email, password: password  }).then((res) => console.log(res.data));
+    return await a.post(`register`, { username: username, email: email, password: password  }).then((res) => console.log(res.data));
   },
 
   logInUser: async function (username, password) {
-    a.post(`login`,{username: username, password: password}).then(response => {
-      console.log(response)
-      console.log(response.headers)
-      if(response.status === 200){
-        localStorage.setItem('token', response.data.token)
-
+    return a.post(`login`,{username: username, password: password})
+    .then(response => {
+      if(response.data.token) {
+        localStorage.setItem('token', response.data.token) 
+        dataService.setUser(username)
+        return response.data.message
       }else{
-        console.log('failed to log in')
+        return response.data.error
       }
+        
+      
     })
   },
 

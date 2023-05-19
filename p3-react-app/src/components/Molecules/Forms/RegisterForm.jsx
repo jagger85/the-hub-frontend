@@ -31,7 +31,7 @@ function RegisterForm(props) {
   };
 
   const handleRegister = () => {
-    dataService.createUser(user, email, pwd);
+   dataService.createUser(user, email, pwd)
   };
   return ({
     /** Main container */

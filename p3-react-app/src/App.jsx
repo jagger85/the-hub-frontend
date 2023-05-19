@@ -36,7 +36,7 @@ const App = () => {
           </Routes>
         </MainLayout>
       </ThemeProvider>:
-    <LoginLayout/> 
+    <LoginLayout login={setLogged}/> 
   );
 };
 export default App;

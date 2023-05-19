@@ -7,7 +7,7 @@ import { dataService } from '../../../scripts/dataService';
 /**
  * @component JSX functional component for a login panel
  */
-function RegisterForm(props) {
+function LoginForm(props) {
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [message, setMessage] = useState('')
@@ -21,8 +21,10 @@ function RegisterForm(props) {
   };
 
   const handleLogin = async () => {
-  setMessage(await dataService.logInUser(user,pwd))
-
+    const msg =  await dataService.logInUser(user,pwd)
+    setMessage(msg)
+    console.log(msg)
+    if(msg == 'Login success!')props.login(true)
   }
 
   return ({
@@ -139,4 +141,4 @@ function RegisterForm(props) {
   ));
 }
 
-export default RegisterForm;
+export default LoginForm;
