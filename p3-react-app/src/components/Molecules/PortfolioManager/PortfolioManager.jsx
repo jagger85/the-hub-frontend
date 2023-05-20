@@ -1,53 +1,36 @@
-import React, { useEffect } from 'react';
 import { Button, Grid } from '@mui/material';
-import { useReducer } from 'react';
 import Portfolio from './Portfolio';
 import AddPortfolioDialog from '../Dialogs/AddPortfolioDialog';
-import { dataService } from '../../../scripts/dataService';
+import { dataService } from '../../../utils/dataService';
 import { styles as stl } from './PortfolioManagerStyle';
 import { v4 as uuid } from 'uuid';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'setPortfolios':
-      return { ...state, portfolios: action.portfolios };
-
-    case 'openDialog':
-      return { ...state, dialog: true };
-
-    case 'closeDialog':
-      return { ...state, dialog: false };
-
-    default:
-      console.log(`${action.type} this action is not supported`);
-      break;
-  }
-};
+import { useContext, useState } from 'react';
+import { MyContext, actionTypes } from '../../../utils/MyContexProvider';
 
 function PortfolioManager() {
-  const [state, dispatch] = useReducer(reducer, { dialog: false });
+  const { state, dispatch } = useContext(MyContext);
+  const [open, setOpen] = useState(false);
 
   const removePortfolio = async (portfolioName) => {
     await dataService.removePortfolio(portfolioName);
-    const portfolios = await dataService.getPortfolios();
-    dispatch({ type: 'setPortfolios', portfolios: portfolios });
+    const updatedPortfolios = await dataService.getPortfolios();
+    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
   };
 
-  useEffect(() => {
-    const init = async () => {
-      const portfolios = await dataService.getPortfolios();
-      dispatch({ type: 'setPortfolios', portfolios: portfolios });
-    };
-    init();
-  }, [state.dialog]);
+  const createPortfolio = async (portfolioName) => {
+    setOpen(false)
+    await dataService.addPortfolio(portfolioName);
+    const updatedPortfolios = await dataService.getPortfolios();
+    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
+  };
 
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
       <Grid item>
-        <Button onClick={() => dispatch({ type: 'openDialog' })}>Add a new portfolio</Button>
+        <Button onClick={() => setOpen(true)}>Add a new portfolio</Button>
       </Grid>
       <Grid item>
-        <AddPortfolioDialog close={() => dispatch({ type: 'closeDialog' })} open={state.dialog} />
+        <AddPortfolioDialog create={createPortfolio} open={open} onClose={setOpen} />
       </Grid>
       {state.portfolios != null &&
         state.portfolios.map((x) => {

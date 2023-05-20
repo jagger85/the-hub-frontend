@@ -8,9 +8,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PortfolioWallet from './PortfolioWallet';
 import { CustomAccordion } from './CustomAccordion';
-import { rules } from '../../../scripts/validationRules';
+import { rules } from '../../../utils/validationRules';
 import { v4 as uuid } from 'uuid';
-import { dataService } from '../../../scripts/dataService';
+import { dataService } from '../../../utils/dataService';
 import StarIcon from '@mui/icons-material/Star';
 
 const reducer = (state, action) => {
