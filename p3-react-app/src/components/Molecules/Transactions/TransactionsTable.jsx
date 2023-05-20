@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Gallery from '../Gallery/Gallery';
 import { useEffect } from 'react';
-import { apiCalls } from '../../../scripts/apicalls';
+import { apiCalls } from '../../../utils/apicalls';
 import CustomSelect from '../../Atoms/CustomSelect';
 import { Box, Grid, Typography } from '@mui/material';
 import { styles as stl } from './TransactionsTableStyle';

@@ -1,10 +1,10 @@
-import React from "react";
-import { Grid, Typography } from "@mui/material";
-import { FormLabel, RadioGroup, FormControlLabel, Radio, Divider } from "@mui/material";
-import { apiCalls } from "../../../scripts/apicalls";
-import { useReducer } from "react";
-import CustomSelect from "../../Atoms/CustomSelect";
-import { styles } from "./NetworkSettingsStyle";
+import React from 'react';
+import { Grid, Typography } from '@mui/material';
+import { FormLabel, RadioGroup, FormControlLabel, Radio, Divider } from '@mui/material';
+import { apiCalls } from '../../../utils/apicalls';
+import { useReducer } from 'react';
+import CustomSelect from '../../Atoms/CustomSelect';
+import { styles } from './NetworkSettingsStyle';
 import { v4 as uuid } from 'uuid';
 
 const initialValue = {
@@ -14,16 +14,16 @@ const initialValue = {
 
 const reducer = (settings, action) => {
   switch (action.type) {
-    case "network":
+    case 'network':
       apiCalls.setNetwork(action.payload);
       return { ...settings, network: action.payload };
 
-    case "endpoint":
+    case 'endpoint':
       apiCalls.setEndpoint(action.payload);
       return { ...settings, endpoint: action.payload };
 
     default:
-      console.log(action + " This action is not supported");
+      console.log(action + ' This action is not supported');
   }
 };
 /**
@@ -33,48 +33,46 @@ function NetworkSettings() {
   const [settings, dispatch] = useReducer(reducer, initialValue); //Sets the selected network and endpoint to the object apicalls
 
   const handleSelectChange = (value) => {
-    dispatch({ type: "endpoint", payload: value });
+    dispatch({ type: 'endpoint', payload: value });
   };
   const handleNetworkChange = (event) => {
-    event.target.value == "mainnet"
-      ? dispatch({ type: "network", payload: "mainnet" })
-      : dispatch({ type: "network", payload: "testnet" });
+    event.target.value == 'mainnet'
+      ? dispatch({ type: 'network', payload: 'mainnet' })
+      : dispatch({ type: 'network', payload: 'testnet' });
   };
 
   return (
     <Grid container>
-    <Grid item xs={12} sx={styles.section}>
-    <FormLabel id="demo-radio-buttons-group-label">Network</FormLabel>
-    <RadioGroup
-    aria-labelledby="demo-radio-buttons-group-label"
-    defaultValue="mainnet"
-    name="radio-buttons-group"
-    value={apiCalls.getNetwork}
-    onChange={handleNetworkChange}
-    >
-    {apiCalls.getNetworks.map((e) => {
-      return (
-        <FormControlLabel
-        value={e}
-        control={<Radio />}
-        label={<Typography color="white">{e}</Typography>}
-        key={uuid()}
-        />
-        );
-      })}
-      </RadioGroup>
+      <Grid item xs={12} sx={styles.section}>
+        <FormLabel id='demo-radio-buttons-group-label'>Network</FormLabel>
+        <RadioGroup
+          aria-labelledby='demo-radio-buttons-group-label'
+          defaultValue='mainnet'
+          name='radio-buttons-group'
+          value={apiCalls.getNetwork}
+          onChange={handleNetworkChange}>
+          {apiCalls.getNetworks.map((e) => {
+            return (
+              <FormControlLabel
+                value={e}
+                control={<Radio />}
+                label={<Typography color='white'>{e}</Typography>}
+                key={uuid()}
+              />
+            );
+          })}
+        </RadioGroup>
       </Grid>
       <Grid item sx={styles.section}>
-      <CustomSelect
-      onChange={handleSelectChange}
-      menuItems={apiCalls.getEndpoints}
-      label="Enpoints"
-      width={{ width: 200 }}
-      />
+        <CustomSelect
+          onChange={handleSelectChange}
+          menuItems={apiCalls.getEndpoints}
+          label='Enpoints'
+          width={{ width: 200 }}
+        />
       </Grid>
-      </Grid>
-      
-      );
-    }
-    
-    export default NetworkSettings;
+    </Grid>
+  );
+}
+
+export default NetworkSettings;

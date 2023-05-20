@@ -1,10 +1,10 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import CollectionUniq from "../Molecules/CollectionUniq";
-import { apiCalls } from "../../scripts/apicalls";
-import { Grid, Typography } from "@mui/material";
-import { styles as stl } from "./PagesStyle";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import CollectionUniq from '../Molecules/CollectionUniq';
+import { apiCalls } from '../../utils/apicalls';
+import { Grid, Typography } from '@mui/material';
+import { styles as stl } from './PagesStyle';
 
 function CollectionInfo() {
   const { id } = useParams();

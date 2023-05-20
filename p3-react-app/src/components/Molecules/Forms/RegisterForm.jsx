@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Validator, isValid, isEmailValid } from './Validator';
 import CustomInput from '../../Atoms/CustomInput';
 import { Box, Typography, Button } from '@mui/material';
-import { dataService } from '../../../scripts/dataService';
+import { dataService } from '../../../utils/dataService';
 
 /**
  * @component JSX functional component for a login panel
@@ -31,7 +31,7 @@ function RegisterForm(props) {
   };
 
   const handleRegister = () => {
-   dataService.createUser(user, email, pwd)
+    dataService.createUser(user, email, pwd);
   };
   return ({
     /** Main container */
@@ -103,7 +103,7 @@ function RegisterForm(props) {
               <Button
                 variant='contained'
                 disabled={!isValid(pwd, pwd2, user) || !isEmailValid(email)}
-                onClick={()=> handleRegister()}>
+                onClick={() => handleRegister()}>
                 Register
               </Button>
             </Box>

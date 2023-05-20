@@ -1,31 +1,31 @@
 import React from 'react';
 import { useState } from 'react';
-import WelcomeBack from './WelcomeBack'
+import WelcomeBack from './WelcomeBack';
 import CustomInput from '../../Atoms/CustomInput';
-import { Box, Typography,Button } from '@mui/material';
-import { dataService } from '../../../scripts/dataService';
+import { Box, Typography, Button } from '@mui/material';
+import { dataService } from '../../../utils/dataService';
 /**
  * @component JSX functional component for a login panel
  */
 function LoginForm(props) {
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
 
-  const nameChanged = e => {
+  const nameChanged = (e) => {
     setUser(e.target.value);
   };
 
-  const pwdChanged = e => {
+  const pwdChanged = (e) => {
     setPwd(e.target.value);
   };
 
   const handleLogin = async () => {
-    const msg =  await dataService.logInUser(user,pwd)
-    setMessage(msg)
-    console.log(msg)
-    if(msg == 'Login success!')props.login(true)
-  }
+    const msg = await dataService.logInUser(user, pwd);
+    setMessage(msg);
+    console.log(msg);
+    if (msg == 'Login success!') props.login(true);
+  };
 
   return ({
     /** Main container */
@@ -55,7 +55,7 @@ function LoginForm(props) {
         }}>
         {/** Login container  */}
         <Box
-          p="30px"
+          p='30px'
           sx={{
             minWidth: '400px',
             backgroundColor: 'rgba(0, 24, 57, 0.2)',
@@ -73,43 +73,18 @@ function LoginForm(props) {
             },
           }}>
           <Box>
-            <Box
-              display="flex"
-              flexDirection="column"
-              alignItems="center">
-              <Typography
-                variant="h5"
-                fontWeight="bold"
-                color="white">
+            <Box display='flex' flexDirection='column' alignItems='center'>
+              <Typography variant='h5' fontWeight='bold' color='white'>
                 Log in
               </Typography>
             </Box>
-            <CustomInput
-              label="Username"
-              placeholder="Enter a username"
-              text={true}
-              getValue={nameChanged}
-            />
-            <CustomInput
-              label="Password"
-              placeholder="Enter a password"
-              isIconActive={true}
-              getValue={pwdChanged}
-            />
-        
+            <CustomInput label='Username' placeholder='Enter a username' text={true} getValue={nameChanged} />
+            <CustomInput label='Password' placeholder='Enter a password' isIconActive={true} getValue={pwdChanged} />
 
-            <Box
-              display="flex"
-              flexDirection="row"
-              width="100%"
-              justifyContent="center"
-              p="5px">
-              <Button
-              variant="contained"
-              disabled={user=='' || pwd ==''}
-              onClick={()=> handleLogin()}>
-              Login
-            </Button>
+            <Box display='flex' flexDirection='row' width='100%' justifyContent='center' p='5px'>
+              <Button variant='contained' disabled={user == '' || pwd == ''} onClick={() => handleLogin()}>
+                Login
+              </Button>
             </Box>
           </Box>
           <Button onClick={props.switch}>Don't have an account? Sing up here</Button>
@@ -134,7 +109,7 @@ function LoginForm(props) {
               xl: '0px 30px 30px 0px',
             },
           }}>
-          <WelcomeBack message={message}/>
+          <WelcomeBack message={message} />
         </Box>
       </Box>
     </Box>

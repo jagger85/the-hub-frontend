@@ -1,5 +1,5 @@
 import React from 'react';
-import { rules, emailRule } from '../../../scripts/passwordRules';
+import { rules, emailRule } from '../../../utils/passwordRules';
 import ListItem from '@mui/material/ListItem';
 import { Box, Typography } from '@mui/material';
 import { colors } from '../../../theme';
@@ -19,11 +19,7 @@ export function Validator(props) {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-      <Typography
-        variant="h5"
-        fontWeight="bold"
-        color="white"
-        p={3}>
+      <Typography variant='h5' fontWeight='bold' color='white' p={3}>
         Join With Us{' '}
       </Typography>
 
@@ -33,19 +29,15 @@ export function Validator(props) {
       )}
 
       {/** Looping all the rules */}
-      {rules.map(pwdRule => {
+      {rules.map((pwdRule) => {
         if (!pwdRule.rule.test(props.pwd) && props.pwd != '')
-          return (
-            <Typography color={colors.input[300]}>{pwdRule.warning}</Typography>
-          );
+          return <Typography color={colors.input[300]}>{pwdRule.warning}</Typography>;
       })}
 
       {/** Checking if both passwords match */}
       {props.pwd2 != '' && props.pwd != props.pwd2 ? (
         <ListItem>
-          <Typography color={colors.input[300]}>
-            Passwords must match
-          </Typography>
+          <Typography color={colors.input[300]}>Passwords must match</Typography>
         </ListItem>
       ) : (
         ''
@@ -61,15 +53,9 @@ export function Validator(props) {
  * @returns {boolean}
  */
 export function isValid(pwd, pwd2, userName) {
-  return (
-    rules.every(element => element.rule.test(pwd)) &&
-    pwd == pwd2 &&
-    userName != ''
-  );
-
-
+  return rules.every((element) => element.rule.test(pwd)) && pwd == pwd2 && userName != '';
 }
 
-export function isEmailValid(email){
-  return emailRule.rule.test(email)  
+export function isEmailValid(email) {
+  return emailRule.rule.test(email);
 }
