@@ -1,88 +1,114 @@
-import React from "react";
-import { Drawer, Typography, Box, Divider, Grid, Chip } from "@mui/material";
-import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import InventoryIcon from "@mui/icons-material/Inventory";
-import StoreIcon from "@mui/icons-material/Store";
-import CollectionsIcon from "@mui/icons-material/Collections";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { Link } from "react-router-dom";
-import { styles } from "../../layouts/MainLayoutStyle";
-import img from "../../assets/uniqtest.png";
+import React from 'react';
+import { Drawer, Typography, Box, Divider, Grid, Chip } from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import StoreIcon from '@mui/icons-material/Store';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';
+import { styles } from '../../layouts/MainLayoutStyle';
+import img from '../../assets/uniqtest.png';
 import { v4 as uuid } from 'uuid';
+import PortfolioSelect from '../Atoms/PortfolioSelect'
 
 function SideBar() {
-  const menuItems = [
+  const portfolioItems = [
     {
-      text: "Dashboard",
+      text: 'Dashboard',
       icon: <DashboardIcon />,
-      path: "/",
+      path: '/',
     },
     {
-      text: "Inventory",
+      text: 'Inventory',
       icon: <InventoryIcon />,
-      path: "/inventory",
+      path: '/inventory',
     },
+  ];
+
+  const globalItems = [
     {
-      text: "Marketplace",
+      text: 'Marketplace',
       icon: <StoreIcon />,
-      path: "/marketplace",
+      path: '/marketplace',
     },
     {
-      text: "Collections",
+      text: 'Collections',
       icon: <CollectionsIcon />,
-      path: "/collections",
+      path: '/collections',
     },
     {
-      text: "Games",
+      text: 'Games',
       icon: <SportsEsportsIcon />,
-      path: "/test",
+      path: '/test',
     },
+  ];
+
+  const menuItems = [
+
     {
-      text: "Settings",
+      text: 'Settings',
       icon: <SettingsIcon />,
-      path: "/settings",
+      path: '/settings',
     },
   ];
 
   return (
-    <Drawer sx={styles.drawer} variant="permanent" anchor="left">
+    <Drawer sx={styles.drawer} variant='permanent' anchor='left'>
       <Grid container>
         <Grid item sx={[styles.gridSection, styles.gridLogo]} xs={12}>
-          <Typography variant="h5">THE HUB</Typography>
+          <Typography variant='h5'>THE HUB</Typography>
         </Grid>
         <Grid item sx={styles.gridSection} xs={12}>
           <Divider />
         </Grid>
         <Grid item sx={[styles.gridSection, styles.gridAvatar]} xs={12}>
-          <Box
-            component="img"
-            sx={styles.avatar}
-            alt="Uniq on sale"
-            src={img}
-          />
+          <Box component='img' sx={styles.avatar} alt='Uniq on sale' src={img} />
         </Grid>
         <Grid item sx={styles.gridSection} xs={12}>
           <Divider>
-            <Chip label="USER" />
+            <Chip label='USER' />
           </Divider>
         </Grid>
         <Grid item sx={styles.gridSection} xs={12}>
+        <PortfolioSelect/>
+        </Grid>
+        <Grid item sx={styles.gridSection} xs={12}>
           <List>
-            {menuItems.map((item) => (
-              <Link
-                style={{ textDecoration: "none" }}
-                to={item.path}
-                key={uuid()}
-                sx={styles.sidebarLink}
-              >
+            {portfolioItems.map((item) => (
+              <Link style={{ textDecoration: 'none' }} to={item.path} key={uuid()} sx={styles.sidebarLink}>
                 <ListItem key={item.text}>
-                  <ListItemIcon key={"icon " + item.text} sx={styles.listItemIcon}>
+                  <ListItemIcon key={'icon ' + item.text} sx={styles.listItemIcon}>
                     {item.icon}
                   </ListItemIcon>
-                  <ListItemText key={"text" + item.text} sx={styles.listItemText} >
-                
+                  <ListItemText key={'text' + item.text} sx={styles.listItemText}>
+                    {item.text}
+                  </ListItemText>
+                </ListItem>
+              </Link>
+            ))}
+            <Divider/>
+            {globalItems.map((item) => (
+              <Link style={{ textDecoration: 'none' }} to={item.path} key={uuid()} sx={styles.sidebarLink}>
+                <ListItem key={item.text}>
+                  <ListItemIcon key={'icon ' + item.text} sx={styles.listItemIcon}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText key={'text' + item.text} sx={styles.listItemText}>
+                    {item.text}
+                  </ListItemText>
+                </ListItem>
+              </Link>
+            ))}
+            <Divider/>
+            {menuItems.map((item) => (
+              <Link style={{ textDecoration: 'none' }} to={item.path} key={uuid()} sx={styles.sidebarLink}>
+                <ListItem key={item.text}>
+                  <ListItemIcon key={'icon ' + item.text} sx={styles.listItemIcon}>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText key={'text' + item.text} sx={styles.listItemText}>
                     {item.text}
                   </ListItemText>
                 </ListItem>
