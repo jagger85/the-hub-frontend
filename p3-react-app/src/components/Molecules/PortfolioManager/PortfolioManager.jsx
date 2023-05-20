@@ -6,7 +6,6 @@ import AddPortfolioDialog from '../Dialogs/AddPortfolioDialog';
 import { dataService } from '../../../scripts/dataService';
 import { styles as stl } from './PortfolioManagerStyle';
 import { v4 as uuid } from 'uuid';
-let counter = 0 
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,26 +25,21 @@ const reducer = (state, action) => {
 };
 
 function PortfolioManager() {
-  
   const [state, dispatch] = useReducer(reducer, { dialog: false });
-  
+
   const removePortfolio = async (portfolioName) => {
     await dataService.removePortfolio(portfolioName);
-    const portfolios = await dataService.getPortfolios()
+    const portfolios = await dataService.getPortfolios();
     dispatch({ type: 'setPortfolios', portfolios: portfolios });
   };
 
   useEffect(() => {
-    counter++
-     console.log(`manager: ${counter}`)
-
     const init = async () => {
       const portfolios = await dataService.getPortfolios();
       dispatch({ type: 'setPortfolios', portfolios: portfolios });
     };
     init();
   }, [state.dialog]);
-
 
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
