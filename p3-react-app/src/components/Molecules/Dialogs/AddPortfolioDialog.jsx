@@ -18,8 +18,8 @@ function AddPortfolioDialog(props) {
     setPortfolioName(e.target.value);
   };
 
-  const setPortfolio = () => {
-    dataService.addPortfolio(portfolioName)
+  const setPortfolio = async () => {
+    await dataService.addPortfolio(portfolioName)
     props.close()
   }
 

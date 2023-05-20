@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useReducer, useState } from "react";
 import {
   AccordionDetails,
@@ -17,52 +17,66 @@ import { CustomAccordion } from "./CustomAccordion";
 import { rules } from "../../../scripts/validationRules";
 import { v4 as uuid } from "uuid";
 import { dataService } from "../../../scripts/dataService";
-
 import StarIcon from "@mui/icons-material/Star";
+let counter = 0 
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'expand':
+       const expand = state.expanded ? false : true 
+      return {...state, expanded: expand}
+    case "setWallets":
+      return {...state, walletAlias: '', walletAdress:'', wallets: action.wallets}
 
     case "setNewPortfolioName":
-      return { ...state, portfolioName: action.name.e.target.value };
-
-    case "removePortfolio":
-      dataService.removePortfolio( action.portfolioName )
-      action.reset()
-      return 
+      return { ...state, portfolioAlias: action.name.e.target.value };
 
     case "setNewWallet":
       return { ...state, newWallet: action.newWallet.e.target.value };
 
     case "setNewAlias":
       return { ...state, newAlias: action.newAlias.e.target.value };
-
-    case "addWallet":
-        dataService.addWallet(action.portfolioName,state.newAlias,state.newWallet)
-        return { ...state };
-
-    case "deleteWallet":
-      dataService.removeWallet(action.portfolioName, action.alias)
-      return { ...state, wallets: dataService.getPortfolioWallets(action.portfolioName)};
-
-    case "setPages":
-      return { ...state };
-
-    default:
-      console.log(action.type + " this action is not supported");
+      
+      default:
+        console.log(action.type + " this action is not supported");
   }
 };
 function Portfolio(props) {
-  const [expanded, setExpanded] = useState(false);
+
   const [state, dispatch] = useReducer(reducer, {
-    wallets: dataService.getPortfolioWallets(props.name),
+    wallets: [],
     newWallet: "",
     newAlias: "",
+    expanded: false,
+    portfolioAlias: props.name
   });
 
+  const removeWallet = async (walletAlias) => {
+    await dataService.removeWallet(state.portfolioAlias,walletAlias)
+    const wallets = await dataService.getPortfolioWallets(state.portfolioAlias)
+    dispatch({type: 'setWallets', wallets: wallets})
+  }
+
+  const addWallet = async () => {
+    await dataService.addWallet(state.portfolioAlias, state.newAlias, state.newWallet)
+    const wallets = await dataService.getPortfolioWallets(state.portfolioAlias)
+    
+    dispatch({type: 'setWallets', wallets: wallets})
+  }
+ 
+  useEffect(()=>{
+    counter++
+    console.log(`portfolio: ${counter}`)
+    const init = async () => {
+      const wallets = await dataService.getPortfolioWallets(state.portfolioAlias)
+      dispatch({type: 'setWallets', wallets: wallets})
+    }
+    init()
+  },[])
+  
   return (
     <Box sx={stl.wrapper} >
-      <CustomAccordion sx={stl.accordionContainer} expanded={expanded}>
+      <CustomAccordion sx={stl.accordionContainer} expanded={state.expanded}>
         <AccordionSummary aria-controls="panel1bh-content" id="panel1bh-header">
           <Box
             sx={{
@@ -72,25 +86,25 @@ function Portfolio(props) {
               justifyContent: "space-between",
             }}
           >
-            {expanded ? (
+            {state.expanded ? (
               <CustomInput
-                placeholder={props.name}
+                placeholder={state.portfolioAlias}
                 text="true"
                 getValue={(e) =>
                   dispatch({ type: "setNewPortfolioName", name: { e } })
                 }
               />
             ) : (
-              <Typography> {props.name} </Typography>
+              <Typography> {state.portfolioAlias} </Typography>
             )}
             <Box>
-            {expanded ? 
-            <DeleteIcon sx={stl.icon} onClick={() =>dispatch({type: 'removePortfolio', portfolioName: props.name, reset: props.reset})}/>:
+            {state.expanded ? 
+            <DeleteIcon sx={stl.icon} onClick={() => props.destroy(state.portfolioAlias)}/>:
             <StarIcon sx={stl.icon}/>
             }
               <MoreVertIcon
                 onClick={() => {
-                  setExpanded(expanded ? false : true)
+                  dispatch({ type: 'expand'})
                 }}
                 sx={stl.expandIcon}
               />
@@ -126,7 +140,7 @@ function Portfolio(props) {
                     ? stl.addIcon
                     : stl.addIconBad
                 }
-                onClick={(e) => dispatch({ type: "addWallet" , portfolioName: props.name })}
+                onClick={(e) => addWallet()}
                 onMouseEnter={() => {
                   if (
                     rules.every((element) =>
@@ -143,16 +157,16 @@ function Portfolio(props) {
         </AccordionDetails>
       </CustomAccordion>
 
-      {dataService.getPortfolioWallets(props.name) != 0 && (
+      {state.wallets.length != 0 && (
         <Box sx={stl.walletsContainer}>
-          {dataService.getPortfolioWallets(props.name).map((wallet) => (
+          {state.wallets.map((wallet) => (
             <PortfolioWallet
               key={uuid()}
               alias={wallet.alias}
               wallet={wallet.address}
-              editable={expanded}
-              onClick={(value) =>
-                dispatch({ type: "deleteWallet", portfolioName: props.name, alias: wallet.alias })
+              editable={state.expanded}
+              onClick={(walletAlias) => removeWallet(walletAlias)
+                
               }
             />
           ))}
