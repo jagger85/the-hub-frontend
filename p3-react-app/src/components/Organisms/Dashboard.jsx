@@ -5,6 +5,7 @@ import { styles as stl } from './PagesStyle';
 import NoData from '../Atoms/NoData';
 import { MyContext } from '../../utils/MyContexProvider'
 import { useContext } from 'react';
+import { v4 as uuid } from 'uuid';
 
 function Dashboard() {
 
@@ -21,7 +22,7 @@ function Dashboard() {
       <Grid item xs={12} sx={stl.section}>
         {state.portfolios.length > 0 ? (
           state.portfolios[0].wallets.map((x) => {
-            return <TransactionsTable wallet={x.address} alias={x.alias} />;
+            return <TransactionsTable key={uuid()} wallet={x.address} alias={x.alias} />;
           })
         ) : (
           <NoData />
