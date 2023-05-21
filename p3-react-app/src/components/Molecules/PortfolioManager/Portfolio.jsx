@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useReducer } from 'react';
 import { AccordionDetails, AccordionSummary, Grid, Typography, Box } from '@mui/material';
 import { styles as stl } from './PortfolioManagerStyle';
@@ -10,7 +9,6 @@ import PortfolioWallet from './PortfolioWallet';
 import { CustomAccordion } from './CustomAccordion';
 import { rules } from '../../../utils/validationRules';
 import { v4 as uuid } from 'uuid';
-import { dataService } from '../../../utils/dataService';
 import StarIcon from '@mui/icons-material/Star';
 
 const reducer = (state, action) => {
@@ -18,11 +16,9 @@ const reducer = (state, action) => {
     case 'expand':
       const expand = state.expanded ? false : true;
       return { ...state, expanded: expand };
-    case 'setWallets':
-      return { ...state, walletAlias: '', walletAdress: '', wallets: action.wallets };
 
-    case 'setNewPortfolioName':
-      return { ...state, portfolioAlias: action.name.e.target.value };
+    case 'setNewPortfolioalias':
+      return { ...state, portfolioAlias: action.alias.e.target.value };
 
     case 'setNewWallet':
       return { ...state, newWallet: action.newWallet.e.target.value };
@@ -36,33 +32,10 @@ const reducer = (state, action) => {
 };
 function Portfolio(props) {
   const [state, dispatch] = useReducer(reducer, {
-    wallets: [],
     newWallet: '',
     newAlias: '',
     expanded: false,
-    portfolioAlias: props.name,
   });
-
-  const removeWallet = async (walletAlias) => {
-    await dataService.removeWallet(state.portfolioAlias, walletAlias);
-    const wallets = await dataService.getPortfolioWallets(state.portfolioAlias);
-    dispatch({ type: 'setWallets', wallets: wallets });
-  };
-
-  const addWallet = async () => {
-    await dataService.addWallet(state.portfolioAlias, state.newAlias, state.newWallet);
-    const wallets = await dataService.getPortfolioWallets(state.portfolioAlias);
-
-    dispatch({ type: 'setWallets', wallets: wallets });
-  };
-
-  useEffect(() => {
-    const init = async () => {
-      const wallets = await dataService.getPortfolioWallets(state.portfolioAlias);
-      dispatch({ type: 'setWallets', wallets: wallets });
-    };
-    init();
-  }, []);
 
   return (
     <Box sx={stl.wrapper}>
@@ -77,16 +50,16 @@ function Portfolio(props) {
             }}>
             {state.expanded ? (
               <CustomInput
-                placeholder={state.portfolioAlias}
+                placeholder={props.portfolio.alias}
                 text='true'
-                getValue={(e) => dispatch({ type: 'setNewPortfolioName', name: { e } })}
+                getValue={(e) => dispatch({ type: 'setNewPortfolioalias', alias: { e } })}
               />
             ) : (
-              <Typography> {state.portfolioAlias} </Typography>
+              <Typography> {props.portfolio.alias} </Typography>
             )}
             <Box>
               {state.expanded ? (
-                <DeleteIcon sx={stl.icon} onClick={() => props.destroy(state.portfolioAlias)} />
+                <DeleteIcon sx={stl.icon} onClick={() => props.destroy(props.portfolio.alias)} />
               ) : (
                 <StarIcon sx={stl.icon} />
               )}
@@ -123,7 +96,7 @@ function Portfolio(props) {
                     ? stl.addIcon
                     : stl.addIconBad
                 }
-                onClick={(e) => addWallet()}
+                onClick={(e) => props.createWallet(props.portfolio.alias, state.newAlias, state.newWallet)}
                 onMouseEnter={() => {
                   if (rules.every((element) => element.rule.test(state.newWallet)) & (state.newAlias != '')) {
                   }
@@ -135,15 +108,15 @@ function Portfolio(props) {
         </AccordionDetails>
       </CustomAccordion>
 
-      {state.wallets.length != 0 && (
+      {props.portfolio.wallets.length != 0 && (
         <Box sx={stl.walletsContainer}>
-          {state.wallets.map((wallet) => (
+          {props.portfolio.wallets.map((wallet) => (
             <PortfolioWallet
               key={uuid()}
               alias={wallet.alias}
               wallet={wallet.address}
               editable={state.expanded}
-              onClick={(walletAlias) => removeWallet(walletAlias)}
+              onClick={(walletAlias) => props.removeWallet(props.portfolio.alias, walletAlias)}
             />
           ))}
         </Box>

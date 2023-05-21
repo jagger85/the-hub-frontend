@@ -24,6 +24,18 @@ function PortfolioManager() {
     dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
   };
 
+  const addWallet = async (portfolioAlias, walletAlias, walletAddress) => {
+    await dataService.addWallet(portfolioAlias, walletAlias, walletAddress);
+    const updatedPortfolios = await dataService.getPortfolios();
+    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
+  };
+
+  const removeWallet = async (portfolioAlias, walletAlias) => {
+    await dataService.removeWallet(portfolioAlias, walletAlias);
+    const updatedPortfolios = await dataService.getPortfolios();
+    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
+  };
+
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
       <Grid item>
@@ -33,10 +45,10 @@ function PortfolioManager() {
         <AddPortfolioDialog create={createPortfolio} open={open} onClose={setOpen} />
       </Grid>
       {state.portfolios != null &&
-        state.portfolios.map((x) => {
+        state.portfolios.map( portfolio => {
           return (
             <Grid item key={uuid()}>
-              <Portfolio destroy={removePortfolio} name={x.alias} key={uuid()} />
+              <Portfolio destroy={removePortfolio} createWallet={addWallet} removeWallet={removeWallet} portfolio={portfolio} key={uuid()} />
             </Grid>
           );
         })}
