@@ -17,6 +17,13 @@ export const dataService = {
   setCurrency: function (currency) {
     this.currency = currency;
   },
+  getPreferredPortfolio: async function(){
+    return await a.post(`user/portfolio/settings/${this.user}`,config).then(res => console.log(res.data))
+  },
+
+  setPreferredPortfolio: async function(portfolioAlias){
+    return await a.post(`user/portfolio/settings/${this.user}`,{portfolio:portfolioAlias}, config).then( res => console.log(res.data))
+  },
 
   setUser: function (username) {
     this.user = username;
@@ -90,5 +97,5 @@ export const dataService = {
         data: { alias: portfolioAlias, walletAlias: walletAlias },
       })
       .then((res) => res.data);
-  },
+  }
 };
