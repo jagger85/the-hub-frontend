@@ -9,7 +9,7 @@ import { v4 as uuid } from 'uuid';
 
 function Dashboard() {
 
-  const { state } = useContext(MyContext);
+  const { getPortfolio } = useContext(MyContext);
 
   return (
     <Grid container sx={stl.container}>
@@ -20,13 +20,13 @@ function Dashboard() {
         <WalletInfo />
       </Grid>
       <Grid item xs={12} sx={stl.section}>
-        {state.portfolios.length > 0 ? (
-          state.portfolios[0].wallets.map((x) => {
+        {getPortfolio() ? 
+          getPortfolio().wallets.map((x) => {
             return <TransactionsTable key={uuid()} wallet={x.address} alias={x.alias} />;
           })
-        ) : (
+         : 
           <NoData />
-        )}
+        }
       </Grid>
     </Grid>
   );

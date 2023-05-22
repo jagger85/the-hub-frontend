@@ -8,6 +8,7 @@ let config;
 
 export const dataService = {
   user: '',
+  selectedPortfolio: null,
 
   getCurrency: async function () {
     return await a.get(`settings/currency/${this.user}`, config).then(res => res.data)

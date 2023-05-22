@@ -38,8 +38,9 @@ function PortfolioManager() {
 
   const setPreferredPortfolio = async (portfolioName) => {
     const preferredPortfolio = await dataService.setPreferredPortfolio(portfolioName)
-    dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, portfolioAlias:preferredPortfolio.preferredPortfolio})
+    dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, portfolioAlias:preferredPortfolio})
   }
+
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
       <Grid item>
@@ -59,7 +60,7 @@ function PortfolioManager() {
               portfolio={portfolio} 
               key={uuid()} 
               setPreferred= {setPreferredPortfolio}
-              isPreferred = {state.preferredPortfolio == portfolio.alias}
+              isPreferred = {state.preferredPortfolio?.alias == portfolio.alias}
               />
             </Grid>
           );

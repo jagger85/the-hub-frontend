@@ -91,9 +91,6 @@ export const styles = {
     starSelected: {
         marginTop:  0,
         color : 'yellow',
-        '&:hover' :{
-            color: 'red'
-        }
     },
 
     deleteIconBox: { 

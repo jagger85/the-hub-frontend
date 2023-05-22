@@ -73,7 +73,7 @@ function Gallery(props) {
             case 'uniqsOwned':
               return (
                 <Grid item xs={12} sm={8} md={6} lg={4} xl={2} key={uuid()}>
-                  <UniqOwned uniq={e} key={new Date().getTime()} />
+                  <UniqOwned uniq={e} key={uuid()} />
                 </Grid>
               );
             case 'collections':
