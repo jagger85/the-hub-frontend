@@ -4,7 +4,7 @@ import axios from 'axios';
 const mainnetEndpoints = [
   {
     text: "EOSNATION",
-    value: "http://ultra.api.eosnation.io",
+    value: "https://ultra.api.eosnation.io",
   },
   {
     text: "EOSRIO",
@@ -122,7 +122,7 @@ export const apiCalls = {
 
   getWalletUniqs: async function (wallet) {
     console.log(wallet)
-      return wallet ? axios.post(`${this.endpoint}v1/chain/get_table_rows`,
+      return wallet ? axios.post(`${this.endpoint}/v1/chain/get_table_rows`,
         {
           code: "eosio.nft.ft",
           table: "token.a",
