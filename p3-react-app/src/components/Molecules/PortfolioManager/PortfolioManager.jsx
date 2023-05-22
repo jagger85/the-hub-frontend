@@ -36,6 +36,10 @@ function PortfolioManager() {
     dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
   };
 
+  const setPreferredPortfolio = async (portfolioName) => {
+    const preferredPortfolio = await dataService.setPreferredPortfolio(portfolioName)
+    dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, portfolioAlias:preferredPortfolio.preferredPortfolio})
+  }
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
       <Grid item>
@@ -48,7 +52,15 @@ function PortfolioManager() {
         state.portfolios.map( portfolio => {
           return (
             <Grid item key={uuid()}>
-              <Portfolio destroy={removePortfolio} createWallet={addWallet} removeWallet={removeWallet} portfolio={portfolio} key={uuid()} />
+              <Portfolio 
+              destroy={removePortfolio} 
+              createWallet={addWallet} 
+              removeWallet={removeWallet} 
+              portfolio={portfolio} 
+              key={uuid()} 
+              setPreferred= {setPreferredPortfolio}
+              isPreferred = {state.preferredPortfolio == portfolio.alias}
+              />
             </Grid>
           );
         })}

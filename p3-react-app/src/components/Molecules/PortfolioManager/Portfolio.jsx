@@ -31,11 +31,13 @@ const reducer = (state, action) => {
   }
 };
 function Portfolio(props) {
+
   const [state, dispatch] = useReducer(reducer, {
     newWallet: '',
     newAlias: '',
     expanded: false,
   });
+
 
   return (
     <Box sx={stl.wrapper}>
@@ -59,9 +61,9 @@ function Portfolio(props) {
             )}
             <Box>
               {state.expanded ? (
-                <DeleteIcon sx={stl.icon} onClick={() => props.destroy(props.portfolio.alias)} />
+                <DeleteIcon sx={stl.icon} onClick={() => props.destroy(props.portfolio.alias)}/>
               ) : (
-                <StarIcon sx={stl.icon} />
+                <StarIcon sx={props.isPreferred ? stl.starSelected : stl.icon} onClick={()=> props.setPreferred(props.portfolio.alias)}/>
               )}
               <MoreVertIcon
                 onClick={() => {

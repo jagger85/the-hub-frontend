@@ -86,6 +86,14 @@ export const styles = {
         '&:hover' :{
             color: colors.purple[500]
         }
+    },    
+    
+    starSelected: {
+        marginTop:  0,
+        color : 'yellow',
+        '&:hover' :{
+            color: 'red'
+        }
     },
 
     deleteIconBox: { 
