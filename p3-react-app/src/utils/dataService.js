@@ -7,22 +7,22 @@ const a = axios.create({
 let config;
 
 export const dataService = {
-  currency: '',
   user: '',
 
-  getCurrency: function () {
-    return this.currency;
+  getCurrency: async function () {
+    return await a.get(`settings/currency/${this.user}`, config).then(res => res.data)
   },
 
-  setCurrency: function (currency) {
-    this.currency = currency;
-  },
-  getPreferredPortfolio: async function(){
-    return await a.post(`user/portfolio/settings/${this.user}`,config).then(res => console.log(res.data))
+  setCurrency: async function (currency) {
+    return await a.post(`settings/currency/${this.user}`,{currency: currency}, config).then(res => res.data)
   },
 
-  setPreferredPortfolio: async function(portfolioAlias){
-    return await a.post(`user/portfolio/settings/${this.user}`,{portfolio:portfolioAlias}, config).then( res => console.log(res.data))
+  getPreferredPortfolio: async function () {
+    return await a.get(`settings/portfolio/${this.user}`, config).then(res => res.data)
+  },
+
+  setPreferredPortfolio: async function (portfolioName) {
+    return await a.post(`settings/portfolio/${this.user}`,{preferredPortfolio:portfolioName}, config).then(res => res.data)
   },
 
   setUser: function (username) {
