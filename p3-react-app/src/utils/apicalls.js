@@ -121,7 +121,6 @@ export const apiCalls = {
 
 
   getWalletUniqs: async function (wallet) {
-    console.log(wallet)
       return wallet ? axios.post(`${this.endpoint}/v1/chain/get_table_rows`,
         {
           code: "eosio.nft.ft",
