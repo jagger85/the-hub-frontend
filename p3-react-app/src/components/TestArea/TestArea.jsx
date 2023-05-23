@@ -1,17 +1,13 @@
 import React from 'react';
-import MyBox from '../Atoms/MyBox';
-import { dataService } from '../../utils/dataService';
-import { Box, Button } from '@mui/material';
-
+import { Box } from '@mui/material';
+import ZipViewer from './ZipViewer';
+import Frame from '../Atoms/Frame';
 function Games() {
-  async function handleClick() {
-    let data = await dataService.createUser('Rodolfo', 'someMail@mail.com', 'acomplexpassword');
-    console.log(data);
-  }
+
 
   return (
     <Box>
-      <Button onClick={() => handleClick()}> Click me please</Button>
+      <Frame/>
     </Box>
   );
 }
