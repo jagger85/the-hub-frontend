@@ -18,8 +18,8 @@ function LoginLayout(props) {
       <Box
         sx={{
           backgroundImage: `url(${background})`,
-          height: '100vh',
-          width: '100vw',
+          height: '100%',
+          width: '100%'
         }}>
         {login ? (
           <LoginForm login={props.login} switch={() => switchForm()} />

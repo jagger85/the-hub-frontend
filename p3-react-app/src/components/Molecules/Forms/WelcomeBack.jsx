@@ -13,7 +13,7 @@ export function WelcomeBack(props) {
         variant="h5"
         fontWeight="bold"
         color="white"
-        p={3}>
+        >
         Welcome back
       </Typography>
       <Typography color='white'>{props.message}</Typography>
