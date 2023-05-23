@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Gallery from '../Gallery/Gallery';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { apiCalls } from '../../../utils/apicalls';
 import CustomSelect from '../../Atoms/CustomSelect';
 import { Box, Grid, Typography } from '@mui/material';
@@ -23,16 +23,18 @@ const filterValues = [
  * @returns - A MUI Grid that contains the requested transactions with a select component to filter them
  */
 function TransactionsTable(props) {
-  const [transactions, setTransactions] = useState(null);
-  const [filteredResults, setFilteredResults] = useState(null);
+
+  const [transactions, setTransactions] = useState([]);
+  const [filter, setFilter] = useState('all')
 
   useEffect(() => {
-    const getTransactions = async () => {
-      const data = await apiCalls.getWalletTransactions({ wallet: props.wallet });
-      setTransactions(data);
-    };
-    getTransactions();
-  }, [filteredResults]);
+    if(filter !='all'){
+      apiCalls.getWalletTransactions({ wallet: props.wallet }).then(
+        res => setTransactions(res.filter( t =>  t.lifecycle.transaction.actions[0].name == filter)))
+    }else{
+      apiCalls.getWalletTransactions({ wallet: props.wallet }).then( data => setTransactions(data)) 
+    }
+  }, [filter]);
 
   /**
    * @function - Filters an array to set up the corresponding transactions
@@ -40,23 +42,19 @@ function TransactionsTable(props) {
    * @param {string} value - A string to filter accross transactions
    * @returns - An array with the corresponding transactions
    */
-  function filter(value) {
-    value != 'all'
-      ? setFilteredResults(transactions.filter((t, i) => t.lifecycle.transaction.actions[0].name == value))
-      : setFilteredResults(transactions);
-  }
 
   return (
     <Grid container>
       <Grid item xs={12}>
         <Box sx={stl.header}>
           <Typography variant='h5'>{props.alias}</Typography>
-          <CustomSelect onChange={filter} menuItems={filterValues} label='filter' width={{ width: 200 }} />
+          <CustomSelect onChange={setFilter} menuItems={filterValues} label='filter' width={{ width: 200 }} />
         </Box>
       </Grid>
-      {transactions != null ? (
+      {console.log(transactions.length)}
+      {transactions.length != 0 ? (
         <Grid item xs={12}>
-          <Gallery amount={5} array={filteredResults ?? transactions} type='transactions' />
+          <Gallery amount={5} array={transactions} type='transactions' />
         </Grid>
       ) : (
         <NoData text='No data' />
