@@ -37,7 +37,11 @@ const App = () => {
       </ThemeProvider>
     </MyContextProvider>
   ) : (
-    <LoginLayout login={setLogged} />
+    <ThemeProvider theme={theme}>
+    <Routes>
+    <Route path='/' element={<LoginLayout login={setLogged} />} />
+    </Routes>
+    </ThemeProvider>
   );
 };
 export default App;
