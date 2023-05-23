@@ -13,10 +13,10 @@ const stl = {
     boxShadow: doubleBorder
   }
 
-function MyBox() {
+function Frame() {
   return (
-    <Box sx={stl}/>
+    <Box sx={stl}> </Box>
   )
 }
 
-export default MyBox
+export default Frame
