@@ -22,7 +22,7 @@ const reducer = (state, action) => {
     case actionTypes.UPDATE_PORTFOLIOS:
       return { ...state, portfolios: action.portfolios };
     case actionTypes.SET_PREFERRED_PORTFOLIO:
-      return { ...state, preferredPortfolio: action.portfolioAlias };
+      return { ...state, preferredPortfolio: action.preferredPortfolio };
     case actionTypes.SET_SELECTED_PORTFOLIO:
       sessionStorage.setItem('portfolio',JSON.stringify(action.selectedPortfolio ));
       return { ...state, selectedPortfolio: action.selectedPortfolio}
@@ -48,6 +48,7 @@ const init = async () => {
     const preferredPortfolio = await dataService.getPreferredPortfolio()
     if(preferredPortfolio){
         dispatch({type: actionTypes.SET_SELECTED_PORTFOLIO, selectedPortfolio: preferredPortfolio})
+        dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, preferredPortfolio: preferredPortfolio})
         return 'ok'
       } 
     }catch(e){

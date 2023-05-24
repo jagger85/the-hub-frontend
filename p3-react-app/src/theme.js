@@ -62,6 +62,9 @@ export const colors = {
     900: '#1f1f1f',
     1000: '#3d3d3d'
   },
+  yellow: {
+    100: '#f5d142'
+  }
 };
 export const borderRadius = {
   borderRadius: 0.5

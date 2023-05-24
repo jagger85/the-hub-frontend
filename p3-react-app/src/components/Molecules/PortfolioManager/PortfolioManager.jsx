@@ -38,7 +38,7 @@ function PortfolioManager() {
 
   const setPreferredPortfolio = async (portfolioName) => {
     const preferredPortfolio = await dataService.setPreferredPortfolio(portfolioName)
-    dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, portfolioAlias:preferredPortfolio})
+    dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, preferredPortfolio:preferredPortfolio})
   }
 
   return (

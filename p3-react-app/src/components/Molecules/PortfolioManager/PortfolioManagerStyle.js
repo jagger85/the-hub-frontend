@@ -90,7 +90,7 @@ export const styles = {
     
     starSelected: {
         marginTop:  0,
-        color : 'yellow',
+        color : colors.yellow[100],
     },
 
     deleteIconBox: { 
