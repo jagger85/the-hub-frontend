@@ -2,7 +2,6 @@
  * Custom theme for material ui
  * I used this website for color palette https://m2.material.io/inline-tools/color/
  */
-import Industry from './fonts/Industry-Black.eot'
 import { createTheme } from '@mui/material';
 
 const light = {
@@ -98,7 +97,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Industry,sans-serif',
+    fontFamily: 'industry, Roboto',
     h1:{
       color :'white'
     } ,
@@ -118,26 +117,12 @@ export const theme = createTheme({
       color: 'white'
     },
     white:{
-      fontFamily: 'Industry,sans-serif',
+      fontFamily: 'industry',
       color: 'white'
     },
     grey: {
-      fontFamily: 'Industry,sans-serif',
+      fontFamily: 'industry',
      color: colors.background[400]
     }
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'Industry';
-          font-style: black;
-          font-display: swap;
-          font-weight: 400;
-          src: local('Industry'), local('Industry-Black'), url(${Industry}) format('eot');
-          unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
-        }
-      `,
-    },
-  }
 });
