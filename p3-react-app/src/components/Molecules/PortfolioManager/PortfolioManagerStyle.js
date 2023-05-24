@@ -65,9 +65,9 @@ export const styles = {
     walletsContainer: {
        padding:2,
        backgroundColor: colors.background[1000],
-       borderRadius: '0px 0px 4px 4px'
+       borderRadius: '0px 0px 4px 4px',
     },
-
+    
     wallet: {
         display: 'flex',
         borderRadius: 1,
@@ -77,7 +77,7 @@ export const styles = {
         overflow: 'hidden',
         boxShadow: boxShadowIn,
         height: '2rem',
-        margin: 0
+        marginBottom: 0.7
     },
 
     icon: {
@@ -95,6 +95,7 @@ export const styles = {
 
     deleteIconBox: { 
         backgroundColor : colors.background[1000],
+        height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
