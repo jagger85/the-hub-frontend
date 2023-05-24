@@ -7,10 +7,16 @@ const a = axios.create({
 export const dataService = {
   
   getCurrency: async function () {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.get(`settings/currency/${sessionStorage.getItem('user')}`, config).then(res => res.data)
   },
   
   setCurrency: async function (currency) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.post(`settings/currency/${sessionStorage.getItem('user')}`,{currency: currency}, config).then(res => res.data)
   },
   
@@ -22,11 +28,10 @@ export const dataService = {
   },
 
   setPreferredPortfolio: async function (portfolioName) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.post(`settings/portfolio/${sessionStorage.getItem('user')}`,{preferredPortfolio:portfolioName}, config).then(res => res.data)
-  },
-
-  setUser: function (username) {
-    this.user = username;
   },
 
   getPortfolios: async function () {
@@ -44,6 +49,9 @@ export const dataService = {
   },
 
   getWallet: async function (portfolioAlias, walletAlias) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.get(`user/${sessionStorage.getItem('user')}/${portfolioAlias}/${walletAlias}`, config).then((res) => res.data.wallets);
   },
 
@@ -66,20 +74,32 @@ export const dataService = {
   },
 
   getPortfolioWallets: async function (portfolioAlias) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.get(`/user/${sessionStorage.getItem('user')}/${portfolioAlias}/wallets`, config).then((res) => res.data.wallets);
   },
 
   addPortfolio: async function (portfolioAlias) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a.post(`user/portfolios/${sessionStorage.getItem('user')}`, { alias: portfolioAlias }, config).then((res) => res.data);
   },
 
   removePortfolio: async function (portfolioAlias) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a
       .delete(`user/portfolios/${sessionStorage.getItem('user')}`, { ...config, data: { alias: portfolioAlias } })
       .then((res) => res.data);
   },
 
   addWallet: async function (portfolioAlias, walletAlias, walletAddress) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a
       .post(
         `user/portfolios/wallets/${sessionStorage.getItem('user')}`,
@@ -94,6 +114,9 @@ export const dataService = {
   },
 
   removeWallet: async function (portfolioAlias, walletAlias) {
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
     return await a
       .delete(`user/portfolios/wallets/${sessionStorage.getItem('user')}`, {
         ...config,
