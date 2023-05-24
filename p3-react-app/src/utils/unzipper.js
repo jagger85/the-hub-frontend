@@ -1,19 +1,25 @@
 import JSZip from "jszip";
+import axios from "axios";
 
 export async function unzip(url) {
   
- return fetch(url)
-      .then(function (response) {
-        if (response.status === 200 || response.status === 0) {
-          return Promise.resolve(response.blob());
-        } else {
-          return Promise.reject(new Error(response.statusText));
-        }
-      })
-      .then(JSZip.loadAsync)
-      .then((zip) => zip.file("manifest.json").async("string"))
-      .then((r) => {
-          return JSON.parse(r)
-      
-      })
-  }
+  return axios
+  .get(url, { responseType: 'arraybuffer' })
+  .then((response) => {
+    const zip = new JSZip();
+    return zip.loadAsync(response.data);
+  })
+  .then((zip) => {
+    const file = zip.files[Object.keys(zip.files)[2]];
+    return file.async('base64');
+  })
+  .then((content) => {
+    const imageDataUrl = `data:image/jpeg;base64,${content}`;
+
+    return imageDataUrl
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+};
+
