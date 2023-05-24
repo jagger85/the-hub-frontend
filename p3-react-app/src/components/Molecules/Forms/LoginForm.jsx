@@ -5,14 +5,20 @@ import CustomInput from '../../Atoms/CustomInput';
 import { Box, Typography, Button } from '@mui/material';
 import { dataService } from '../../../utils/dataService';
 import { styles as stl } from './FormsStyle';
-import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { MyContext, actionTypes } from '../../../utils/MyContexProvider';
 /**
  * @component JSX functional component for a login panel
  */
 function LoginForm(props) {
+
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate()
+  
+  const {init} =useContext(MyContext)
 
   const nameChanged = (e) => {
     setUser(e.target.value);
@@ -24,8 +30,10 @@ function LoginForm(props) {
 
   const handleLogin = async () => {
     const msg = await dataService.logInUser(user, pwd);
+    const contextMsg = await init()
+    console.log(contextMsg)
     setMessage(msg);
-    if (msg == 'Login success!') props.login(true);
+    if (msg == 'Login success!' & contextMsg == 'ok' ) navigate('/')
   };
 
   return (

@@ -4,26 +4,25 @@ const a = axios.create({
   baseURL: 'https://the-hub-dt35.onrender.com/',
 });
 
-let config;
-
 export const dataService = {
-  user: '',
-  selectedPortfolio: null,
-
+  
   getCurrency: async function () {
-    return await a.get(`settings/currency/${this.user}`, config).then(res => res.data)
+    return await a.get(`settings/currency/${sessionStorage.getItem('user')}`, config).then(res => res.data)
   },
-
+  
   setCurrency: async function (currency) {
-    return await a.post(`settings/currency/${this.user}`,{currency: currency}, config).then(res => res.data)
+    return await a.post(`settings/currency/${sessionStorage.getItem('user')}`,{currency: currency}, config).then(res => res.data)
   },
-
+  
   getPreferredPortfolio: async function () {
-    return await a.get(`settings/portfolio/${this.user}`, config).then(res => res.data)
+     let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
+    return await a.get(`settings/portfolio/${sessionStorage.getItem('user')}`, config).then(res => res.data)
   },
 
   setPreferredPortfolio: async function (portfolioName) {
-    return await a.post(`settings/portfolio/${this.user}`,{preferredPortfolio:portfolioName}, config).then(res => res.data)
+    return await a.post(`settings/portfolio/${sessionStorage.getItem('user')}`,{preferredPortfolio:portfolioName}, config).then(res => res.data)
   },
 
   setUser: function (username) {
@@ -31,15 +30,21 @@ export const dataService = {
   },
 
   getPortfolios: async function () {
-    return await a.get(`user/portfolios/${this.user}`, config).then((res) => res.data.portfolios);
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
+    return await a.get(`user/portfolios/${sessionStorage.getItem('user')}`, config).then((res) => res.data.portfolios);
   },
 
   getPortfolio: async function (portfolioAlias) {
-    return await a.get(`user/${this.user}/${portfolioAlias}/`, config).then((res) => res.data.portfolio);
+    let config = {
+      headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
+    }
+    return await a.get(`user/${sessionStorage.getItem('user')}/${portfolioAlias}/`, config).then((res) => res.data.portfolio);
   },
 
   getWallet: async function (portfolioAlias, walletAlias) {
-    return await a.get(`user/${this.user}/${portfolioAlias}/${walletAlias}`, config).then((res) => res.data.wallets);
+    return await a.get(`user/${sessionStorage.getItem('user')}/${portfolioAlias}/${walletAlias}`, config).then((res) => res.data.wallets);
   },
 
   createUser: async function (username, email, password) {
@@ -51,11 +56,8 @@ export const dataService = {
   logInUser: async function (username, password) {
     return a.post(`login`, { username: username, password: password }).then((response) => {
       if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        this.user = username;
-        config = {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        };
+        sessionStorage.setItem('token', response.data.token)
+        sessionStorage.setItem('user',username)
         return response.data.message;
       } else {
         return response.data.error;
@@ -64,23 +66,23 @@ export const dataService = {
   },
 
   getPortfolioWallets: async function (portfolioAlias) {
-    return await a.get(`/user/${this.user}/${portfolioAlias}/wallets`, config).then((res) => res.data.wallets);
+    return await a.get(`/user/${sessionStorage.getItem('user')}/${portfolioAlias}/wallets`, config).then((res) => res.data.wallets);
   },
 
   addPortfolio: async function (portfolioAlias) {
-    return await a.post(`user/portfolios/${this.user}`, { alias: portfolioAlias }, config).then((res) => res.data);
+    return await a.post(`user/portfolios/${sessionStorage.getItem('user')}`, { alias: portfolioAlias }, config).then((res) => res.data);
   },
 
   removePortfolio: async function (portfolioAlias) {
     return await a
-      .delete(`user/portfolios/${this.user}`, { ...config, data: { alias: portfolioAlias } })
+      .delete(`user/portfolios/${sessionStorage.getItem('user')}`, { ...config, data: { alias: portfolioAlias } })
       .then((res) => res.data);
   },
 
   addWallet: async function (portfolioAlias, walletAlias, walletAddress) {
     return await a
       .post(
-        `user/portfolios/wallets/${this.user}`,
+        `user/portfolios/wallets/${sessionStorage.getItem('user')}`,
         {
           alias: portfolioAlias,
           walletAlias: walletAlias,
@@ -93,7 +95,7 @@ export const dataService = {
 
   removeWallet: async function (portfolioAlias, walletAlias) {
     return await a
-      .delete(`user/portfolios/wallets/${this.user}`, {
+      .delete(`user/portfolios/wallets/${sessionStorage.getItem('user')}`, {
         ...config,
         data: { alias: portfolioAlias, walletAlias: walletAlias },
       })

@@ -6,4 +6,11 @@ export const styles = {
     backgroundColor: colors.background[1000],
     boxShadow: boxShadow,
   },
+  balances:{
+    display: 'flex',
+    flexDirection: "column",
+    marginBottom: 1,
+    marginTop: 1,
+
+  }
 };

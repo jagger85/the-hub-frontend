@@ -14,7 +14,7 @@ import { v4 as uuid } from 'uuid';
  * @returns - A custom Select MUI component with 300 width by default
  */
 function CustomSelect(props) {
-    const [type, setType] = useState('');
+    const [type, setType] = useState("");
 
     const handleChange = (event) => {
      setType(event.target.value); 

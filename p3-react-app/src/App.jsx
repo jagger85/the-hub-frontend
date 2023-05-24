@@ -11,37 +11,26 @@ import Settings from './components/Organisms/Settings';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
 import LoginLayout from './layouts/LoginLayout';
-import { useState } from 'react';
 import { MyContextProvider } from './utils/MyContexProvider';
-
-// wallets  aa1aa2af3ql4 ,
 
 const App = () => {
   
-  const [logged, setLogged] = useState(false);
-
-  return logged ? (
+  return (
     <MyContextProvider>
-      <ThemeProvider theme={theme}>
-        <MainLayout>
-          <Routes>
-            <Route path='/' element={<Dashboard />} />
-            <Route path='/inventory' element={<Inventory />} />
-            <Route path='/marketplace' element={<Marketplace />} />
-            <Route path='/test' element={<TestArea />} />
-            <Route path='/collections' element={<Collections />} />
-            <Route path='/collection/:id' element={<CollectionInfo />} />
-            <Route path='/settings' element={<Settings />} />
-          </Routes>
-        </MainLayout>
-      </ThemeProvider>
-    </MyContextProvider>
-  ) : (
     <ThemeProvider theme={theme}>
     <Routes>
-    <Route path='/' element={<LoginLayout login={setLogged} />} />
-    </Routes>
+        <Route path='/login' element={<LoginLayout />} />
+        <Route path='/' element={<MainLayout><Dashboard /></MainLayout>} />
+        <Route path='/inventory' element={<MainLayout><Inventory /></MainLayout>} />
+        <Route path='/marketplace' element={<MainLayout><Marketplace /></MainLayout>} />
+        <Route path='/test' element={<MainLayout><TestArea /></MainLayout>} />
+        <Route path='/collections' element={<MainLayout><Collections /></MainLayout>} />
+        <Route path='/collection/:id' element={<MainLayout><CollectionInfo /></MainLayout>} />
+        <Route path='/settings' element={<MainLayout><Settings /></MainLayout>} />
+        </Routes>
     </ThemeProvider>
+    </MyContextProvider>
+
   );
 };
 export default App;
