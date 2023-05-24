@@ -25,12 +25,12 @@ function AddPortfolioDialog(props) {
     <Dialog onClose={() =>props.onClose(false)} open={props.open}>
       <Grid container sx={stl.container}>
         <Grid item sx={[stl.item, stl.title]}>
-          <Typography variant='h5'>Add new portafolio</Typography>
+          <Typography variant='h6'>Add new portafolio</Typography>
         </Grid>
-        <Grid item sx={stl.item}>
+        <Grid item sx={stl.section}>
           <CustomInput text={true} placeholder='Add your portfolio name' getValue={portfolioNameChanged} />
         </Grid>
-        <Grid item sx={stl.item}>
+        <Grid item sx={stl.bottom}>
           <Button onClick={() => props.create(portfolioName)} disabled={!isValid()}>
             <Typography>Add portfolio</Typography>
           </Button>
