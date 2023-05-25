@@ -1,9 +1,15 @@
 import { Box, Typography, Button } from '@mui/material';
 import React from 'react';
-import { colors } from '../../theme';
+import { colors, boxShadow } from '../../theme';
 function CyberButton(props) {
 
   const style = {
+    button:{
+      '&:hover' :{
+        backgroundColor: 'transparent'
+    }
+      
+    },
     container: {
       margin: 1,
       paddingTop: 0.5,
@@ -16,8 +22,8 @@ function CyberButton(props) {
       justifyContent: 'center',
     },
     enabled:{
-      backgroundColor: colors.purple[500],
-
+      backgroundColor: colors.purple[800],
+      
     },
     disabled: {
       backgroundColor: colors.background[700],
@@ -32,9 +38,9 @@ function CyberButton(props) {
   };
 
   return (
-    <Button disabled={props.disabled} onClick={props.onClick}>
+    <Button sx={style.button}disabled={props.disabled} onClick={props.onClick}>
       <Box sx={[style.container,props.disabled ? style.disabled: style.enabled, props.right ? style.right : style.left]}>
-        <Typography variant={props.textVariant} color={colors.background[200]}>
+        <Typography variant={props.textVariant} color={colors.background[400]}>
           {props.text}
         </Typography>
       </Box>

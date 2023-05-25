@@ -8,6 +8,9 @@ export const styles = {
             border: 'none',
             boxShadow: boxShadow,
         },
+        '& .MuiSvgIcon-root': {
+            color: colors.background[400]
+        }
     },
     menuItem : {
         '& .MuiInputBase-input': {

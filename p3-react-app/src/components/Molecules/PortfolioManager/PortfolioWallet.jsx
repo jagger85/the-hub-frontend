@@ -24,10 +24,10 @@ function PortfolioWallet(props) {
       }}
       onMouseLeave={() => setChecked(false)}>
       <Box sx={{ padding: 1, width: '20%' }}>
-        <Typography variant='h6medium' color={colors.background[200]}>{props.alias}</Typography>
+        <Typography variant='h7medium' color={colors.background[400]}>{props.alias}</Typography>
       </Box>
       <Box sx={{ padding: 1 }}>
-        <Typography variant='h6medium' color={colors.background[200]} sx={{ padding: 1 }}>
+        <Typography variant='h7medium' color={colors.background[400]} sx={{ padding: 1 }}>
           {props.wallet}
         </Typography>
       </Box>

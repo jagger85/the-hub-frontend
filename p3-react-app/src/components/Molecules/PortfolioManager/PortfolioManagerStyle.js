@@ -23,21 +23,22 @@ export const styles = {
     },
     
     expandIcon:{
+            color: colors.background[400],
         '&:hover' :{
-            color: colors.purple[500]
+            color: colors.purple[400]
         }
     },
     
     
     addIcon :{
-        color: colors.background[500],
+        color: colors.background[400],
         '&:hover': {
-            color: colors.purple[500]
+            color: colors.purple[400]
         }        
     },
     
     addIconBad : {
-        color: colors.background[500],
+        color: colors.background[400],
         '&:hover': {
             color: '#f23d64',
             transform: 'rotate(45deg)',
@@ -82,7 +83,7 @@ export const styles = {
 
     icon: {
         marginTop:  0,
-        color : colors.background[500],
+        color : colors.background[400],
         '&:hover' :{
             color: colors.purple[500]
         }

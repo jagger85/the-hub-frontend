@@ -7,7 +7,7 @@ import NoData from '../Atoms/NoData';
 import { MyContext } from '../../utils/MyContexProvider';
 import { useContext } from 'react';
 import { v4 as uuid } from 'uuid';
-
+import { colors } from '../../theme';
 function Inventory() {
   const { state, getPortfolio } = useContext(MyContext);
 
@@ -28,7 +28,7 @@ function Inventory() {
   return (
     <Grid container sx={stl.container}>
       <Grid item xs={12} sx={stl.titleContainer}>
-        <Typography variant='h3'>Inventory</Typography>
+        <Typography variant='h3medium' color={colors.background[500]}>Inventory</Typography>
       </Grid>
 
       {inventories != null ? (

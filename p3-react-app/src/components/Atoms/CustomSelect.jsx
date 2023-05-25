@@ -6,6 +6,7 @@ import {Select, Typography} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
 import { v4 as uuid } from 'uuid';
+import { colors } from '../../theme';
 
 /**
  * @property {string} props.label - A text to show by default
@@ -24,15 +25,16 @@ function CustomSelect(props) {
   return (
     
     <FormControl size='small'>
-    <InputLabel><Typography variant='h7bold'>{props.label}</Typography></InputLabel>
+    <InputLabel><Typography color={colors.background[400]}   variant='h7bold'>{props.label}</Typography></InputLabel>
     <Select
+    style={{padding:'20px'}}
+
     value={type}
-    label={props.label}
     onChange={handleChange}
     sx={[stl.select,props.width ?? {'width':300}]}
     >
     {props.menuItems.map((e)=>{ 
-      return <MenuItem key={uuid()} value={e.value}><Typography variant='h7light'>{e.text}</Typography></MenuItem>
+      return <MenuItem key={uuid()} value={e.value}><Typography variant='h7light' color={colors.background[400]}>{e.text}</Typography></MenuItem>
     })}
     </Select>
     </FormControl>

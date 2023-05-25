@@ -100,6 +100,9 @@ export const theme = createTheme({
     },
   },
   typography: {
+    button: {
+      textTransform: 'none'
+    },
     fontFamily: 'industry, Roboto',
     h1bold:{ fontFamily: 'industry-bold', fontSize: "6rem", fontWeight:300, lineHeight:1.167, letterSpacing: "-0.01562em"},
     h2bold:{ fontFamily: 'industry-bold', fontSize: "3.75rem", fontWeight:300, lineHeight:1.2, letterSpacing: "-0.00833em"},

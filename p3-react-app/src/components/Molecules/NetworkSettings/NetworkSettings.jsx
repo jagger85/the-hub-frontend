@@ -6,7 +6,7 @@ import { useReducer } from 'react';
 import CustomSelect from '../../Atoms/CustomSelect';
 import { styles } from './NetworkSettingsStyle';
 import { v4 as uuid } from 'uuid';
-
+import { colors } from '../../../theme';
 const initialValue = {
   endpoint: apiCalls.getEndpoint,
   network: apiCalls.getNetwork,
@@ -44,9 +44,8 @@ function NetworkSettings() {
   return (
     <Grid container>
       <Grid item xs={12} sx={styles.section}>
-        <FormLabel id='demo-radio-buttons-group-label'><Typography variant='h6light'>Network</Typography></FormLabel>
+        <FormLabel id='demo-radio-buttons-group-label'><Typography variant='h5medium' color={colors.background[400]}>Network</Typography></FormLabel>
         <RadioGroup
-          aria-labelledby='demo-radio-buttons-group-label'
           defaultValue='mainnet'
           name='radio-buttons-group'
           value={apiCalls.getNetwork}
@@ -55,8 +54,8 @@ function NetworkSettings() {
             return (
               <FormControlLabel
                 value={e}
-                control={<Radio />}
-                label={<Typography variant='h7light' color='white'>{e}</Typography>}
+                control={<Radio/>}
+                label={<Typography variant='h7medium' color={colors.background[400]}>{e}</Typography>}
                 key={uuid()}
               />
             );

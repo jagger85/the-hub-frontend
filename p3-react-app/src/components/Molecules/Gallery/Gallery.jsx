@@ -7,6 +7,7 @@ import UniqOwned from '../../Inventory/UniqOwned';
 import Collection from '../CollectionUniq';
 import { styles } from './GalleryStyle';
 import { v4 as uuid } from 'uuid';
+import CyberButton from '../../Atoms/CyberButton';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -88,29 +89,28 @@ function Gallery(props) {
         })}
         <Grid item xs={12}>
           <Box sx={styles.navigationContainer}>
-            <Button
-              sx={styles.navigationButton}
-              variant='outlined'
-              onClick={() => {
-                dispatch({ type: 'decrement' });
-              }}
-              disabled={state.count == 0}>
-              back
-            </Button>
+            <CyberButton
+              onClick={() => dispatch({ type: 'decrement' })}
+              disabled={state.count == 0}
+              right={false}
+              text='Backward'
+              textVariant='h7bold'
+            />
+
             <Box sx={styles.pagesDisplay}>
               <Typography variant='h7bold'>{state.count + 1}</Typography>
               <Typography variant='h7bold'>&nbsp;&nbsp; / &nbsp;&nbsp;</Typography>
               <Typography variant='h7bold'>{state.pages.length}</Typography>
             </Box>
-            <Button
-              sx={styles.navigationButton}
-              variant='outlined'
-              onClick={() => {
-                dispatch({ type: 'increment' });
-              }}
-              disabled={state.count == state.pages.length - 1}>
-              forward
-            </Button>
+
+            <CyberButton
+              onClick={() => dispatch({ type: 'increment' })}
+              disabled={state.count == state.pages.length - 1}
+              right={true}
+              text='Forward&nbsp;'
+              textVariant='h7bold'
+              
+            />
           </Box>
         </Grid>
       </Grid>

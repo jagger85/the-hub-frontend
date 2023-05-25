@@ -10,7 +10,7 @@ import { CustomAccordion } from './CustomAccordion';
 import { rules } from '../../../utils/validationRules';
 import { v4 as uuid } from 'uuid';
 import StarIcon from '@mui/icons-material/Star';
-
+import { colors } from '../../../theme';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'expand':
@@ -57,7 +57,7 @@ function Portfolio(props) {
                 getValue={(e) => dispatch({ type: 'setNewPortfolioalias', alias: { e } })}
               />
             ) : (
-              <Typography variant='h6medium'> {props.portfolio.alias} </Typography>
+              <Typography variant='h6medium' color={colors.background[400]}> {props.portfolio.alias} </Typography>
             )}
             <Box>
               {state.expanded ? (

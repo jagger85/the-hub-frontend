@@ -69,7 +69,7 @@ function SideBar() {
         </Grid>
         <Grid item sx={styles.gridSection} xs={12}>
           <Divider>
-            <Chip label='USER' />
+            <Chip label={sessionStorage.getItem('user')} style={{fontFamily:'industry-medium'}} />
           </Divider>
         </Grid>
         <Grid item sx={styles.gridSection} xs={12}>

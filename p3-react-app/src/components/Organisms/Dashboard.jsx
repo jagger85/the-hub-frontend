@@ -17,7 +17,7 @@ function Dashboard() {
     return (
       <Grid container sx={stl.container}>
         <Grid item xs={12} sx={stl.titleContainer}>
-          <Typography variant='h3medium' color={colors.background[200]}>Dashboard</Typography>
+          <Typography variant='h3medium' color={colors.background[400]}>Dashboard</Typography>
         </Grid>
         <Grid item xs={4} sx={stl.section}>
           {getPortfolio() ? <WalletInfo portfolio={getPortfolio()} /> : <NoData />}
