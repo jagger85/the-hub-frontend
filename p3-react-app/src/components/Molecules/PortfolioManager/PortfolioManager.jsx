@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import Portfolio from './Portfolio';
 import AddPortfolioDialog from '../Dialogs/AddPortfolioDialog';
 import { dataService } from '../../../utils/dataService';
@@ -44,7 +44,7 @@ function PortfolioManager() {
   return (
     <Grid container sx={stl.portfolioManagerContainer}>
       <Grid item>
-        <Button onClick={() => setOpen(true)}>Add a new portfolio</Button>
+        <Button onClick={() => setOpen(true)}><Typography variant='h6medium'>Add a new portfolio</Typography></Button>
       </Grid>
       <Grid item>
         <AddPortfolioDialog create={createPortfolio} open={open} onClose={setOpen} />

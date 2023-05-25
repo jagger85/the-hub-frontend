@@ -2,7 +2,7 @@ import React from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import {Select} from '@mui/material';
+import {Select, Typography} from '@mui/material';
 import { useState } from 'react';
 import { styles as stl } from './CustomSelectStyle'
 import { v4 as uuid } from 'uuid';
@@ -23,18 +23,16 @@ function CustomSelect(props) {
 
   return (
     
-    <FormControl size="small">
-    <InputLabel id="demo-select-small" sx={stl.inputLabel}>{props.label}</InputLabel>
+    <FormControl size='small'>
+    <InputLabel><Typography variant='h7bold'>{props.label}</Typography></InputLabel>
     <Select
-    labelId="demo-select-small"
-    id="demo-select-small"
     value={type}
     label={props.label}
     onChange={handleChange}
     sx={[stl.select,props.width ?? {'width':300}]}
     >
     {props.menuItems.map((e)=>{ 
-      return <MenuItem key={uuid()} value={e.value}>{e.text}</MenuItem>
+      return <MenuItem key={uuid()} value={e.value}><Typography variant='h7light'>{e.text}</Typography></MenuItem>
     })}
     </Select>
     </FormControl>

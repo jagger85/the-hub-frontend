@@ -17,10 +17,9 @@ export const styles = {
         padding: 2,
         backgroundColor: colors.background[1000],
         width:'100%',
-        heigth: '100%'
-               
-        
-        
+        heigth: '100%',
+        display: 'flex',
+        justifyContent: 'space-Between'
     },
     bottom : {
         width:'100%',

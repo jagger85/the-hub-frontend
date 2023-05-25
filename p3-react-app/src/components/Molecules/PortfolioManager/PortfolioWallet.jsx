@@ -3,6 +3,7 @@ import { Box, Typography, Slide } from '@mui/material';
 import { useState, useRef } from 'react';
 import { styles as stl } from './PortfolioManagerStyle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { colors } from '../../../theme';
 
 /**
  * @param {String} props.alias - The wallet alias
@@ -23,10 +24,10 @@ function PortfolioWallet(props) {
       }}
       onMouseLeave={() => setChecked(false)}>
       <Box sx={{ padding: 1, width: '20%' }}>
-        <Typography variant='grey'>{props.alias}</Typography>
+        <Typography variant='h6medium' color={colors.background[200]}>{props.alias}</Typography>
       </Box>
       <Box sx={{ padding: 1 }}>
-        <Typography variant='grey' sx={{ padding: 1 }}>
+        <Typography variant='h6medium' color={colors.background[200]} sx={{ padding: 1 }}>
           {props.wallet}
         </Typography>
       </Box>

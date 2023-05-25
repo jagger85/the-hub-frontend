@@ -5,6 +5,7 @@ import CustomInput from '../../Atoms/CustomInput';
 import { Box, Typography, Button } from '@mui/material';
 import { dataService } from '../../../utils/dataService';
 import {styles as stl} from './FormsStyle'
+import { colors } from '../../../theme';
 /**
  * @component JSX functional component for a login panel
  */
@@ -46,7 +47,7 @@ function RegisterForm(props) {
           sx={stl.leftContainer}>
           <Box>
             <Box display='flex' flexDirection='column' alignItems='center'>
-              <Typography variant='h5' fontWeight='bold' color='white'>
+              <Typography variant='h5medium'  fontWeight='bold' color={colors.background[200]}>
                 Sign Up
               </Typography>
             </Box>
@@ -78,11 +79,11 @@ function RegisterForm(props) {
                 variant='contained'
                 disabled={!isValid(pwd, pwd2, user) || !isEmailValid(email)}
                 onClick={() => handleRegister()}>
-                Register
+                <Typography variant='h6medium'>Register</Typography>
               </Button>
             </Box>
           </Box>
-          <Button onClick={props.switch}>Do you have an account? Log in here</Button>
+          <Button onClick={props.switch}><Typography variant='h6medium'>Do you have an account? Log in here</Typography></Button>
         </Box>
 
         {/** Info container  */}

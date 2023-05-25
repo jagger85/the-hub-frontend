@@ -1,6 +1,15 @@
 @font-face {
-    font-family: industry;
+    font-family: industry-bold;
     src: url(./fonts/Industry-Black.ttf);
     format: ('ttf')
   }
-  
+  @font-face {
+    font-family: industry-light;
+    src: url(./fonts/Industry-Light.ttf);
+    format: ('ttf')
+  }
+  @font-face {
+    font-family: industry-medium;
+    src: url(./fonts/Industry-Medium.ttf);
+    format: ('ttf')
+  }

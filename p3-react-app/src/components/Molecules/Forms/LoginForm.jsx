@@ -7,7 +7,8 @@ import { dataService } from '../../../utils/dataService';
 import { styles as stl } from './FormsStyle';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { MyContext, actionTypes } from '../../../utils/MyContexProvider';
+import { MyContext} from '../../../utils/MyContexProvider';
+import { colors } from '../../../theme';
 /**
  * @component JSX functional component for a login panel
  */
@@ -44,7 +45,7 @@ function LoginForm(props) {
         <Box sx={stl.leftContainer}>
           <Box>
             <Box display='flex' flexDirection='column' alignItems='center'>
-              <Typography variant='h5' fontWeight='bold' color='white'>
+              <Typography variant='h5medium' fontWeight='bold' color='white'>
                 Log in
               </Typography>
             </Box>
@@ -57,11 +58,11 @@ function LoginForm(props) {
 
             <Box display='flex' flexDirection='row'  justifyContent='center' sx={stl.section}>
               <Button variant='contained' disabled={user == '' || pwd == ''} onClick={() => handleLogin()}>
-                Login
+               <Typography variant='h6medium'>Login</Typography>
               </Button>
             </Box>
           </Box>
-          <Button onClick={props.switch}>Don't have an account? Sing up here</Button>
+          <Button onClick={props.switch}><Typography variant='h6medium' color={colors.purple}>Don't have an account? Sing up here</Typography></Button>
         </Box>
 
         {/** Info container  */}

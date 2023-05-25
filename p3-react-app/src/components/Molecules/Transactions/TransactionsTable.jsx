@@ -6,7 +6,7 @@ import CustomSelect from '../../Atoms/CustomSelect';
 import { Box, Grid, Typography } from '@mui/material';
 import { styles as stl } from './TransactionsTableStyle';
 import NoData from '../../Atoms/NoData';
-
+import { colors } from '../../../theme';
 /**
  * Suported transactions
  * This object is intended for sending it to @see CustomSelect for
@@ -47,7 +47,7 @@ function TransactionsTable(props) {
     <Grid container>
       <Grid item xs={12}>
         <Box sx={stl.header}>
-          <Typography variant='h5'>{props.alias}</Typography>
+          <Typography variant='h5medium' color={colors.background[200]}>{props.alias}</Typography>
           <CustomSelect onChange={setFilter} menuItems={filterValues} label='filter' width={{ width: 200 }} />
         </Box>
       </Grid>

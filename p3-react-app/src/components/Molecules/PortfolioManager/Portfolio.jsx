@@ -57,7 +57,7 @@ function Portfolio(props) {
                 getValue={(e) => dispatch({ type: 'setNewPortfolioalias', alias: { e } })}
               />
             ) : (
-              <Typography> {props.portfolio.alias} </Typography>
+              <Typography variant='h6medium'> {props.portfolio.alias} </Typography>
             )}
             <Box>
               {state.expanded ? (

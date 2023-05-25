@@ -5,6 +5,7 @@ export const styles = {
     padding: 2,
     backgroundColor: colors.background[1000],
     boxShadow: boxShadow,
+    marginBottom: 2
   },
   balances:{
     display: 'flex',

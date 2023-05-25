@@ -52,7 +52,7 @@ function Gallery(props) {
     !loading && (
       <Grid container spacing={2} sx={styles.container}>
         <Grid item xs={12}>
-          <Typography variant='h5' sx={styles.title}>
+          <Typography variant='h5medium' sx={styles.title}>
             {props.title}
           </Typography>
         </Grid>
@@ -98,9 +98,9 @@ function Gallery(props) {
               back
             </Button>
             <Box sx={styles.pagesDisplay}>
-              <Typography>{state.count + 1}</Typography>
-              <Typography>&nbsp;&nbsp; / &nbsp;&nbsp;</Typography>
-              <Typography>{state.pages.length}</Typography>
+              <Typography variant='h7bold'>{state.count + 1}</Typography>
+              <Typography variant='h7bold'>&nbsp;&nbsp; / &nbsp;&nbsp;</Typography>
+              <Typography variant='h7bold'>{state.pages.length}</Typography>
             </Box>
             <Button
               sx={styles.navigationButton}

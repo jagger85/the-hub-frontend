@@ -101,31 +101,63 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: 'industry, Roboto',
-    h1:{
-      color :'white'
-    } ,
-    h2:{
-      color: 'white',
-    } ,
-    h3:{
-      color: 'white',
-    } ,
-    h4:{
-      color: 'white',
-    } ,
-    h5:{
-      color: 'white',
-    } ,
-    h6:{
-      color: 'white'
-    },
-    white:{
-      fontFamily: 'industry',
-      color: 'white'
-    },
-    grey: {
-      fontFamily: 'industry',
-     color: colors.background[400]
-    }
+    h1bold:{ fontFamily: 'industry-bold', fontSize: "6rem", fontWeight:300, lineHeight:1.167, letterSpacing: "-0.01562em"},
+    h2bold:{ fontFamily: 'industry-bold', fontSize: "3.75rem", fontWeight:300, lineHeight:1.2, letterSpacing: "-0.00833em"},
+    h3bold:{ fontFamily: 'industry-bold', fontSize: "3rem", fontWeight:400, lineHeight:1.167, letterSpacing: "0em"},
+    h4bold:{ fontFamily: 'industry-bold', fontSize: "2.125rem", fontWeight:400, lineHeight:1.235, letterSpacing: "0.00735em"},
+    h5bold:{ fontFamily: 'industry-bold', fontSize: "1.5rem", fontWeight:400, lineHeight:1.334, letterSpacing: "0em"},
+    h6bold:{ fontFamily: 'industry-bold', fontSize: "1.25rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h7bold:{ fontFamily: 'industry-bold', fontSize: "1rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h8bold:{ fontFamily: 'industry-bold', fontSize: "0.75rem", fontWeight:400, lineHeight:1.6, letterSpacing: "0.0085em"},
+
+
+    h1light:{ fontFamily: 'industry-light', fontSize: "6rem", fontWeight:300, lineHeight:1.167, letterSpacing: "-0.01562em"},
+    h2light:{ fontFamily: 'industry-light', fontSize: "3.75rem", fontWeight:300, lineHeight:1.2, letterSpacing: "-0.00833em"},
+    h3light:{ fontFamily: 'industry-light', fontSize: "3rem", fontWeight:400, lineHeight:1.167, letterSpacing: "0em"},
+    h4light:{ fontFamily: 'industry-light', fontSize: "2.125rem", fontWeight:400, lineHeight:1.235, letterSpacing: "0.00735em"},
+    h5light:{ fontFamily: 'industry-light', fontSize: "1.5rem", fontWeight:400, lineHeight:1.334, letterSpacing: "0em"},
+    h6light:{ fontFamily: 'industry-light', fontSize: "1.25rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h7light:{ fontFamily: 'industry-light', fontSize: "1rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h8light:{ fontFamily: 'industry-light', fontSize: "0.75rem", fontWeight:600, lineHeight:1.6, letterSpacing: "0.0085em"},
+
+
+    h1medium:{ fontFamily: 'industry-medium', fontSize: "6rem", fontWeight:300, lineHeight:1.167, letterSpacing: "-0.01562em"},
+    h2medium:{ fontFamily: 'industry-medium', fontSize: "3.75rem", fontWeight:300, lineHeight:1.2, letterSpacing: "-0.00833em"},
+    h3medium:{ fontFamily: 'industry-medium', fontSize: "3rem", fontWeight:400, lineHeight:1.167, letterSpacing: "0em"},
+    h4medium:{ fontFamily: 'industry-medium', fontSize: "2.125rem", fontWeight:400, lineHeight:1.235, letterSpacing: "0.00735em"},
+    h5medium:{ fontFamily: 'industry-medium', fontSize: "1.5rem", fontWeight:400, lineHeight:1.334, letterSpacing: "0em"},
+    h6medium:{ fontFamily: 'industry-medium', fontSize: "1.25rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h7medium:{ fontFamily: 'industry-medium', fontSize: "1rem", fontWeight:500, lineHeight:1.6, letterSpacing: "0.0075em"},
+    h8medium:{ fontFamily: 'industry-medium', fontSize: "0.75rem", fontWeight:600, lineHeight:1.6, letterSpacing: "0.0085em"},
+
+
   },
+  components:{
+    MuiInputBase:{
+      styleOverrides: {
+        root:{
+        padding: 7, 
+        bgcolor: colors.background[900], 
+        borderRadius: '4px', 
+        height: '2rem',
+        fontFamily: 'industry-light',
+      }
+    },
+      variants: [
+        {
+          props: { variant: 'purple'},
+          style: {
+            color: colors.purple[500],
+
+          }
+        },
+        {
+          props: { variant: 'grey'},
+          style: {
+            color: colors.background[500]
+          }
+        }
+      ]
+    }
+  }
 });

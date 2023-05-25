@@ -7,6 +7,7 @@ import { MyContext } from '../../utils/MyContexProvider';
 import { useContext } from 'react';
 import { v4 as uuid } from 'uuid';
 import { Navigate } from 'react-router-dom';
+import { colors } from '../../theme';
 function Dashboard() {
   
   if (!sessionStorage.getItem('token')) {
@@ -16,7 +17,7 @@ function Dashboard() {
     return (
       <Grid container sx={stl.container}>
         <Grid item xs={12} sx={stl.titleContainer}>
-          <Typography variant='h3'>Dashboard</Typography>
+          <Typography variant='h3medium' color={colors.background[200]}>Dashboard</Typography>
         </Grid>
         <Grid item xs={4} sx={stl.section}>
           {getPortfolio() ? <WalletInfo portfolio={getPortfolio()} /> : <NoData />}

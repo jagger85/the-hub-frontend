@@ -10,13 +10,13 @@ export function WelcomeBack(props) {
         alignItems: 'center',
       }}>
       <Typography
-        variant="h5"
+        variant="h5medium"
         fontWeight="bold"
         color="white"
         >
         Welcome back
       </Typography>
-      <Typography color='white'>{props.message}</Typography>
+      <Typography variant='h6light' >{props.message}</Typography>
     </Box>
   );
 }

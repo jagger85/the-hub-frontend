@@ -4,15 +4,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { colors, boxShadowIn,boxShadow } from '../../theme';
 import { useState } from 'react';
 
-const styles = {
-  input: {
-    p: 0.5, 
-    bgcolor: colors.background[900], 
-    borderRadius: '5px', 
-    
-    height: '2rem'
-  }
-}
+
 
 /**
  * @component - A custom inputText wich is a password by default
@@ -37,15 +29,15 @@ function CustomInput(props) {
         flexDirection="column"
         justifyContent="flex-start"
         >
-        <Typography color="white">{props.label}</Typography>
+        <Typography variant='h6light' color="white">{props.label}</Typography>
 
         <Paper>
           <InputBase
             onChange={props.getValue}
+            variant='grey'
             type={props.text ?? showPassword ? 'text' : 'password'}
             fullWidth
             placeholder={props.placeholder}
-            sx={styles.input}
             endAdornment={
               props.isIconActive && (
                 <InputAdornment

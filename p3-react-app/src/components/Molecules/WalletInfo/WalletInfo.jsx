@@ -6,7 +6,7 @@ import { styles } from './WalletInfoStyle';
 import NoData from '../../Atoms/NoData';
 import { v4 as uuid } from 'uuid';
 import PieBalance from '../../Atoms/PieBalance';
-
+import { colors } from '../../../theme';
 
 /**
  * @returns - A MUI Paper with a grid inside that shows info related to the wallet
@@ -20,13 +20,15 @@ function WalletInfo(props) {
     const getInfo = async () => {
       let wallets = [];
       let pieInfo = [];
-      for (let wallet of props.portfolio.wallets) {
-        const data = await apiCalls.getWalletInfo(wallet.address);
-        wallets = [...wallets, data];
-        pieInfo = [...pieInfo, {value: parseInt(data.core_liquid_balance), name: wallet.alias}]
+      if(props.portfolio.wallets != undefined){
+        for (let wallet of props.portfolio.wallets) {
+          const data = await apiCalls.getWalletInfo(wallet.address);
+          wallets = [...wallets, data];
+          pieInfo = [...pieInfo, {value: parseInt(data.core_liquid_balance), name: wallet.alias}]
+        }
+        setInfo(wallets);
+        setPieInfo(pieInfo)
       }
-      setInfo(wallets);
-      setPieInfo(pieInfo)
     };
     console.count('info');
     getInfo();
@@ -36,13 +38,13 @@ function WalletInfo(props) {
     <Paper sx={styles.paper}>
       <Grid container>
         <Grid item xs={12}>
-          <Typography variant='h5'>Net worth</Typography>
+          <Typography variant='h5medium' color={colors.background[200]}>Net worth</Typography>
           <Divider />
         </Grid>
         <Grid item sx={styles.balances} key={uuid()} xs={5}>
         {info.map((wallet) => {
           return (
-              <Typography key={uuid()}>Balance: {parseInt(wallet.core_liquid_balance).toFixed()}</Typography>
+              <Typography variant='h7light' color={colors.background[200]} key={uuid()}>Balance: {parseInt(wallet.core_liquid_balance).toFixed()}</Typography>
               );
             })}
             </Grid>

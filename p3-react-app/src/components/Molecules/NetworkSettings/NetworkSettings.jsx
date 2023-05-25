@@ -44,7 +44,7 @@ function NetworkSettings() {
   return (
     <Grid container>
       <Grid item xs={12} sx={styles.section}>
-        <FormLabel id='demo-radio-buttons-group-label'>Network</FormLabel>
+        <FormLabel id='demo-radio-buttons-group-label'><Typography variant='h6light'>Network</Typography></FormLabel>
         <RadioGroup
           aria-labelledby='demo-radio-buttons-group-label'
           defaultValue='mainnet'
@@ -56,7 +56,7 @@ function NetworkSettings() {
               <FormControlLabel
                 value={e}
                 control={<Radio />}
-                label={<Typography color='white'>{e}</Typography>}
+                label={<Typography variant='h7light' color='white'>{e}</Typography>}
                 key={uuid()}
               />
             );
