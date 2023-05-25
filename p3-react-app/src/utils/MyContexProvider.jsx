@@ -44,13 +44,16 @@ const getPortfolio = () => {
 const init = async () => {
   try{
     const portfolios = await dataService.getPortfolios();
+    console.log(portfolios)
     dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: portfolios });
     const preferredPortfolio = await dataService.getPreferredPortfolio()
-    if(preferredPortfolio){
+    if(preferredPortfolio.lenght !=0 ){
         dispatch({type: actionTypes.SET_SELECTED_PORTFOLIO, selectedPortfolio: preferredPortfolio})
         dispatch({type: actionTypes.SET_PREFERRED_PORTFOLIO, preferredPortfolio: preferredPortfolio})
         return 'ok'
-      } 
+      }else{
+        return 'ok'
+      }
     }catch(e){
       throw e
     }}
