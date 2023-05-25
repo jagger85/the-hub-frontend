@@ -35,7 +35,7 @@ function NoData(props) {
     <InboxIcon sx={style.icon} xs={12} />
     </Grid>
     <Grid item sx={style.section} xs={12}>
-    <Typography variant="h6" xs={12}>{props.text}</Typography>
+    <Typography variant="h6medium" xs={12}>{props.text}</Typography>
     </Grid>
     </Grid>
     </Paper>
