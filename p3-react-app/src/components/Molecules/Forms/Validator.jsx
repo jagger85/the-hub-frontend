@@ -1,9 +1,8 @@
 import React from 'react';
 import { rules, emailRule } from '../../../utils/passwordRules';
-import ListItem from '@mui/material/ListItem';
 import { Box, Typography } from '@mui/material';
 import { colors } from '../../../theme';
-
+import { v4 as uuid } from 'uuid';
 /**
  * @component JSX functional component that takes care of testing if passwords applies a set of rules @see rules
  * @param {string} props.pwd - The user password
@@ -31,7 +30,7 @@ export function Validator(props) {
       {/** Looping all the rules */}
       {rules.map((pwdRule) => {
         if (!pwdRule.rule.test(props.pwd) && props.pwd != '')
-          return <Typography variant='h6light' color={colors.input[200]}>{pwdRule.warning}</Typography>;
+          return <Typography key={uuid()} variant='h6light' color={colors.input[200]}>{pwdRule.warning}</Typography>;
       })}
 
       {/** Checking if both passwords match */}

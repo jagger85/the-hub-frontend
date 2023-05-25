@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { MyContext} from '../../../utils/MyContexProvider';
 import { colors } from '../../../theme';
+
 /**
  * @component JSX functional component for a login panel
  */
@@ -18,7 +19,6 @@ function LoginForm(props) {
   const [pwd, setPwd] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate()
-  
   const {init} =useContext(MyContext)
 
   const nameChanged = (e) => {
@@ -32,7 +32,6 @@ function LoginForm(props) {
   const handleLogin = async () => {
     const msg = await dataService.logInUser(user, pwd);
     const contextMsg = await init()
-    console.log(contextMsg)
     setMessage(msg);
     if (msg == 'Login success!' & contextMsg == 'ok' ) navigate('/')
   };

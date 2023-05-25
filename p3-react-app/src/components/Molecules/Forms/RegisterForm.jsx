@@ -6,6 +6,11 @@ import { Box, Typography, Button } from '@mui/material';
 import { dataService } from '../../../utils/dataService';
 import {styles as stl} from './FormsStyle'
 import { colors } from '../../../theme';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import { useContext } from 'react';
+import { MyContext} from '../../../utils/MyContexProvider';
+import { useNavigate } from 'react-router-dom';
+
 /**
  * @component JSX functional component for a login panel
  */
@@ -14,6 +19,8 @@ function RegisterForm(props) {
   const [pwd, setPwd] = useState('');
   const [pwd2, setPwd2] = useState('');
   const [email, setEmail] = useState('');
+  const navigate = useNavigate()
+  const {init} =useContext(MyContext)
 
   const nameChanged = (e) => {
     setUser(e.target.value);
@@ -31,8 +38,11 @@ function RegisterForm(props) {
     setEmail(e.target.value);
   };
 
-  const handleRegister = () => {
-    dataService.createUser(user, email, pwd);
+  const handleRegister = async () => {
+    const res =  await dataService.createUser(user, email, pwd);
+    const msg = await dataService.logInUser(res.username, pwd);
+    const contextMsg = await init()
+    if (msg == 'Login success!' & contextMsg == 'ok' ) navigate('/')
   };
   return ({
     /** Main container */
