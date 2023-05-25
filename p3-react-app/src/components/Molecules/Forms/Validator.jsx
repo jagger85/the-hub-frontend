@@ -19,26 +19,24 @@ export function Validator(props) {
         flexDirection: 'column',
         alignItems: 'center',
       }}>
-      <Typography variant='h5' fontWeight='bold' color='white' p={3}>
+      <Typography variant='h5medium' fontWeight='bold' color='white' p={3}>
         Join With Us{' '}
       </Typography>
 
       {/** Show a message when rules are not met*/}
       {!isValid(props.pwd, props.pwd2, props.name) && props.pwd != '' && (
-        <Typography p={2}>Password must follow these rules</Typography>
+        <Typography variant='h5medium' color={colors.background[300]} p={2}>Password must follow these rules</Typography>
       )}
 
       {/** Looping all the rules */}
       {rules.map((pwdRule) => {
         if (!pwdRule.rule.test(props.pwd) && props.pwd != '')
-          return <Typography color={colors.input[300]}>{pwdRule.warning}</Typography>;
+          return <Typography variant='h6light' color={colors.input[200]}>{pwdRule.warning}</Typography>;
       })}
 
       {/** Checking if both passwords match */}
       {props.pwd2 != '' && props.pwd != props.pwd2 ? (
-        <ListItem>
-          <Typography color={colors.input[300]}>Passwords must match</Typography>
-        </ListItem>
+          <Typography variant='h6light' color={colors.input[200]}>Passwords must match</Typography>
       ) : (
         ''
       )}
