@@ -58,7 +58,7 @@ export const dataService = {
   createUser: async function (username, email, password) {
     return await a
       .post(`register`, { username: username, email: email, password: password })
-      .then((res) => console.log(res.data));
+      .then((res) => res.data);
   },
 
   logInUser: async function (username, password) {

@@ -8,20 +8,30 @@ import { useContext, useState } from 'react';
 import { MyContext, actionTypes } from '../../../utils/MyContexProvider';
 
 function PortfolioManager() {
-  const { state, dispatch } = useContext(MyContext);
+  const { state, dispatch, init } = useContext(MyContext);
   const [open, setOpen] = useState(false);
 
   const removePortfolio = async (portfolioName) => {
-    await dataService.removePortfolio(portfolioName);
-    const updatedPortfolios = await dataService.getPortfolios();
-    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
+    dispatch({type: actionTypes.LOADING})
+    const preferredPortfolio = dataService.getPreferredPortfolio()
+    //We check if we are deleting the preferred portfolio to delete it from the database as well
+    if(preferredPortfolio.alias == portfolioName){
+      console.log('preferred portfolio deleted')
+      await dataService.setPreferredPortfolio(null) // SET THE PREFERRED PORTFOLIO TO NULL
+      await dataService.removePortfolio(portfolioName);// REMOVE THE PORTFOLIO
+      init()
+    }
+    else{
+      await dataService.removePortfolio(portfolioName)
+      init()
+    }
   };
 
   const createPortfolio = async (portfolioName) => {
+    dispatch({type: actionTypes.LOADING})
     setOpen(false)
     await dataService.addPortfolio(portfolioName);
-    const updatedPortfolios = await dataService.getPortfolios();
-    dispatch({ type: actionTypes.UPDATE_PORTFOLIOS, portfolios: updatedPortfolios });
+    init()
   };
 
   const addWallet = async (portfolioAlias, walletAlias, walletAddress) => {
