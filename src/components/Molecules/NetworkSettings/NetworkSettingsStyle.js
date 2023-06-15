@@ -1,6 +1,5 @@
 export const styles = {
-    
-    section : {
-        marginTop: 2
-    }
+    section: {
+        marginTop: 2,
+    },
 }

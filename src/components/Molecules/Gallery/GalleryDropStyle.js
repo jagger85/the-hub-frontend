@@ -1,12 +1,10 @@
-import { boxShadowIn } from "../../../theme"
+import { boxShadowIn } from '../../../theme'
 
 export const styles = {
-
-    container:{
-        padding: 2
+    container: {
+        padding: 2,
     },
-    accordionContainer:{
-    boxShadow : boxShadowIn
+    accordionContainer: {
+        boxShadow: boxShadowIn,
     },
-
 }

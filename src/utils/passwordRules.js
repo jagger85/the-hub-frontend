@@ -4,9 +4,9 @@
  * @param {String} char8.warning - A message indicating the rule the password must pass.
  */
 const char8 = {
-  rule: /(?=^.{8,}$)/,
-  warning: 'Eight characters',
-};
+    rule: /(?=^.{8,}$)/,
+    warning: 'Eight characters',
+}
 
 /**
  * @const {JSON} uppercase - The password must contain at least one uppercase and one lowercase.
@@ -14,9 +14,9 @@ const char8 = {
  * @param {String} uppercase.warning - A message indicating the rule the password must pass.
  */
 const uppercase = {
-  rule: /(?=.*[a-z])(?=.*[A-Z])/,
-  warning: 'One uppercase and one lowercase',
-};
+    rule: /(?=.*[a-z])(?=.*[A-Z])/,
+    warning: 'One uppercase and one lowercase',
+}
 
 /**
  * @const {JSON} number - The password must contain at least one number.
@@ -24,9 +24,9 @@ const uppercase = {
  * @param {String} number.warning - A message indicating the rule the password must pass.
  */
 const number = {
-  rule: /(?=.*\d)/,
-  warning: 'One number',
-};
+    rule: /(?=.*\d)/,
+    warning: 'One number',
+}
 
 /**
  * @const {JSON} special - The password must contain at least one special character.
@@ -34,9 +34,9 @@ const number = {
  * @param {String} special.warning - A message indicating the rule the password must pass.
  */
 const special = {
-  rule: /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
-  warning: 'One special character',
-};
+    rule: /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/,
+    warning: 'One special character',
+}
 
 /**
  * @const {JSON} emai - Must be a valid email.
@@ -44,12 +44,11 @@ const special = {
  * @param {String} special.warning - A message indicating the rule the password must pass.
  */
 export const emailRule = {
-  rule: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-  warning: 'Must be a valid email'
+    rule: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+    warning: 'Must be a valid email',
 }
 
 /**
  * @const {Array} rules - A collection of rules the password must pass.
  */
-export const rules = [char8, uppercase, number, special];
-
+export const rules = [char8, uppercase, number, special]

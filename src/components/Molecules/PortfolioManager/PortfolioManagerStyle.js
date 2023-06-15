@@ -1,60 +1,62 @@
-import { colors, boxShadow, boxShadowIn, boxShadowDown,boxShadowUp } from "../../../theme"
+import {
+    colors,
+    boxShadow,
+    boxShadowIn,
+    boxShadowDown,
+    boxShadowUp,
+} from '../../../theme'
 
 export const styles = {
     portfolioManagerContainer: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     wrapper: {
         boxShadow: boxShadow,
         marginTop: 2,
         borderRadius: '4px 4px 0px 0px',
-      
     },
 
     accordionContainer: {
-      backgroundColor: colors.background[1000],
-      border: 0,
-      boxShadow: boxShadowUp,
-      borderRadius: '4px 4px 0px 0px',
+        backgroundColor: colors.background[1000],
+        border: 0,
+        boxShadow: boxShadowUp,
+        borderRadius: '4px 4px 0px 0px',
     },
-    accordionDetails: {
- 
-    },
-    
-    expandIcon:{
-            color: colors.background[400],
-        '&:hover' :{
-            color: colors.purple[400]
-        }
-    },
-    
-    
-    addIcon :{
+    accordionDetails: {},
+
+    expandIcon: {
         color: colors.background[400],
         '&:hover': {
-            color: colors.purple[400]
-        }        
+            color: colors.purple[400],
+        },
     },
-    
-    addIconBad : {
+
+    addIcon: {
+        color: colors.background[400],
+        '&:hover': {
+            color: colors.purple[400],
+        },
+    },
+
+    addIconBad: {
         color: colors.background[400],
         '&:hover': {
             color: '#f23d64',
             transform: 'rotate(45deg)',
-        }   
+        },
     },
-    
+
     paper: {
         backgroundColor: colors.background[1000],
         boxShadow: boxShadow,
         borderRadius: 0,
     },
-    
+
     header: {
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     addWallet: {
@@ -64,11 +66,11 @@ export const styles = {
     },
 
     walletsContainer: {
-       padding:2,
-       backgroundColor: colors.background[1000],
-       borderRadius: '0px 0px 4px 4px',
+        padding: 2,
+        backgroundColor: colors.background[1000],
+        borderRadius: '0px 0px 4px 4px',
     },
-    
+
     wallet: {
         display: 'flex',
         borderRadius: 1,
@@ -78,24 +80,24 @@ export const styles = {
         overflow: 'hidden',
         boxShadow: boxShadowIn,
         height: '2rem',
-        marginBottom: 0.7
+        marginBottom: 0.7,
     },
 
     icon: {
-        marginTop:  0,
-        color : colors.background[400],
-        '&:hover' :{
-            color: colors.purple[500]
-        }
-    },    
-    
-    starSelected: {
-        marginTop:  0,
-        color : colors.yellow[100],
+        marginTop: 0,
+        color: colors.background[400],
+        '&:hover': {
+            color: colors.purple[500],
+        },
     },
 
-    deleteIconBox: { 
-        backgroundColor : colors.background[1000],
+    starSelected: {
+        marginTop: 0,
+        color: colors.yellow[100],
+    },
+
+    deleteIconBox: {
+        backgroundColor: colors.background[1000],
         height: '100%',
         display: 'flex',
         alignItems: 'center',
@@ -103,8 +105,7 @@ export const styles = {
         borderRadius: 0.5,
         width: 40,
         '&:hover .MuiSvgIcon-root ': {
-            color: colors.purple[500]
-        }
+            color: colors.purple[500],
+        },
     },
-
 }

@@ -1,9 +1,8 @@
-import { colors, boxShadow } from "../../../theme"
+import { colors, boxShadow } from '../../../theme'
 
 export const styles = {
-
-    transactionContainer:{
+    transactionContainer: {
         backgroundColor: colors.background[1000],
-        boxShadow: boxShadow
-    }
+        boxShadow: boxShadow,
+    },
 }

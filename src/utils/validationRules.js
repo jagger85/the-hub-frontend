@@ -6,7 +6,7 @@
 const char12 = {
     rule: /(?=^.{12}$)/,
     warning: '12 characters',
-  };
+}
 
 /**
  * @const {JSON} special - The password can't contain special characters.
@@ -16,9 +16,9 @@ const char12 = {
 const notSpecial = {
     rule: /^[A-Za-z0-9]*$/,
     warning: 'Special characters not alowed',
-  };
-  
+}
+
 /**
  * @const {Array} rules - A collection of rules the password must pass.
  */
-export const rules = [char12, notSpecial];
+export const rules = [char12, notSpecial]

@@ -1,24 +1,23 @@
-import { boxShadow, colors } from "../../theme"
+import { boxShadow, colors } from '../../theme'
 
 export const styles = {
-    select : {
+    select: {
         backgroundColor: colors.background[800],
-  
+
         'label + & .MuiOutlinedInput-notchedOutline': {
             border: 'none',
             boxShadow: boxShadow,
         },
         '& .MuiSvgIcon-root': {
-            color: colors.background[400]
-        }
+            color: colors.background[400],
+        },
     },
-    menuItem : {
+    menuItem: {
         '& .MuiInputBase-input': {
-            boxShadow: boxShadow
+            boxShadow: boxShadow,
         },
         '&:focus': {
-      //maybe I need it in the future
-          },
+            //maybe I need it in the future
+        },
     },
-
 }

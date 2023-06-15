@@ -1,13 +1,12 @@
 export const styles = {
-    container : {
-    margin:2,
+    container: {
+        margin: 2,
     },
-    titleContainer:{
-    marginBottom: 3,
+    titleContainer: {
+        marginBottom: 3,
     },
     section: {
-    marginRight : 5,
-    marginTop: 2
-
-    }
+        marginRight: 5,
+        marginTop: 2,
+    },
 }
