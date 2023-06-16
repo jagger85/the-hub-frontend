@@ -1,34 +1,34 @@
 {
-  "name": "the-hub",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.1",
-    "axios": "^1.3.6",
-    "bcryptjs": "^2.4.3",
-    "echarts": "^5.4.2",
-    "echarts-for-react": "^3.0.2",
-    "jszip": "^3.10.1",
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
-    "unzip": "^0.1.11",
-    "uuid": "^9.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "vite": "^4.2.0"
-  }
+    "name": "the-hub",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/icons-material": "^5.11.16",
+        "@mui/material": "^5.12.1",
+        "axios": "^1.3.6",
+        "bcryptjs": "^2.4.3",
+        "echarts": "^5.4.2",
+        "echarts-for-react": "^3.0.2",
+        "jszip": "^3.10.1",
+        "moment": "^2.29.4",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.10.0",
+        "unzip": "^0.1.11",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "@vitejs/plugin-react": "^3.1.0",
+        "vite": "^4.2.0"
+    }
 }
